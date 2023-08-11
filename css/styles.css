@@ -195,12 +195,30 @@ a.custom-card:hover {
 
 .registro {
   width: 400px;
-  margin: 180px auto auto auto;
+  margin: 50px auto auto auto;
   padding: 20px;
   border: 1px solid #ccc;
+  border-radius: 30px;
   background-color: #acabab9b;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+.parrafo p {
+  margin-bottom: 20px;
+  margin-top: 80px;
+  width: 450px;
+  font-size: 1.5rem;
+  text-align: center;
+  color: white;
+  background-color: #0000007b;
+  border-radius: 30px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.parrafo p:hover{
+  background-color: #0056b3;
+}
+
 
 .registro h2 {
   margin-bottom: 20px;
@@ -217,7 +235,7 @@ a.custom-card:hover {
   width: 100%;
   padding: 8px;
   border: 1px solid #ccc;
-  border-radius: 3px;
+  border-radius: 10px;
 }
 
 .registro .cartelYes {
