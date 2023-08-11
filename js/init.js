@@ -39,3 +39,29 @@ let getJSONData = function(url){
         return result;
     });
 }
+
+
+
+
+function verificarAutenticacion() {
+  var logueado = localStorage.getItem("logueado");
+  if (logueado === "true") {
+
+    console.log("El usuario está autenticado.");
+    
+  } else {
+
+    console.log("El usuario no está autenticado.");
+
+    setTimeout(irAlLogin, 5000); 
+
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  verificarAutenticacion();
+});
+
+function irAlLogin(){
+  window.location.href = "login.html";
+}
