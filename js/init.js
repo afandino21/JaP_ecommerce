@@ -58,8 +58,5 @@ function verificarAutenticacion() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-  if (localStorage.getItem("logueado") === null) {
-    localStorage.setItem("logueado", "false");
-  }
   verificarAutenticacion();
 });
