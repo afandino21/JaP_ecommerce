@@ -1,4 +1,3 @@
-
 function registrarUsuario() {
     var username = document.getElementById("username").value;
     var email = document.getElementById("email").value;
@@ -43,3 +42,23 @@ function logout(){
         irAlIndex();
      
 }
+
+function verificarAutenticacion() {
+    var logueado = localStorage.getItem("logueado");
+    var aviso = document.getElementById("p");
+    if (logueado === "true") {
+  
+      console.log("El usuario está autenticado.");
+      aviso.textContent = "Te encuentras logueado actualmente.";
+      
+    } else {
+  
+      console.log("El usuario no está autenticado.");
+      aviso.textContent = "Debes loguearte para acceder a la pagina."
+
+    }
+  }
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    verificarAutenticacion();
+  });
