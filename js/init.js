@@ -39,3 +39,13 @@ let getJSONData = function(url){
         return result;
     });
 }
+
+
+function verificarAutenticacion() {
+  var logueado = localStorage.getItem("logueado");
+  if (!logueado || logueado !== "true") {
+      window.location.href = "login.html";
+  }
+}
+
+verificarAutenticacion()

@@ -188,3 +188,76 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+
+
+
+
+
+.registro {
+  width: 400px;
+  margin: 180px auto auto auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  background-color: #acabab9b;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.registro h2 {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.registro label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.registro input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.registro .cartelYes {
+  display: none;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+  margin: 10px 10px;
+  font-weight: bold;
+  background-color: rgba(0, 255, 0, 0.514);
+}
+
+.registro .cartelNo {
+  display: none;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+  margin: 10px 10px;
+  font-weight: bold;
+  background-color: rgba(255, 0, 0, 0.589);
+}
+
+.registro button {
+  padding: 10px 20px;
+  background-color: #0000007b;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin: 10px 10px;
+}
+
+.registro button:hover {
+  background-color: #0056b3;
+}
+
+#botones{
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+}
