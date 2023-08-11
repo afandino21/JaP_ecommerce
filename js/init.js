@@ -52,7 +52,8 @@ function verificarAutenticacion() {
   } else {
 
     console.log("El usuario no está autenticado.");
-    window.location.href = "login.html";
+
+    setTimeout(irAlLogin, 5000); 
 
   }
 }
@@ -60,3 +61,7 @@ function verificarAutenticacion() {
 document.addEventListener('DOMContentLoaded', function() {
   verificarAutenticacion();
 });
+
+function irAlLogin(){
+  window.location.href = "login.html";
+}
