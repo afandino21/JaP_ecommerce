@@ -41,17 +41,21 @@ let getJSONData = function(url){
 }
 
 
+
+
 function verificarAutenticacion() {
-  var logueado = localStorage.getItem("logueado", "true");
-  if (!logueado || logueado !== "true") {
-      window.location.href = "login.html";
+  var logueado = localStorage.getItem("logueado");
+  if (logueado === "true") {
+
+    console.log("El usuario está autenticado.");
+  } else {
+    // El usuario no está autenticado, redirige a la página de inicio de sesión
+    console.log("El usuario no está autenticado.");
+    window.location.href = "login.html";
+
   }
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-  var logueado = sessionStorage.getItem("logueado");
-  if (!logueado) {
-    sessionStorage.setItem("logueado", "true");
-  }
   verificarAutenticacion();
 });
