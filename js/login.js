@@ -9,7 +9,7 @@ function registrarUsuario() {
 
         localStorage.setItem("logueado", "true");
         exito();
-        setTimeout(irAlIndex, 1000); 
+        setTimeout(irAlIndex, 2000); 
       
     } else {
         noExito()
