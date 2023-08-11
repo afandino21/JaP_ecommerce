@@ -48,8 +48,9 @@ function verificarAutenticacion() {
   if (logueado === "true") {
 
     console.log("El usuario está autenticado.");
+    
   } else {
-    // El usuario no está autenticado, redirige a la página de inicio de sesión
+
     console.log("El usuario no está autenticado.");
     window.location.href = "login.html";
 
@@ -57,5 +58,8 @@ function verificarAutenticacion() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+  if (localStorage.getItem("logueado") === null) {
+    localStorage.setItem("logueado", "false");
+  }
   verificarAutenticacion();
 });
