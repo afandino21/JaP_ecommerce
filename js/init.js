@@ -48,4 +48,10 @@ function verificarAutenticacion() {
   }
 }
 
-verificarAutenticacion()
+document.addEventListener('DOMContentLoaded', function() {
+  var logueado = sessionStorage.getItem("logueado");
+  if (!logueado) {
+    sessionStorage.setItem("logueado", "true");
+  }
+  verificarAutenticacion();
+});
