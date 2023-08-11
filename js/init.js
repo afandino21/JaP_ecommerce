@@ -42,7 +42,7 @@ let getJSONData = function(url){
 
 
 function verificarAutenticacion() {
-  var logueado = localStorage.getItem("logueado");
+  var logueado = localStorage.getItem("logueado", "true");
   if (!logueado || logueado !== "true") {
       window.location.href = "login.html";
   }
