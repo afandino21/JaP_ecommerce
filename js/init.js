@@ -48,6 +48,7 @@ function verificarAutenticacion() {
   if (logueado === "true") {
 
     console.log("El usuario está autenticado.");
+    cambiarInPorOut()
     
   } else {
 
@@ -64,4 +65,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function irAlLogin(){
   window.location.href = "login.html";
+}
+
+
+function cambiarInPorOut(){
+var claseLogin = document.querySelectorAll(".custom-link");
+
+for (var i = 0; i < claseLogin.length; i++) {
+  claseLogin[i].textContent = "Log-out";
+}
 }
