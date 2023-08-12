@@ -1,9 +1,7 @@
 function registrarUsuario() {
     var username = document.getElementById("username").value;
     var email = document.getElementById("email").value;
-    var boton = document.getElementById("regBtn");
 
-    
     if (username !== "" && email !== "" && email.includes("@")) {
 
         localStorage.setItem("logueado", "true");
@@ -37,24 +35,29 @@ function noExito() {
 };
 
 function logout(){
-
-        localStorage.setItem("logueado", "false");
-        irAlIndex();
-     
+    localStorage.setItem("logueado", "false");
+    window.location.href = "login.html";
 }
 
 function verificarAutenticacion() {
     var logueado = localStorage.getItem("logueado");
     var aviso = document.getElementById("p");
+    var botonIn = document.getElementById("regBtn");
+    var botonOut = document.getElementById("outBtn");
+    var eliminar = document.getElementById("eliminar");
+
     if (logueado === "true") {
-  
+
       console.log("El usuario está autenticado.");
       aviso.textContent = "Te encuentras logueado actualmente.";
-      
+      botonIn.parentNode.removeChild(botonIn);
+      eliminar.textContent = ""
+
     } else {
-  
+
       console.log("El usuario no está autenticado.");
       aviso.textContent = "Debes loguearte para acceder a la pagina."
+      botonOut.parentNode.removeChild(botonOut);
 
     }
   }

@@ -53,7 +53,7 @@ function verificarAutenticacion() {
 
     console.log("El usuario no está autenticado.");
 
-    setTimeout(irAlLogin, 5000); 
+    setTimeout(irAlLogin, 2500); 
 
   }
 }
