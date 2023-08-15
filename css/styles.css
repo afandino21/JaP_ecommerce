@@ -200,7 +200,7 @@ a.custom-card:hover {
   border: 1px solid #ccc;
   border-radius: 30px;
   background-color: #acabab9b;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Para que es esta linea? */
 }
 
 .parrafo p {
