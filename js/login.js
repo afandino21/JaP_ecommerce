@@ -1,8 +1,9 @@
 function registrarUsuario() {
     var username = document.getElementById("username").value;
     var email = document.getElementById("email").value;
-
-    if (username !== "" && email !== "" && email.includes("@")) {
+    var password = document.getElementById("password") 
+//agregue la contraseña a la funcion
+    if (username !== "" && email !== "" && email.includes("@") && password !=="") {
 
         localStorage.setItem("logueado", "true");
         exito();
