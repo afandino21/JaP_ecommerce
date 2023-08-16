@@ -1,20 +1,20 @@
 function registrarUsuario() {
     var username = document.getElementById("username").value;
     var email = document.getElementById("email").value;
-    var password = document.getElementById("password") 
-//agregue la contraseña a la funcion
-    if (username !== "" && email !== "" && email.includes("@") && password !=="") {
+    var password = document.getElementById("password").value;
+    //agregue la contraseña a la funcion
+    if (username !== "" && email !== "" && email.includes("@") && password !== "") {
 
         localStorage.setItem("logueado", "true");
         exito();
-        setTimeout(irAlIndex, 2000); 
-      
+        setTimeout(irAlIndex, 2000);
+
     } else {
         noExito()
     }
 }
 
-function irAlIndex(){
+function irAlIndex() {
     window.location.href = "index.html";
 };
 
@@ -30,12 +30,12 @@ function noExito() {
     var cartelNoPasa = document.getElementById('cartelNo');
     cartelNoPasa.textContent = 'Debe rellenar todos los campos y el correo debe incluir @';
     cartelNoPasa.style.display = 'block';
-    setTimeout(function() {
-        cartelNoPasa.style.display = "none";
+    setTimeout(function () {
+        cartelNoPasa.style.display = "none";  // ver de en vez de usar un timeOut usar algo para que quede el cartel pero no se repita
     }, 3000);
 };
 
-function logout(){
+function logout() {
     localStorage.setItem("logueado", "false");
     window.location.href = "login.html";
 }
@@ -49,20 +49,20 @@ function verificarAutenticacion() {
 
     if (logueado === "true") {
 
-      console.log("El usuario está autenticado.");
-      aviso.textContent = "Te encuentras logueado actualmente.";
-      botonIn.parentNode.removeChild(botonIn);
-      eliminar.textContent = ""
+        console.log("El usuario está autenticado.");
+        aviso.textContent = "Te encuentras logueado actualmente.";
+        botonIn.parentNode.removeChild(botonIn);
+        eliminar.textContent = ""
 
     } else {
 
-      console.log("El usuario no está autenticado.");
-      aviso.textContent = "Debes loguearte para acceder a la pagina."
-      botonOut.parentNode.removeChild(botonOut);
+        console.log("El usuario no está autenticado.");
+        aviso.textContent = "Debes loguearte para acceder a la pagina."
+        botonOut.parentNode.removeChild(botonOut);
 
     }
-  }
-  
-  document.addEventListener('DOMContentLoaded', function() {
+}
+
+document.addEventListener('DOMContentLoaded', function () {
     verificarAutenticacion();
-  });
+});

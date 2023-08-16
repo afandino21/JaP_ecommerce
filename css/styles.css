@@ -192,7 +192,7 @@ a.custom-card:hover {
 
 
 
-
+/* Estilo para el login */
 .registro {
   width: 300px;
   margin: 50px auto auto auto;
@@ -214,7 +214,7 @@ a.custom-card:hover {
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
-.parrafo p:hover{
+.parrafo p:hover {
   background-color: #0056b3;
 }
 
@@ -273,8 +273,8 @@ a.custom-card:hover {
   background-color: #0056b3;
 }
 
-#botones{
+#botones {
   display: flex;
   justify-content: center;
-  align-items: center; 
+  align-items: center;
 }
