@@ -1,10 +1,10 @@
 function registrarUsuario() {
     var username = document.getElementById("username").value;
-    var email = document.getElementById("email").value;
     var password = document.getElementById("password").value;
     //agregue la contraseña a la funcion
-    if (username !== "" && email !== "" && email.includes("@") && password !== "") {
+    if (username !== "" && password !== "") {
 
+        localStorage.setItem("username", username);
         localStorage.setItem("logueado", "true");
         exito();
         setTimeout(irAlIndex, 2000);
@@ -28,7 +28,7 @@ function exito() {
 
 function noExito() {
     var cartelNoPasa = document.getElementById('cartelNo');
-    cartelNoPasa.textContent = 'Debe rellenar todos los campos y el correo debe incluir @';
+    cartelNoPasa.textContent = 'Debe rellenar todos los campos';
     cartelNoPasa.style.display = 'block';
     setTimeout(function () {
         cartelNoPasa.style.display = "none";  // ver de en vez de usar un timeOut usar algo para que quede el cartel pero no se repita

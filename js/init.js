@@ -69,9 +69,11 @@ function irAlLogin() {
 
 // Cambia 
 function cambiarInPorOut() {
+
   var claseLogin = document.querySelectorAll(".custom-link");
+  var storedValue = localStorage.getItem("username");
 
   for (var i = 0; i < claseLogin.length; i++) {
-    claseLogin[i].textContent = "Log-out";
+    claseLogin[i].textContent = storedValue;
   }
 }
