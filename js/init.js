@@ -47,7 +47,7 @@ function verificarAutenticacion() {
   var logueado = localStorage.getItem("logueado");
   if (logueado === "true") {
 
-    console.log("El usuario está autenticado.");
+    console.log("El usuario está autenticado y su nombre es : " + localStorage.getItem("username"));
     cambiarInPorOut()
 
   } else {

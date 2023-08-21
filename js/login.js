@@ -1,45 +1,3 @@
-function registrarUsuario() {
-    var username = document.getElementById("username").value;
-    var password = document.getElementById("password").value;
-    //agregue la contraseña a la funcion
-    if (username !== "" && password !== "") {
-
-        localStorage.setItem("username", username);
-        localStorage.setItem("logueado", "true");
-        exito();
-        setTimeout(irAlIndex, 2000);
-
-    } else {
-        noExito()
-    }
-}
-
-function irAlIndex() {
-    window.location.href = "index.html";
-};
-
-
-function exito() {
-    var cartelPasa = document.getElementById('cartelYes');
-    cartelPasa.textContent = 'Inicio de sesión realizado correctamente';
-    cartelPasa.style.display = 'block';
-};
-
-
-function noExito() {
-    var cartelNoPasa = document.getElementById('cartelNo');
-    cartelNoPasa.textContent = 'Debe rellenar todos los campos';
-    cartelNoPasa.style.display = 'block';
-    setTimeout(function () {
-        cartelNoPasa.style.display = "none";  // ver de en vez de usar un timeOut usar algo para que quede el cartel pero no se repita
-    }, 3000);
-};
-
-function logout() {
-    localStorage.setItem("logueado", "false");
-    window.location.href = "login.html";
-}
-
 function verificarAutenticacion() {
     var logueado = localStorage.getItem("logueado");
     var aviso = document.getElementById("p");
@@ -62,7 +20,69 @@ function verificarAutenticacion() {
 
     }
 }
-
 document.addEventListener('DOMContentLoaded', function () {
+
     verificarAutenticacion();
+
 });
+
+function mostrarMensaje(mensaje, exito) {
+
+    var cartelPasa = document.getElementById('cartelYes');
+    var cartelNoPasa = document.getElementById('cartelNo');
+    var isCartelPasaVisible = true;
+    var cartel = exito ? cartelPasa : cartelNoPasa;
+    var otroCartel = exito ? cartelNoPasa : cartelPasa;
+
+    cartel.textContent = mensaje;
+    cartel.style.display = 'block';
+    otroCartel.style.display = 'none';
+
+    isCartelPasaVisible = exito;
+};
+
+function exito() {
+    mostrarMensaje('Inicio de sesión realizado correctamente', false)
+};
+
+function noExito() {
+    mostrarMensaje('Debe rellenar todos los campos', true)
+};
+function noExito2() {
+    mostrarMensaje('El correo debe inculir @', true)
+};
+
+function registrarUsuario() {
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+
+    if (username.includes("@")) {
+
+        if (username !== "" && password !== "") {
+
+            localStorage.setItem("username", username);
+            localStorage.setItem("logueado", "true");
+
+            exito();
+            setTimeout(irAlIndex, 2000);
+
+        } else { noExito() }
+
+    } else { noExito2() }
+}
+
+function irAlIndex() {
+    window.location.href = "index.html";
+};
+
+function logout() {
+    localStorage.setItem("logueado", "false");
+    window.location.href = "login.html";
+}
+
+document.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+        registrarUsuario();
+    }
+});
+

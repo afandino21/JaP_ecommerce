@@ -191,38 +191,36 @@ a.custom-card:hover {
 
 
 
-
 /* Estilo para el login */
 .registro {
   width: 300px;
-  margin: 50px auto auto auto;
+  margin: 20px auto auto auto;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 30px;
-  background-color: #acabab9b;
+  background: linear-gradient(to bottom, #ffa600, #000000a1);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: rgb(255, 255, 255);
 }
 
 .parrafo p {
-  margin: 50px auto auto auto;
+  margin: auto auto auto auto;
   width: 300px;
   font-size: 1.5rem;
   text-align: center;
   color: white;
-  background-color: #0000007b;
+  background: linear-gradient(to bottom, #000000a1, #ffa600);
   border-radius: 30px;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
-.parrafo p:hover {
-  background-color: #0056b3;
-}
 
 
 .registro h2 {
   margin-bottom: 20px;
   font-size: 1.5rem;
   text-align: center;
+  text-decoration: underline;
 }
 
 .registro label {
@@ -233,7 +231,7 @@ a.custom-card:hover {
 .registro input {
   width: 100%;
   padding: 8px;
-  border: 1px solid #ccc;
+  border: 1px solid #ffffff;
   border-radius: 10px;
 }
 
@@ -245,7 +243,7 @@ a.custom-card:hover {
   text-align: center;
   margin: 10px 10px;
   font-weight: bold;
-  background-color: rgba(0, 255, 0, 0.514);
+  background-color: rgb(255, 0, 0);
 }
 
 .registro .cartelNo {
@@ -256,12 +254,12 @@ a.custom-card:hover {
   text-align: center;
   margin: 10px 10px;
   font-weight: bold;
-  background-color: rgba(255, 0, 0, 0.589);
+  background-color: rgb(4, 255, 0);
 }
 
 .registro button {
   padding: 10px 20px;
-  background-color: #0000007b;
+  background-color: #fbfbfb56;
   color: #fff;
   border: none;
   border-radius: 3px;
@@ -270,11 +268,15 @@ a.custom-card:hover {
 }
 
 .registro button:hover {
-  background-color: #0056b3;
+  background-color: #bdbdbdd2;
 }
 
 #botones {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.imagen img {
+  width: 50%;
 }
