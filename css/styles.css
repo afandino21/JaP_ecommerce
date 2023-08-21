@@ -198,20 +198,21 @@ a.custom-card:hover {
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 30px;
-  background: linear-gradient(to bottom, #ffa600, #000000a1);
+  background: linear-gradient(to bottom, #ffa600, #00000050);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   color: rgb(255, 255, 255);
+  font-family: Arial, sans-serif;
 }
 
 .parrafo p {
-  margin: auto auto auto auto;
+  margin: 10px auto auto auto;
   width: 300px;
   font-size: 1.5rem;
   text-align: center;
   color: white;
-  background: linear-gradient(to bottom, #000000a1, #ffa600);
+  background: linear-gradient(to bottom, #00000050, #ffa600);
   border-radius: 30px;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: Arial, sans-serif;
 }
 
 
@@ -243,7 +244,7 @@ a.custom-card:hover {
   text-align: center;
   margin: 10px 10px;
   font-weight: bold;
-  background-color: rgb(255, 0, 0);
+  background-color: rgba(255, 0, 0, 0.285);
 }
 
 .registro .cartelNo {
@@ -259,16 +260,17 @@ a.custom-card:hover {
 
 .registro button {
   padding: 10px 20px;
-  background-color: #fbfbfb56;
+  background-color: #ffa600;
   color: #fff;
-  border: none;
+  border: 2px solid #ffffff;
   border-radius: 3px;
   cursor: pointer;
-  margin: 10px 10px;
+  margin: 10px 10px auto 10px;
 }
 
 .registro button:hover {
-  background-color: #bdbdbdd2;
+  background-color: #0000005d;
+  border: 2px solid #ffffff;
 }
 
 #botones {
@@ -277,6 +279,12 @@ a.custom-card:hover {
   align-items: center;
 }
 
-.imagen img {
-  width: 50%;
+.imagen {
+  width: 300px;
+  height: 100px;
+  margin-bottom: 0;
+  background: url('../img/login.png');
+  background-size: 300px;
+  background-position: center;
+  background-repeat: no-repeat;
 }
