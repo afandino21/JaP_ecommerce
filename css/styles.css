@@ -288,3 +288,12 @@ a.custom-card:hover {
   background-position: center;
   background-repeat: no-repeat;
 }
+
+.btn-orange-dark {
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Color naranja oscuro personalizado */
+  border-color: #ffa600;
+  /* Borde del mismo color */
+  color: #ffffff;
+  /* Texto en color blanco */
+}

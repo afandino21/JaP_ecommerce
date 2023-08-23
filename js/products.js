@@ -1,24 +1,27 @@
 
 function loadProducts() {
 
-    const url = 'https://japceibal.github.io/emercado-api/cats_products/101.json';
+  let catID = localStorage.getItem('catID');
+  const url = `https://japceibal.github.io/emercado-api/cats_products/${catID}.json`;
 
-    fetch(url)
-        .then(response => response.json())
-        .then(data => {
+  fetch(url)
+    .then(response => response.json())
+    .then(data => {
 
-            const products = data.products;
+      const products = data.products;
 
+      const subtitleCategories = document.getElementById("subtitleCategories");
+      subtitleCategories.innerHTML = `Veras aquí todos los productos de la categoria ${data.catName}`
 
-            const productsContainer = document.getElementById('products-container');
-
-
-            products.forEach(product => {
-                const productCard = document.createElement('div');
-                productCard.classList.add('card', 'mb-3', 'product-card');
+      const productsContainer = document.getElementById('products-container');
 
 
-                productCard.innerHTML = `
+      products.forEach(product => {
+        const productCard = document.createElement('div');
+        productCard.classList.add('card', 'mb-3', 'product-card');
+
+
+        productCard.innerHTML = `
             <div class="row g-0">
               <div class="col-md-4">
                 <img src="${product.image}" alt="${product.name}" class="img-fluid product-image">
@@ -34,14 +37,16 @@ function loadProducts() {
             </div>
           `;
 
+        productsContainer.appendChild(productCard);
+      });
 
-                productsContainer.appendChild(productCard);
-            });
-        })
-        .catch(error => {
-            console.error('Error al cargar los productos:', error);
-        });
+
+    })
+    .catch(error => {
+      console.error('Error al cargar los productos:', error);
+    });
 }
 
 
 document.addEventListener('DOMContentLoaded', loadProducts);
+
