@@ -20,12 +20,14 @@ searchContainer.className = "input-group";
 const inputElement = document.createElement("input");
 inputElement.setAttribute("type", "search");
 inputElement.setAttribute("placeholder", "Buscar...");
-inputElement.className = "form-control"; // Aplica las clases de Bootstrap
+inputElement.className = "form-control";// Aplica las clases de Bootstrap
+inputElement.id = "inputBusqueda";
 
 // Crea el botón de envío (submit)
 const submitButton = document.createElement("button");
 submitButton.setAttribute("type", "submit");
 submitButton.className = "btn btn-orange-dark";
+submitButton.id = "buttonBusqueda";
 submitButton.textContent = "🔍︎"; // como alternativa, podriamos usar esta lupa sacada de bootsrap: https://icons.getbootstrap.com/icons/search-heart/
 
 // Agrega el campo de entrada y el botón al contenedor
@@ -35,10 +37,43 @@ searchContainer.appendChild(submitButton);
 // Agrega el contenedor de búsqueda al elemento de la lista
 searchListItem.appendChild(searchContainer);
 
-// Inserta el nuevo elemento de lista justo antes del elemento "Log-in"
-const loginListItem = document.querySelector(".custom-link").parentNode;
+// Inserta el nuevo elemento de lista despues del elemento "Log-in"
+const loginListItem = document.querySelector(".custom-link").lastElementChildNode;
 navList.insertBefore(searchListItem, loginListItem);
 
 // <i class="fa-solid fa-magnifying-glass"></i>
 
+
+//parte que hizo el brazuca joaozinho
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const searchButton = document.getElementById('buttonBusqueda');
+
+    searchButton.addEventListener('click', () => {
+    // Obtén la lista de elementos de alguna fuente (por ejemplo, una API fetch)
+        const searchInput = document.getElementById('inputBusqueda').value.toLowerCase();
+        const url = `https://japceibal.github.io/emercado-api/cats_products/${searchInput}.json`;
+    
+    // Función para buscar 
+    
+  fetch(url)
+  .then(response => {
+    // Aquí puedes manejar la respuesta de la solicitud
+    // La respuesta se pasa como parámetro "response"
+    return response.json(); // Por ejemplo, para obtener los datos JSON de la respuesta
+  })
+  .then(data => {
+    // Aquí puedes trabajar con los datos obtenidos
+    console.log(data); // Por ejemplo, mostrar los datos en la consola
+    //window.location.href = url; //te manda a la url del jonson baby
+  })
+  .catch(error => {
+    // Manejo de errores en caso de que la solicitud falle
+    console.error('Debes buscar por catID desde "101" al "109"');
+  });
+
+});
+
+  });
 

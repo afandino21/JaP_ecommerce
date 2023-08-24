@@ -197,29 +197,31 @@ a.custom-card:hover {
   margin: 20px auto auto auto;
   padding: 20px;
   border: 1px solid #ccc;
-  border-radius: 30px;
+  border-radius: 10px;
   background: linear-gradient(to bottom, #ffa600, #00000050);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   color: rgb(255, 255, 255);
-  font-family: Arial, sans-serif;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: #000000;
 }
 
 .parrafo p {
   margin: 10px auto auto auto;
   width: 300px;
-  font-size: 1.5rem;
+  font-size: 25px;
   text-align: center;
   color: white;
   background: linear-gradient(to bottom, #00000050, #ffa600);
-  border-radius: 30px;
-  font-family: Arial, sans-serif;
+  border-radius: 10px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: #000000;
 }
 
 
 
 .registro h2 {
   margin-bottom: 20px;
-  font-size: 1.5rem;
+  font-size: 2rem;
   text-align: center;
   text-decoration: underline;
 }
@@ -227,6 +229,7 @@ a.custom-card:hover {
 .registro label {
   display: block;
   margin-bottom: 5px;
+  font-size: 19px;
 }
 
 .registro input {
@@ -239,23 +242,26 @@ a.custom-card:hover {
 .registro .cartelYes {
   display: none;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #040404;
   border-radius: 5px;
   text-align: center;
   margin: 10px 10px;
   font-weight: bold;
   background-color: rgba(255, 0, 0, 0.285);
+  color: #ffffff;
+  
 }
 
 .registro .cartelNo {
   display: none;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #000000;
   border-radius: 5px;
   text-align: center;
   margin: 10px 10px;
   font-weight: bold;
   background-color: rgb(4, 255, 0);
+  color: #000000;
 }
 
 .registro button {
@@ -266,6 +272,7 @@ a.custom-card:hover {
   border-radius: 3px;
   cursor: pointer;
   margin: 10px 10px auto 10px;
+  font-size: 20px;
 }
 
 .registro button:hover {

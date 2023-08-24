@@ -55,21 +55,28 @@ function noExito2() {
 function registrarUsuario() {
     var username = document.getElementById("username").value;
     var password = document.getElementById("password").value;
-
-    if (username.includes("@")) {
-
-        if (username !== "" && password !== "") {
-
+  
+    switch (true) {
+        case username === "" && password === "":
+          noExito();
+          break;
+    
+        case username.includes("@"):
+          if (username !== "" && password !== "") {
             localStorage.setItem("username", username);
             localStorage.setItem("logueado", "true");
-
             exito();
             setTimeout(irAlIndex, 2000);
-
-        } else { noExito() }
-
-    } else { noExito2() }
-}
+          } else {
+            noExito();
+          }
+          break;
+    
+        case username !== "" && !username.includes("@"):
+          noExito2();
+          break;
+      }
+    }
 
 function irAlIndex() {
     window.location.href = "index.html";
