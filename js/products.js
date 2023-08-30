@@ -33,8 +33,8 @@ function loadProducts() {
       });
 
       rangeFilterCountButton.addEventListener('click', () => {
-        priceRangeMin = parseFloat(document.getElementById('rangeFilterCountMin').value);
-        priceRangeMax = parseFloat(document.getElementById('rangeFilterCountMax').value);
+        priceRangeMin = parseFloat(document.getElementById('rangeFilterCountMin').value) || 0;
+        priceRangeMax = parseFloat(document.getElementById('rangeFilterCountMax').value) || Infinity;
         applyFiltersAndSort(products);
       });
 
