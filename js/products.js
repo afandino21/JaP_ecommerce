@@ -11,8 +11,7 @@ function loadProducts() {
 
       const subtitleCategories = document.getElementById("subtitleCategories");
       subtitleCategories.innerHTML =
-      `<h1 class="text-center" id="tituloProductos">${data.catName}</h1>
-      Veras aquí todos los productos de la categoria`;
+      `<h1 class="text-center" id="tituloProductos">${data.catName}</h1>`;
       
 
       const productsContainer = document.getElementById('products-container');
