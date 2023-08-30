@@ -6,11 +6,10 @@ const searchIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="1
 </svg>`;
 
 // Obtén una referencia al elemento de la lista de navegación
-const navList = document.querySelector(".navbar-nav");
+const navList = document.getElementById("searchBar"); // aca esta usado searchBar
 
 // Crea un nuevo elemento de lista
-const searchListItem = document.createElement("li");
-searchListItem.className = "nav-item";
+const searchListItem = document.createElement("div");
 
 // Crea el contenedor para el campo de búsqueda
 const searchContainer = document.createElement("div");
@@ -19,20 +18,12 @@ searchContainer.className = "input-group";
 // Crea el elemento de entrada (input)
 const inputElement = document.createElement("input");
 inputElement.setAttribute("type", "search");
-inputElement.setAttribute("placeholder", "Buscar...");
+inputElement.setAttribute("placeholder", "🔍︎ Buscar...🔍︎");
 inputElement.className = "form-control";// Aplica las clases de Bootstrap
 inputElement.id = "inputBusqueda";
 
-// Crea el botón de envío (submit)
-const submitButton = document.createElement("button");
-submitButton.setAttribute("type", "submit");
-submitButton.className = "btn btn-orange-dark";
-submitButton.id = "buttonBusqueda";
-submitButton.textContent = "🔍︎"; // como alternativa, podriamos usar esta lupa sacada de bootsrap: https://icons.getbootstrap.com/icons/search-heart/
-
 // Agrega el campo de entrada y el botón al contenedor
 searchContainer.appendChild(inputElement);
-searchContainer.appendChild(submitButton);
 
 // Agrega el contenedor de búsqueda al elemento de la lista
 searchListItem.appendChild(searchContainer);
@@ -41,37 +32,7 @@ searchListItem.appendChild(searchContainer);
 const loginListItem = document.querySelector(".custom-link").lastElementChildNode;
 navList.insertBefore(searchListItem, loginListItem);
 
-// <i class="fa-solid fa-magnifying-glass"></i>
-
-
-//parte que hizo el brazuca joaozinho
-
-const searchInput = document.getElementById('inputBusqueda');
-const searchButton = document.getElementById('buttonBusqueda');
-
-searchButton.addEventListener('click', () => {
-  const searchTerm = searchInput.value;
-  searchAndRedirect(searchTerm);
-});
-
-// También puedes manejar la búsqueda al presionar Enter en el campo de entrada
-searchInput.addEventListener('keyup', (event) => {
-  if (event.key === 'Enter') {
-    const searchTerm = searchInput.value;
-    searchAndRedirect(searchTerm);
-  }
-});
-
-// Función para buscar y redirigir
-function searchAndRedirect(searchTerm) {
-  localStorage.setItem("catID", searchTerm);
-  window.location.href = `products.html?search=${encodeURIComponent(searchTerm)}`;
-}
-
-
-
-
-
+// <i class="fa-solid fa-magnifying-glass"></i>   -- RIP lupita que esta buena para alguna imagen
 
 
 
