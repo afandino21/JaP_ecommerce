@@ -1,6 +1,5 @@
 
 function loadProducts() {
-
   let catID = localStorage.getItem('catID');
   const url = `https://japceibal.github.io/emercado-api/cats_products/${catID}.json`;
 
@@ -14,12 +13,14 @@ function loadProducts() {
       subtitleCategories.innerHTML = `Veras aquí todos los productos de la categoria ${data.catName}`
 
       const productsContainer = document.getElementById('products-container');
+      
+      
 
 
       products.forEach(product => {
+        
         const productCard = document.createElement('div');
         productCard.classList.add('card', 'mb-3', 'product-card');
-
 
         productCard.innerHTML = `
             <div class="row g-0">
@@ -49,4 +50,6 @@ function loadProducts() {
 
 
 document.addEventListener('DOMContentLoaded', loadProducts);
+
+
 

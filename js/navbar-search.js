@@ -47,33 +47,24 @@ navList.insertBefore(searchListItem, loginListItem);
 //parte que hizo el brazuca joaozinho
 
 
-document.addEventListener('DOMContentLoaded', () => {
-    const searchButton = document.getElementById('buttonBusqueda');
-
-    searchButton.addEventListener('click', () => {
-    // Obtén la lista de elementos de alguna fuente (por ejemplo, una API fetch)
-        const searchInput = document.getElementById('inputBusqueda').value.toLowerCase();
-        const url = `https://japceibal.github.io/emercado-api/cats_products/${searchInput}.json`;
-    
-    // Función para buscar 
-    
-  fetch(url)
-  .then(response => {
-    // Aquí puedes manejar la respuesta de la solicitud
-    // La respuesta se pasa como parámetro "response"
-    return response.json(); // Por ejemplo, para obtener los datos JSON de la respuesta
-  })
-  .then(data => {
-    // Aquí puedes trabajar con los datos obtenidos
-    console.log(data); // Por ejemplo, mostrar los datos en la consola
-    //window.location.href = url; //te manda a la url del jonson baby
-  })
-  .catch(error => {
-    // Manejo de errores en caso de que la solicitud falle
-    console.error('Debes buscar por catID desde "101" al "109"');
-  });
-
+// Agrega un evento al botón de búsqueda en tu página
+const searchButton = document.getElementById('buttonBusqueda');
+searchButton.addEventListener('click', () => {
+  const searchTerm = document.getElementById('inputBusqueda').value;
+  searchAndRedirect(searchTerm);
 });
 
-  });
+// Función para buscar y redirigir
+function searchAndRedirect(searchTerm) {
+
+  const num = localStorage.setItem("catID", searchTerm)
+
+  window.location.href = `products.html?${num}`;
+}
+
+
+
+
+
+
 
