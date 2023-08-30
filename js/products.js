@@ -10,7 +10,10 @@ function loadProducts() {
       const products = data.products;
 
       const subtitleCategories = document.getElementById("subtitleCategories");
-      subtitleCategories.innerHTML = `Veras aquí todos los productos de la categoria ${data.catName}`
+      subtitleCategories.innerHTML =
+      `<h1 class="text-center" id="tituloProductos">${data.catName}</h1>
+      Veras aquí todos los productos de la categoria`;
+      
 
       const productsContainer = document.getElementById('products-container');
       

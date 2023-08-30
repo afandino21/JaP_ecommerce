@@ -189,6 +189,9 @@ a.custom-card:hover {
   color: orange;
 }
 
+#tituloProductos{
+  margin-top: 40px;
+}
 
 
 /* Estilo para el login */
