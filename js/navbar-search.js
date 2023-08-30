@@ -46,21 +46,29 @@ navList.insertBefore(searchListItem, loginListItem);
 
 //parte que hizo el brazuca joaozinho
 
-
-// Agrega un evento al botón de búsqueda en tu página
+const searchInput = document.getElementById('inputBusqueda');
 const searchButton = document.getElementById('buttonBusqueda');
+
 searchButton.addEventListener('click', () => {
-  const searchTerm = document.getElementById('inputBusqueda').value;
+  const searchTerm = searchInput.value;
   searchAndRedirect(searchTerm);
+});
+
+// También puedes manejar la búsqueda al presionar Enter en el campo de entrada
+searchInput.addEventListener('keyup', (event) => {
+  if (event.key === 'Enter') {
+    const searchTerm = searchInput.value;
+    searchAndRedirect(searchTerm);
+  }
 });
 
 // Función para buscar y redirigir
 function searchAndRedirect(searchTerm) {
-
-  const num = localStorage.setItem("catID", searchTerm)
-
-  window.location.href = `products.html?${num}`;
+  localStorage.setItem("catID", searchTerm);
+  window.location.href = `products.html?search=${encodeURIComponent(searchTerm)}`;
 }
+
+
 
 
 
