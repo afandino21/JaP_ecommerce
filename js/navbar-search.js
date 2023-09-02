@@ -1,3 +1,5 @@
+// En esta versión, este .js no está siendo utilizado. Status: en proceso
+
 // script para escribir el navbar en todos los HTML, para hacer los cambios m'as f'aciles de manejar
 // Añadir barra de busqueda
 const searchIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search-heart" viewBox="0 0 16 16">
