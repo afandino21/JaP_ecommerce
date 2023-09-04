@@ -22,9 +22,9 @@ function loadInfo() {
             <li class="list-group-item">Cantidad de vendidos:${productInfo.soldCount} </li>
         </ul>
         <ul class="list-group list-group-horizontal">
-        <li class="list-group-item"><img src="${productInfo.images[0]}" alt="Imagen 1" class="product-image"></li>
-        <li class="list-group-item"><img src="${productInfo.images[1]}" alt="Imagen 2" class="product-image"></li>
-        <li class="list-group-item"><img src="${productInfo.images[2]}" alt="Imagen 3" class="product-image"></li>
+        <li class="list-group-item"><img src="${productInfo.images[0]}" alt="Imagen 1" class="illustrive-image"></li>
+        <li class="list-group-item"><img src="${productInfo.images[1]}" alt="Imagen 2" class="illustrive-image"></li>
+        <li class="list-group-item"><img src="${productInfo.images[2]}" alt="Imagen 3" class="illustrive-image"></li>
         </ul>
             `
             infoContainer.appendChild(infoList);

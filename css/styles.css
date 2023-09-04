@@ -308,7 +308,7 @@ a.custom-card:hover {
   /* Texto en color blanco */
 }
 
-.product-image {
+.illustrive-image {
   max-width: 100px; /* Establece el ancho máximo deseado */
   max-height: 100px; /* Establece la altura máxima deseada */
   width: auto; /* Ajusta el ancho automáticamente según el máximo */
