@@ -307,3 +307,10 @@ a.custom-card:hover {
   color: #ffffff;
   /* Texto en color blanco */
 }
+
+.product-image {
+  max-width: 100px; /* Establece el ancho máximo deseado */
+  max-height: 100px; /* Establece la altura máxima deseada */
+  width: auto; /* Ajusta el ancho automáticamente según el máximo */
+  height: auto; /* Ajusta la altura automáticamente según el máximo */
+}

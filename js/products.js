@@ -2,6 +2,11 @@ let currentSort = 'count';
 let priceRangeMin = null;
 let priceRangeMax = null;
 
+function setProductID(id) {
+  localStorage.setItem("productID", id);
+  window.location = "product-info.html"
+}
+
 function loadProducts() {
   let catID = localStorage.getItem('catID');
   const url = `https://japceibal.github.io/emercado-api/cats_products/${catID}.json`;
@@ -92,6 +97,12 @@ function applyFiltersAndSort(products) {
     const productCard = document.createElement('div');
     productCard.classList.add('card', 'mb-3', 'product-card');
 
+    // Agrega un atributo personalizado con la ID del producto
+    productCard.setAttribute('data-product-id', product.id);
+
+    // Agrega una clase para identificar los elementos de producto
+    productCard.classList.add('product-card');
+
     productCard.innerHTML = `
       <div class="row g-0">
         <div class="col-md-4">
@@ -107,6 +118,12 @@ function applyFiltersAndSort(products) {
         </div>
       </div>
     `;
+
+    // Agrega un evento de clic para redirigir al usuario y guardar la ID del producto
+    productCard.addEventListener('click', () => {
+      const productId = productCard.getAttribute('data-product-id');
+      setProductID(productId);
+    });
 
     productsContainer.appendChild(productCard);
   });
