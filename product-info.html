@@ -31,6 +31,9 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link custom-link" href="login.html">Log-in</a>
+          </li>
+          <li class="nav-item">
           </li>
         </ul>
       </div>
@@ -39,6 +42,26 @@
   <main>
     <div class="container">
       <div id="info-container"></div>
+      <div id="comment-section">
+        <h3>Comentarios sobre los productos</h3>
+        <div id="comment-list"></div>
+
+        <div id="comment-form">
+          <form id="new-comment-form">
+            <label for="comment-text">Comentario:</label>
+            <input type="text" id="comment-text">
+            <label for="comment-rating">Puntuación:</label>
+            <select id="comment-rating">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+            <button type="submit">Enviar</button>
+          </form>
+        </div>
+      </div>
     </div>
   </main>
   <footer class="text-muted">
@@ -61,6 +84,7 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/product-info.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </body>
 
 </html>

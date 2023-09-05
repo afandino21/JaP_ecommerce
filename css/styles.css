@@ -189,7 +189,7 @@ a.custom-card:hover {
   color: orange;
 }
 
-#tituloProductos{
+#tituloProductos {
   margin-top: 40px;
 }
 
@@ -252,7 +252,7 @@ a.custom-card:hover {
   font-weight: bold;
   background-color: rgba(255, 0, 0, 0.285);
   color: #ffffff;
-  
+
 }
 
 .registro .cartelNo {
@@ -309,8 +309,16 @@ a.custom-card:hover {
 }
 
 .illustrive-image {
-  max-width: 100px; /* Establece el ancho máximo deseado */
-  max-height: 100px; /* Establece la altura máxima deseada */
-  width: auto; /* Ajusta el ancho automáticamente según el máximo */
-  height: auto; /* Ajusta la altura automáticamente según el máximo */
+  max-width: 100px;
+  /* Establece el ancho máximo deseado */
+  max-height: 100px;
+  /* Establece la altura máxima deseada */
+  width: auto;
+  /* Ajusta el ancho automáticamente según el máximo */
+  height: auto;
+  /* Ajusta la altura automáticamente según el máximo */
+}
+
+.list-group.items.commits {
+  height: 30%;
 }
