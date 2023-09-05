@@ -63,7 +63,7 @@ function loadProducts() {
 function applyFiltersAndSort(products) {
   let filteredProducts = products.slice();
   const productNameInput = document.getElementById('inputBusqueda');
-  const productNameSearch = productNameInput.value.trim().toLowerCase();
+  const productNameSearch = normalizeString(productNameInput.value.trim().toLowerCase()); // Normaliza el término de búsqueda
 
   if (priceRangeMin !== null && priceRangeMax !== null) {
     filteredProducts = filteredProducts.filter(product => {
@@ -73,8 +73,9 @@ function applyFiltersAndSort(products) {
 
   if (productNameSearch !== '') {
     filteredProducts = filteredProducts.filter(product => {
-      const productName = product.name.toLowerCase();
-      return productName.includes(productNameSearch);
+      const productName = normalizeString(product.name.toLowerCase()); // Normaliza el nombre del producto
+      const productDescription = normalizeString(product.description.toLowerCase()); // Normaliza la descripción del producto
+      return productName.includes(productNameSearch) || productDescription.includes(productNameSearch);
     });
   }
 
@@ -127,6 +128,11 @@ function applyFiltersAndSort(products) {
 
     productsContainer.appendChild(productCard);
   });
+}
+
+function normalizeString(input) {
+  // Reemplaza los caracteres con acentos por sus equivalentes sin acentos
+  return input.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 }
 
 document.addEventListener('DOMContentLoaded', loadProducts);
