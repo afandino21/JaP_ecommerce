@@ -308,15 +308,9 @@ a.custom-card:hover {
   /* Texto en color blanco */
 }
 
-.illustrive-image {
-  max-width: 100px;
-  /* Establece el ancho máximo deseado */
-  max-height: 100px;
-  /* Establece la altura máxima deseada */
-  width: auto;
-  /* Ajusta el ancho automáticamente según el máximo */
+.product-image {
+  width: 142px; /*Milimetricamente alineado NO TOCAR ⚠️⚠️⚠️*/
   height: auto;
-  /* Ajusta la altura automáticamente según el máximo */
 }
 
 #textarea {
@@ -355,12 +349,12 @@ form #submitCommit{
 
 #comment-section h3{
  text-align: center; 
- margin-top: 50px;
- margin-bottom: 50px;
+ margin-top: 10px;
+ margin-bottom: 20px;
 }
 
 #hrInfo{
-  margin-top: 60px;
+  margin-top: 20px;
   padding: 2.5px;
   border-radius: 5px;
 }
