@@ -3,36 +3,60 @@ function loadInfo() {
     const url = `https://japceibal.github.io/emercado-api/products/${productID}.json`;
 
     fetch(url)
-        .then(response => response.json())
-        .then(data => {
-            const productInfo = data;
-            const infoContainer = document.getElementById('info-container');
-            const infoList = document.createElement('div');
-            infoList.classList.add("list-group")
+    .then(response => response.json())
+    .then(data => {
+        const productInfo = data;
+        const infoContainer = document.getElementById('info-container');
+        const infoList = document.createElement('div');
+        infoList.classList.add("list-group");
 
-            infoList.innerHTML = `
-        <div>
-            <h1> ${productInfo.name} </h1>
-        </div>
-        
-        <ul class="list-group">
-            <li class="list-group-item">Precio:${productInfo.cost} ${productInfo.currency}</li>
-            <li class="list-group-item">Descripcion:${productInfo.description} </li>
-            <li class="list-group-item">Categoria:${productInfo.category} </li>
-            <li class="list-group-item">Cantidad de vendidos:${productInfo.soldCount} </li>
-        </ul>
-        <ul class="list-group list-group-horizontal">
-        <li class="list-group-item"><img src="${productInfo.images[0]}" alt="Imagen 1" class="illustrive-image"></li>
-        <li class="list-group-item"><img src="${productInfo.images[1]}" alt="Imagen 2" class="illustrive-image"></li>
-        <li class="list-group-item"><img src="${productInfo.images[2]}" alt="Imagen 3" class="illustrive-image"></li>
-        <li class="list-group-item"><img src="${productInfo.images[3]}" alt="Imagen 4" class="illustrive-image"></li>
-        </ul>
-            `
-            infoContainer.appendChild(infoList);
-        })
-        .catch(error => {
-            console.error('Error al cargar los productos:', error);
-        });
+        infoList.innerHTML = `
+            <div>
+                <h1>${productInfo.name}</h1>
+            </div>
+
+            <ul class="list-group">
+                <li class="list-group-item">Precio: ${productInfo.cost} ${productInfo.currency}</li>
+                <li class="list-group-item">Descripción: ${productInfo.description}</li>
+                <li class="list-group-item">Categoría: ${productInfo.category}</li>
+                <li class="list-group-item">Cantidad de vendidos: ${productInfo.soldCount}</li>
+            </ul>
+
+            <div id="carouselExample" class="carousel slide" data-ride="carousel">
+
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="${productInfo.images[0]}" alt="Imagen 1" class="d-block w-100">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="${productInfo.images[1]}" alt="Imagen 2" class="d-block w-100">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="${productInfo.images[2]}" alt="Imagen 3" class="d-block w-100">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="${productInfo.images[3]}" alt="Imagen 4" class="d-block w-100">
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Anterior</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExample" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Siguiente</span>
+                </a>
+            </div>
+        `;
+
+        infoContainer.appendChild(infoList);
+
+        // Inicializa el carrusel de Bootstrap después de cargar el contenido
+        $('#carouselExample').carousel();
+    })
+    .catch(error => {
+        console.error('Error al cargar los productos:', error);
+    });
 }
 
 
@@ -55,7 +79,10 @@ function loadComments() {
 
             const commentList = document.getElementById('comment-list');
 
+            
+
             comments.forEach(comment => {
+                const formattedUser = comment.user.replace(/_/g, ' ');
                 const commentItem = document.createElement('div');
                 commentItem.classList.add("list-group-item");
                 commentItem.classList.add("commits");
@@ -66,7 +93,7 @@ function loadComments() {
                 }
 
                 commentItem.innerHTML = `
-                <p><strong>${comment.user}</strong> - ${comment.dateTime} - ${starHTML}</p>
+                <p><strong>${formattedUser}</strong> - ${comment.dateTime} - ${starHTML}</p>
                     <p>${comment.description}</p>
                 `;
 
@@ -84,7 +111,6 @@ function addComment(event) {
     event.preventDefault();
 
     const productID = localStorage.getItem('productID');
-    const user = document.getElementById('comment-user').value;
     const score = document.getElementById('comment-rating').value;
     const description = document.getElementById('comment-text').value;
 
@@ -101,7 +127,6 @@ function addComment(event) {
         product: productID,
         score: parseInt(score),
         description: description,
-        user: user,
         dateTime: dateTime
     };
 
@@ -113,12 +138,13 @@ function addComment(event) {
 
     displayComment(newComment);
 
-    document.getElementById('comment-user').value = '';
     document.getElementById('comment-text').value = '';
 }
+
 function displayComment(comment) {
     const commentList = document.getElementById('comment-list');
     const commentItem = document.createElement('div');
+    var storedValue = localStorage.getItem("username");
     commentItem.classList.add("list-group-item");
     commentItem.classList.add("commits");
 
@@ -128,7 +154,7 @@ function displayComment(comment) {
     }
 
     commentItem.innerHTML = `
-        <p><strong>${comment.user}</strong> - ${comment.dateTime} - ${starHTML}</p>
+        <p><strong>${storedValue}</strong> - ${comment.dateTime} - ${starHTML}</p>
         <p>${comment.description}</p>
     `;
 
@@ -142,3 +168,5 @@ document.addEventListener('DOMContentLoaded', () => {
     const commentForm = document.getElementById('new-comment-form');
     commentForm.addEventListener('submit', addComment);
 });
+
+

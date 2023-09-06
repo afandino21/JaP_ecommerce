@@ -319,6 +319,57 @@ a.custom-card:hover {
   /* Ajusta la altura automáticamente según el máximo */
 }
 
-.list-group.items.commits {
-  height: 30%;
+#textarea {
+  width: 800px;
+}
+
+#puntuacion{
+  margin-top: 20px;
+  text-align: center;
+}
+
+form #submitCommit{
+ margin: 30px 410px 0 360px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: black;
+}
+
+#info-container{
+  margin: 0 auto; 
+  width: 700px;
+
+}
+#info-container h1{
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+#comment-section{
+  margin: 0 auto; 
+  width: 800px;
+}
+
+#comment-section h3{
+ text-align: center; 
+ margin-top: 50px;
+ margin-bottom: 50px;
+}
+
+#hrInfo{
+  margin-top: 60px;
+  padding: 2.5px;
+  border-radius: 5px;
+}
+
+.star-rating .fa-star:hover {
+  color: gold; /* Cambia el color a dorado al hacer hover */
+}
+
+.fa{
+color: gold;
+
 }

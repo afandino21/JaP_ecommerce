@@ -96,7 +96,7 @@ function applyFiltersAndSort(products) {
 
   filteredProducts.forEach(product => {
     const productCard = document.createElement('div');
-    productCard.classList.add('card', 'mb-3', 'product-card', 'cursor-active', 'list-group-item-action');
+    productCard.classList.add('list-group-item', 'list-group-item-action', 'cursor-active');
 
     // Agrega un atributo personalizado con la ID del producto
     productCard.setAttribute('data-product-id', product.id);
