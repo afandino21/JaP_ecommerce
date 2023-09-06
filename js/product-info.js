@@ -3,14 +3,14 @@ function loadInfo() {
     const url = `https://japceibal.github.io/emercado-api/products/${productID}.json`;
 
     fetch(url)
-    .then(response => response.json())
-    .then(data => {
-        const productInfo = data;
-        const infoContainer = document.getElementById('info-container');
-        const infoList = document.createElement('div');
-        infoList.classList.add("list-group");
+        .then(response => response.json())
+        .then(data => {
+            const productInfo = data;
+            const infoContainer = document.getElementById('info-container');
+            const infoList = document.createElement('div');
+            infoList.classList.add("list-group");
 
-        infoList.innerHTML = `
+            infoList.innerHTML = `
             <div>
                 <h1>${productInfo.name}</h1>
             </div>
@@ -47,16 +47,25 @@ function loadInfo() {
                     <span class="sr-only">Siguiente</span>
                 </a>
             </div>
+
+            <div>
+                <ul class="list-group list-group-horizontal">
+                    <li class="list-group-item"><img src="${productInfo.images[0]}" alt="Imagen 1" class="product-image"></li>
+                    <li class="list-group-item"><img src="${productInfo.images[1]}" alt="Imagen 2" class="product-image"></li>
+                    <li class="list-group-item"><img src="${productInfo.images[2]}" alt="Imagen 3" class="product-image"></li>
+                    <li class="list-group-item"><img src="${productInfo.images[3]}" alt="Imagen 4" class="product-image"></li>
+                </ul>
+            </div>
         `;
 
-        infoContainer.appendChild(infoList);
+            infoContainer.appendChild(infoList);
 
-        // Inicializa el carrusel de Bootstrap después de cargar el contenido
-        $('#carouselExample').carousel();
-    })
-    .catch(error => {
-        console.error('Error al cargar los productos:', error);
-    });
+            // Inicializa el carrusel de Bootstrap después de cargar el contenido
+            $('#carouselExample').carousel();
+        })
+        .catch(error => {
+            console.error('Error al cargar los productos:', error);
+        });
 }
 
 
@@ -79,7 +88,7 @@ function loadComments() {
 
             const commentList = document.getElementById('comment-list');
 
-            
+
 
             comments.forEach(comment => {
                 const formattedUser = comment.user.replace(/_/g, ' ');
