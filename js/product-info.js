@@ -60,7 +60,6 @@ function loadComments() {
                 commentItem.classList.add("list-group-item");
                 commentItem.classList.add("commits");
 
-                // Crea una variable para almacenar las estrellas
                 let starHTML = '';
                 for (let i = 0; i < comment.score; i++) {
                     starHTML += '<span class="fa fa-star checked"></span>';
@@ -81,24 +80,65 @@ function loadComments() {
         });
 }
 
+function addComment(event) {
+    event.preventDefault();
+
+    const productID = localStorage.getItem('productID');
+    const user = document.getElementById('comment-user').value;
+    const score = document.getElementById('comment-rating').value;
+    const description = document.getElementById('comment-text').value;
+
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    const dateTime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+
+    const newComment = {
+        product: productID,
+        score: parseInt(score),
+        description: description,
+        user: user,
+        dateTime: dateTime
+    };
+
+    let comments = JSON.parse(localStorage.getItem('comments')) || [];
+
+    comments.push(newComment);
+
+    localStorage.setItem('comments', JSON.stringify(comments));
+
+    displayComment(newComment);
+
+    document.getElementById('comment-user').value = '';
+    document.getElementById('comment-text').value = '';
+}
+function displayComment(comment) {
+    const commentList = document.getElementById('comment-list');
+    const commentItem = document.createElement('div');
+    commentItem.classList.add("list-group-item");
+    commentItem.classList.add("commits");
+
+    let starHTML = '';
+    for (let i = 0; i < comment.score; i++) {
+        starHTML += '<span class="fa fa-star checked"></span>';
+    }
+
+    commentItem.innerHTML = `
+        <p><strong>${comment.user}</strong> - ${comment.dateTime} - ${starHTML}</p>
+        <p>${comment.description}</p>
+    `;
+
+    commentList.appendChild(commentItem);
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     loadInfo();
     loadComments();
 
+    const commentForm = document.getElementById('new-comment-form');
+    commentForm.addEventListener('submit', addComment);
 });
-
-
-/* funcion para revisar // agregar el comentar
-
-//Agregar un nuevo comentario
-  const newCommentForm = document.querySelector('#new-comment-form');
-  newCommentForm.addEventListener('submit', event => {
-    event.preventDefault();
-    const commentText = document.querySelector('#comment-text').value;
-    const commentRating = document.querySelector('#comment-rating').value;
-    // Aquí puedes agregar el nuevo comentario a la lista de comentarios
-  });
-
-
-  */
