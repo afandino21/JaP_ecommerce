@@ -349,8 +349,8 @@ form #submitCommit{
 
 #comment-section h3{
  text-align: center; 
- margin-top: 10px;
- margin-bottom: 20px;
+ margin-top: 40px;
+ margin-bottom: 40px;
 }
 
 #hrInfo{
@@ -359,11 +359,49 @@ form #submitCommit{
   border-radius: 5px;
 }
 
-.star-rating .fa-star:hover {
-  color: gold; /* Cambia el color a dorado al hacer hover */
+#imageThumbnails{
+margin-top: 40px;
+margin-bottom: 40px;
 }
 
-.fa{
-color: gold;
+.abajo-carrusel{
+  transition: transform 0.3s ease; /* Agrega una transición suave en la propiedad transform */
+}
 
+.abajo-carrusel:hover {
+  transform: translateY(-10px); /* Mueve la imagen hacia arriba en el hover */
+}
+
+.fa-star.unchecked {
+  color: #cfcfcf;
+}
+
+
+/* Estilos para el campo de entrada de estrellas */
+.star-rating {
+  display: inline-block;
+  direction: rtl; /* Invertir la dirección de lectura (derecha a izquierda) */
+}
+
+.star-rating input[type="radio"] {
+  display: none;
+}
+
+.star-rating label {
+  font-size: 24px;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.star-rating label:before {
+  content: "\2605"; /* Carácter Unicode para la estrella (★) */
+  color: #ccc; /* Color de estrella no seleccionada */
+}
+
+.star-rating input[type="radio"]:checked ~ label:before {
+  color: #FFD700; /* Color de estrella seleccionada (amarillo) */
+}
+
+.star-rating input[type="radio"]:hover ~ label:before {
+  color: #FFD700; /* Color de estrella seleccionada (amarillo) */
 }

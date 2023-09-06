@@ -53,16 +53,15 @@
               <label for="comment-text">Comentario:</label>
               <textarea id="comment-text" class="form-control resize-vertical" rows="4" required maxlength="80"></textarea>
           </div>
-            <div id="puntuacion" class="form-group">
-                <label for="comment-rating">Tu puntuación:</label>
-                <select id="comment-rating" class="custom-select">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
+          <div id="puntuacion" class="form-group">
+            <div class="star-rating">
+                <input type="radio" name="rating" id="star1" value="1"><label for="star1"></label>
+                <input type="radio" name="rating" id="star2" value="2"><label for="star2"></label>
+                <input type="radio" name="rating" id="star3" value="3"><label for="star3"></label>
+                <input type="radio" name="rating" id="star4" value="4"><label for="star4"></label>
+                <input type="radio" name="rating" id="star5" value="5"><label for="star5"></label>
             </div>
+        </div>
             <div class="alert alert-danger" id="puntuacion-error" style="display: none;">
               Por favor, selecciona una puntuación válida.
             </div>
