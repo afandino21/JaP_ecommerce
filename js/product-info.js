@@ -7,10 +7,10 @@ function loadInfo() {
         .then(data => {
             const productInfo = data;
             const infoContainer = document.getElementById('info-container');
-            
+
             const infoList = document.createElement('div');
             infoList.classList.add("list-group");
-            
+
             infoList.innerHTML = `
                 <div>
                     <h1>${productInfo.name}</h1>
@@ -53,7 +53,7 @@ function loadInfo() {
             `;
 
             infoContainer.appendChild(infoList);
-            
+
             // Inicializa el carrusel de Bootstrap después de cargar el contenido
             $('#carouselExample').carousel();
         })
@@ -71,11 +71,11 @@ function loadComments() {
         .then(data => {
             const comments = data;
             const commentContainer = document.getElementById('comment-list');
-            const commentForm = document.getElementById('new-comment-form');
-            
+            //            const commentForm = document.getElementById('new-comment-form');
+
             const commentList = document.createElement('div');
             commentList.classList.add("list-group");
-            
+
             commentContainer.appendChild(commentList);
 
             comments.forEach(comment => {
@@ -97,7 +97,7 @@ function loadComments() {
                 commentList.appendChild(commentItem);
             });
 
-            commentForm.style.display = 'block'; // Muestra el formulario de comentarios
+            //            commentForm.style.display = 'block'; // Muestra el formulario de comentarios - Edit: la comento porque parece no hacer nada
         })
         .catch(error => {
             console.error('Error al cargar los comentarios:', error);
@@ -141,7 +141,7 @@ function displayComment(comment) {
     const commentList = document.getElementById('comment-list');
     const commentItem = document.createElement('div');
     const storedValue = localStorage.getItem("username");
-    
+
     commentItem.classList.add("list-group-item");
     commentItem.classList.add("commits");
 
