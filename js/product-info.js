@@ -61,6 +61,49 @@ function loadInfo() {
             console.error('Error al cargar los productos:', error);
         });
 }
+//Productos relacionados
+
+function loadRelatedProducts() {
+    const productID = localStorage.getItem('productID');
+    const url = `https://japceibal.github.io/emercado-api/products/${productID}.json`;
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            const relatedProducts = data.relatedProducts;
+            const relatedContainer = document.getElementById('related-products-container');
+
+            const relatedProductsList = document.createElement('div');
+            relatedProductsList.classList.add("d-flex")
+            // relatedProductsList.classList.add("related-products-cards")
+
+            relatedProducts.forEach(relatedProduct => {
+                const card = document.createElement('div');
+                card.classList.add("card");
+
+                card.addEventListener('click', () => {
+                    // Al hacer clic, almacena el ID del producto relacionado en localStorage
+                    localStorage.setItem('productID', relatedProduct.id);
+                    // Recarga la página para mostrar la información del producto relacionado
+                    location.reload();
+                });
+
+                card.innerHTML = `
+                    <img src="${relatedProduct.image}" class="card-img-top cursor-active" alt="related-product">
+                    <p class="card-body">${relatedProduct.name}</p>
+                `;
+
+                relatedProductsList.appendChild(card);
+            })
+
+            relatedContainer.appendChild(relatedProductsList);
+
+            window.scrollTo(0, 0);
+        })
+        .catch(error => {
+            console.log('Error al cargar los productos:', error);
+        });
+}
 
 function loadComments() {
     const productID = localStorage.getItem('productID');
@@ -159,6 +202,7 @@ function displayComment(comment) {
 
 document.addEventListener('DOMContentLoaded', () => {
     loadInfo();
+    loadRelatedProducts();
     loadComments();
 
     const commentForm = document.getElementById('new-comment-form');
