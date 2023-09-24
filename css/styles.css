@@ -443,10 +443,35 @@ margin-bottom: 40px;
 
 /* Estilos para el Menu */
 
+.navbar-light{
+
+  border-bottom: 1px solid #000000;
+}
+
 .custom-link{
   background-color: #00000000;
   color: white;
 }
+
+.navbar-light .custom-link{
+  color: rgb(0, 0, 0);
+}
+
+.navbar-dark #modoBoton{
+background-color: rgba(0, 0, 0, 0.537);
+color: white;
+border-color: white;
+margin-bottom: 10px;
+padding: 5px 20px;
+}
+
+.navbar-light #modoBoton{
+  background-color: rgba(255, 255, 255, 0.989);
+  color: black;
+  border-color: #000000;
+  margin-bottom: 10px;
+  padding: 5px 20px;
+  }
 
 .dropdown {
   margin-top: 5px;
@@ -454,7 +479,7 @@ margin-bottom: 40px;
 }
 
 .dropdown-content {
-  width: 214px;
+  width: 100%;
   display: none;
   position: absolute;
   background-color: #00000099;
