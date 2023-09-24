@@ -342,19 +342,39 @@ form #submitCommit{
   margin-bottom: 30px;
 }
 
+#related-products-container h3{
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.d-flex {
+  justify-content: center;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.card {
+  transition: transform 0.5s ease;
+  width: 12rem;
+}
+
+.card:hover {
+  transform: translateY(-10px)
+}
+
 #comment-section{
   margin: 0 auto; 
   width: 800px;
 }
 
 #comment-section h3{
- text-align: center; 
- margin-top: 40px;
- margin-bottom: 40px;
+  text-align: center; 
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
-#hrInfo{
-  margin-top: 20px;
+.hrInfo{
   padding: 2.5px;
   border-radius: 5px;
 }
