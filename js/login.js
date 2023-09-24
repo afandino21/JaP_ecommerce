@@ -55,6 +55,7 @@ function noExito2() {
 function registrarUsuario() {
     var username = document.getElementById("username").value;
     var password = document.getElementById("password").value;
+    var aviso = document.getElementById("p");
   
     switch (true) {
         case username === "" && password === "":
@@ -65,8 +66,9 @@ function registrarUsuario() {
           if (username !== "" && password !== "") {
             localStorage.setItem("username", username);
             localStorage.setItem("logueado", "true");
+            aviso.textContent = "Aguarde un momento...";
             exito();
-            setTimeout(irAlIndex, 2000);
+            setTimeout(irAlIndex, 3000);
           } else {
             noExito();
           }

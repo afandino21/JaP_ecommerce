@@ -89,26 +89,29 @@ function cambiarInPorOut() {
 function cerrarSesion(){
   localStorage.setItem("logueado", "false");
 }
-
        // Función para cambiar el modo (claro u oscuro)
        function cambiarModo() {
         const navbar = document.querySelector('.navbar');
         const botonModo = document.getElementById('modoBoton');
-        
+        const bodyElements = document.body;
         if (navbar.classList.contains('navbar-dark')) {
             // Cambia a modo claro
+            bodyElements.style.background = 'white';
+            bodyElements.style.color = 'black';
             navbar.classList.remove('navbar-dark', 'bg-dark');
             navbar.classList.add('navbar-light', 'bg-light');
-            botonModo.innerText = '☼';
+            botonModo.innerText = '☼';          
         } else {
             // Cambia a modo oscuro
+            bodyElements.style.background = 'hsl(210, 20%, 20%)';
+            bodyElements.style.color = 'white';
             navbar.classList.remove('navbar-light', 'bg-light');
             navbar.classList.add('navbar-dark', 'bg-dark');
             botonModo.textContent = '☾';
         }
         
         // Guarda el estado en el almacenamiento local
-        const modoActual = navbar.classList.contains('navbar-dark') ? 'Modo Día' : 'Modo Noche';
+        const modoActual = navbar.classList.contains('navbar-light') ? 'Modo Día' : 'Modo Noche';
         localStorage.setItem('modo', modoActual);
     }
 

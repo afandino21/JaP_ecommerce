@@ -13,7 +13,7 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light p-1">
     <div class="container">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,7 +37,7 @@
                             <a href="cart.html">Mi Carrito</a>
                             <a href="my-profile.html">Mi Perfil</a>
                             <a onclick="cerrarSesion()" href="login.html">Cerrar Sesión</a>
-                           <center><button id="modoBoton">☾</button></center>
+                           <center><button id="modoBoton">☼</button></center>
                         </div>
                     </div>
                 </li>
@@ -74,7 +74,9 @@
             </div>
           </div>
         </div>
-        <div class="row">
+
+        
+       <!-- <div class="row">
           <div class="col-lg-6 offset-lg-6 col-md-12 mb-1 container">
             <div class="row container p-0 m-0">
               <div class="col">
@@ -85,16 +87,22 @@
               </div>
               <div class="col">
                 <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax">
-              </div>
-              <div class="col-3 p-0">
-                <div class="btn-group" role="group">
-                  <button class="btn btn-light btn-block" id="rangeFilterCount">Filtrar</button>
-                  <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
-                </div>
+              </div> 
+               <div class="col-3 p-0">
+                <div class="btn-group" role="group"> -->
+
+                  <!--class="btn btn-light btn-block"-->
+                  <a id="rangeFilterCount"></a>
+                  <a id="clearRangeFilter"></a>
+                   <!--class="btn btn-link btn-sm"-->
+
+                <!-- </div>
               </div>
             </div>
           </div>
-        </div>
+        </div>-->
+
+
         <div id="products-container" class="row"></div>
       </div>
   </main>
