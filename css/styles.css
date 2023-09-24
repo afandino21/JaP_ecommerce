@@ -196,6 +196,7 @@ a.custom-card:hover {
 }
 
 
+
 /* Estilo para el login */
 .registro {
   width: 300px;
@@ -352,8 +353,7 @@ form #submitCommit{
 
 .d-flex {
   justify-content: center;
-  margin-top: 40px;
-  margin-bottom: 40px;
+  margin: 20px auto;
 }
 
 .card {
