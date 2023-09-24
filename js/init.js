@@ -62,12 +62,12 @@ function verificarAutenticacion() {
 document.addEventListener('DOMContentLoaded', function () {
   verificarAutenticacion();
 
-  var menu = document.getElementById('menu')
+  var menu = document.getElementById('menu');
   var localLog = localStorage.getItem('logueado');
 
   if (localLog ==="false"){
     menu.style.display="none"
-  }
+  };
 
 });
 

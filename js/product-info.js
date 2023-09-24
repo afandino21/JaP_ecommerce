@@ -80,6 +80,7 @@ function loadRelatedProducts() {
             relatedProducts.forEach(relatedProduct => {
                 const card = document.createElement('div');
                 card.classList.add("card");
+                card.id = "cardRelacionados";
 
                 card.addEventListener('click', () => {
                     // Al hacer clic, almacena el ID del producto relacionado en localStorage
