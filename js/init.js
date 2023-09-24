@@ -61,6 +61,14 @@ function verificarAutenticacion() {
 
 document.addEventListener('DOMContentLoaded', function () {
   verificarAutenticacion();
+
+  var menu = document.getElementById('menu')
+  var localLog = localStorage.getItem('logueado');
+
+  if (localLog ==="false"){
+    menu.style.display="none"
+  }
+
 });
 
 function irAlLogin() {
@@ -77,3 +85,8 @@ function cambiarInPorOut() {
     claseLogin[i].textContent = storedValue;
   }
 }
+
+function cerrarSesion(){
+  localStorage.setItem("logueado", "false");
+}
+

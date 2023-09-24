@@ -405,3 +405,39 @@ margin-bottom: 40px;
 .star-rating input[type="radio"]:hover ~ label:before {
   color: #FFD700; /* Color de estrella seleccionada (amarillo) */
 }
+
+
+.custom-link{
+  background-color: #00000000;
+  color: white;
+}
+
+.dropdown {
+  margin-top: 5px;
+  position: relative;
+}
+
+.dropdown-content {
+  width: 214px;
+  display: none;
+  position: absolute;
+  background-color: #00000099;
+  min-width: 160px;
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+
+}
+/* Estilos para los botones del menú */
+.dropdown-content a {
+  padding: 10px;
+  text-decoration: none;
+  color: white;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  color: #fdfdfd84;
+}
