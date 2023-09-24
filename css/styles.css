@@ -356,7 +356,6 @@ form #submitCommit{
 
 .card {
   transition: transform 0.5s ease;
-  width: 12rem;
 }
 
 .card:hover {
