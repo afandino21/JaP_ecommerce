@@ -89,6 +89,8 @@ function cambiarInPorOut() {
 function cerrarSesion(){
   localStorage.setItem("logueado", "false");
 }
+
+
        // Función para cambiar el modo (claro u oscuro)
        function cambiarModo() {
         const navbar = document.querySelector('.navbar');

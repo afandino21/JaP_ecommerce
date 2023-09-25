@@ -52,19 +52,32 @@
       <h2 class="text-center mt-4 mb-4 ">Veras aquí todos los productos de la categoria.</h2>
       <!-- Antes, siempre mostraba "Autos", con el id en el JS lo adaptamos a la categoria -->
 
-      <div class="container">
-        <div class="row">
-          <div class="col input-group" id="searchBar">
-            <input type="search" id="inputBusqueda" class="form-control" placeholder="🔍︎ Buscar...">
+
+      <div class="container">  
+      <div class="row">
+        <div class="col-lg-6  mb-1">
+          <div class="row container p-0 m-0">
+            <div class="col">
+              <p class="font-weight-normal text-end my-2">Cant.</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin">
+            </div>
+            <div class="col">
+              <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax">
+            </div> 
+              <div class="col-3 p-0">
+              <div class="btn-group" role="group"> 
+                <button class="btn btn-light btn-block" id="rangeFilterCount">filtrar</button>
+                <button class="btn btn-light btn-sm" id="clearRangeFilter">limpiar</button>
+              </div>
+            </div>
           </div>
+        </div>
+
+
           <div class="col text-end">
-
             <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
-
-
-
-
-
               <input type="radio" class="btn-check" name="options" id="sortAsc">
               <label class="btn btn-light" for="sortAsc"><i class="fas fa-sort-amount-down mr-1"></i>$</label>
               <input type="radio" class="btn-check" name="options" id="sortDesc">
@@ -73,34 +86,11 @@
               <label class="btn btn-light" for="sortByCount"><i class="fas fa-sort-amount-down mr-1">Rel</i></label>
             </div>
           </div>
+          <div class="col text-end input-group" id="searchBar">
+            <input type="search" id="inputBusqueda" class="form-control" placeholder="🔍︎ Buscar...">
+          </div>
         </div>
 
-        
-       <!-- <div class="row">
-          <div class="col-lg-6 offset-lg-6 col-md-12 mb-1 container">
-            <div class="row container p-0 m-0">
-              <div class="col">
-                <p class="font-weight-normal text-end my-2">Cant.</p>
-              </div>
-              <div class="col">
-                <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin">
-              </div>
-              <div class="col">
-                <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax">
-              </div> 
-               <div class="col-3 p-0">
-                <div class="btn-group" role="group"> -->
-
-                  <!--class="btn btn-light btn-block"-->
-                  <a id="rangeFilterCount"></a>
-                  <a id="clearRangeFilter"></a>
-                   <!--class="btn btn-link btn-sm"-->
-
-                <!-- </div>
-              </div>
-            </div>
-          </div>
-        </div>-->
 
 
         <div id="products-container" class="row"></div>
