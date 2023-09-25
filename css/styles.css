@@ -443,6 +443,10 @@ margin-bottom: 40px;
   color: #FFD700; /* Color de estrella seleccionada (amarillo) */
 }
 
+.list-group-item-action{
+  margin: 0 auto;
+  width: 100%;
+}
 
 /* Estilos para el Menu y Modos */
 
