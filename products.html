@@ -15,36 +15,36 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light p-1">
     <div class="container">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav w-100 justify-content-between">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html">Inicio</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="categories.html">Categorías</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="sell.html">Vender</a>
-                </li>
-                <li class="nav-item">
-                    <div id="menu" class="dropdown">
-                        <button class="custom-link"></button>
-                        <div class="dropdown-content">
-                            <a href="cart.html">Mi Carrito</a>
-                            <a href="my-profile.html">Mi Perfil</a>
-                            <a onclick="cerrarSesion()" href="login.html">Cerrar Sesión</a>
-                           <center><button id="modoBoton">☼</button></center>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav w-100 justify-content-between">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="categories.html">Categorías</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="sell.html">Vender</a>
+          </li>
+          <li class="nav-item">
+            <div id="menu" class="dropdown">
+              <button class="custom-link"></button>
+              <div class="dropdown-content">
+                <a href="cart.html">Mi Carrito</a>
+                <a href="my-profile.html">Mi Perfil</a>
+                <a onclick="cerrarSesion()" href="login.html">Cerrar Sesión</a>
+                <center><button id="modoBoton">☼</button></center>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
-</nav>
+  </nav>
   <main class="pb-5 container">
     <div class="container">
 
@@ -53,7 +53,50 @@
       <!-- Antes, siempre mostraba "Autos", con el id en el JS lo adaptamos a la categoria -->
 
 
-      <div class="container">  
+      <div class="container">
+
+
+
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="input-group" id="searchBar">
+              <input type="search" id="inputBusqueda" class="form-control" placeholder="🔍︎ Buscar...">
+            </div>
+          </div>
+
+          <div class="col-lg-6 mb-1">
+            <div class="row container p-0 m-0">
+              <div class="col">
+                <p class="font-weight-normal text-end my-2">Cant.</p>
+              </div>
+              <div class="col">
+                <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin">
+              </div>
+              <div class="col">
+                <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax">
+              </div>
+              <div class="col">
+                <div class="btn-group" role="group">
+                  <button class="btn btn-light btn-block" id="rangeFilterCount">filtrar</button>
+                  <button class="btn btn-light btn-sm" id="clearRangeFilter">limpiar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-2 text-end mb-4">
+            <div class="btn-group btn-group-toggle" data-bs-toggle="buttons">
+              <input type="radio" class="btn-check" name="options" id="sortAsc">
+              <label class="btn btn-light" for="sortAsc"><i class="fas fa-sort-amount-down mr-1"></i>$</label>
+              <input type="radio" class="btn-check" name="options" id="sortDesc">
+              <label class="btn btn-light" for="sortDesc"><i class="fas fa-sort-amount-up mr-1"></i>$</label>
+              <input type="radio" class="btn-check" name="options" id="sortByCount" checked>
+              <label class="btn btn-light" for="sortByCount"><i class="fas fa-sort-amount-down mr-1">Rel</i></label>
+            </div>
+          </div>
+        </div>
+
+        <!-- 
       <div class="row">
         <div class="col-lg-6  mb-1">
           <div class="row container p-0 m-0">
@@ -90,7 +133,7 @@
             <input type="search" id="inputBusqueda" class="form-control" placeholder="🔍︎ Buscar...">
           </div>
         </div>
-
+      -->
 
 
         <div id="products-container" class="row"></div>
