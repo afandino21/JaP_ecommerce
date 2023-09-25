@@ -456,10 +456,8 @@ margin-bottom: 40px;
 
 .col-md-4 p{
 text-align: none !important;
-color: black;
 }
 .col-md-4 h3{
-  color: black;
   margin: 10px 0 0 0 !important;
   }
 
@@ -558,4 +556,50 @@ color: black;
 
 .btn-group-vertical>.btn-check:checked+.btn, .btn-group-vertical>.btn-check:focus+.btn, .btn-group-vertical>.btn.active, .btn-group-vertical>.btn:active, .btn-group-vertical>.btn:focus, .btn-group-vertical>.btn:hover, .btn-group>.btn-check:checked+.btn, .btn-group>.btn-check:focus+.btn, .btn-group>.btn.active, .btn-group>.btn:active, .btn-group>.btn:focus, .btn-group>.btn:hover {
   z-index: 0;
+}
+
+.navbar-dark ~ main .list-group-item-action {
+  background-color: rgb(36, 36, 36);
+  color: white;
+}
+
+.navbar-dark ~ main .list-group-item-action:hover {
+  background-color: rgb(255, 255, 255);
+  color: black;
+}
+
+.navbar-light ~ main .list-group-item-action {
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+}
+
+.navbar-light ~ main .list-group-item-action:hover {
+  background-color: rgb(36, 36, 36);
+  color: rgb(255, 255, 255);
+}
+
+
+
+.navbar-dark ~ main .btn-light {
+  background-color: rgb(36, 36, 36);
+  color: white;
+  border: none;
+}
+
+.navbar-dark ~ main .btn-light:hover {
+  background-color: rgb(255, 255, 255);
+  color: black;
+  border: none;
+}
+
+.navbar-light ~ main .btn-light {
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  border: none;
+}
+
+.navbar-light ~ main .btn-light:hover {
+  background-color: rgb(36, 36, 36);
+  color: rgb(255, 255, 255);
+  border: none;
 }

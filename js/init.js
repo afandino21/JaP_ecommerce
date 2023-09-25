@@ -96,6 +96,7 @@ function cerrarSesion(){
         const navbar = document.querySelector('.navbar');
         const botonModo = document.getElementById('modoBoton');
         const bodyElements = document.body;
+
         if (navbar.classList.contains('navbar-dark')) {
             // Cambia a modo claro
             bodyElements.style.background = 'white';
