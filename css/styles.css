@@ -592,3 +592,14 @@ color: black;
   color: rgb(255, 255, 255);
   border: none;
 }
+
+
+
+
+#imagen{
+  width: 150px;
+}
+
+.input-cart{
+  width: 70px !important;
+}

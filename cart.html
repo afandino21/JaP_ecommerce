@@ -45,11 +45,28 @@
     </div>
 </nav>
   <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-      </div>
-    </div>
+  <div class="container">
+    <table class="table mt-5">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Nombre</th>
+                <th>Costo</th>
+                <th>Cantidad</th>
+                <th>Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><img src="" alt="Imagen del producto" id="imagen"></td>
+                <td><br><p><span id="nombre"></span></p></td>
+                <td><br><p><span id="costo"></span> <span id="moneda"></span></p></td>
+                <td><br><p><input type="number" id="cantidad" min="1" value="1" class="input-cart d-inline-block p-1"></p></td>
+                <td><br><p><span id="subtotal"></span> <span id="monedaSubtotal"></span></p></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
   </main>
   <footer class="text-muted">
     <div class="container">
