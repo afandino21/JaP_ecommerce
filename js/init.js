@@ -65,8 +65,8 @@ document.addEventListener('DOMContentLoaded', function () {
   var menu = document.getElementById('menu');
   var localLog = localStorage.getItem('logueado');
 
-  if (localLog ==="false"){
-    menu.style.display="none"
+  if (localLog === "false") {
+    menu.style.display = "none"
   };
 
 });
@@ -86,45 +86,46 @@ function cambiarInPorOut() {
   }
 }
 
-function cerrarSesion(){
+function cerrarSesion() {
   localStorage.setItem("logueado", "false");
 }
 
 
-       // Función para cambiar el modo (claro u oscuro)
-       function cambiarModo() {
-        const navbar = document.querySelector('.navbar');
-        const botonModo = document.getElementById('modoBoton');
-        const bodyElements = document.body;
+// Función para cambiar el modo (claro u oscuro)
+function cambiarModo() {
+  const navbar = document.querySelector('.navbar');
+  const botonModo = document.getElementById('modoBoton');
+  const bodyElements = document.body;
 
-        if (navbar.classList.contains('navbar-dark')) {
-            // Cambia a modo claro
-            bodyElements.style.background = 'white';
-            bodyElements.style.color = 'black';
-            navbar.classList.remove('navbar-dark', 'bg-dark');
-            navbar.classList.add('navbar-light', 'bg-light');
-            botonModo.innerText = '☼';          
-        } else {
-            // Cambia a modo oscuro
-            bodyElements.style.background = 'hsl(210, 20%, 20%)';
-            bodyElements.style.color = 'white';
-            navbar.classList.remove('navbar-light', 'bg-light');
-            navbar.classList.add('navbar-dark', 'bg-dark');
-            botonModo.textContent = '☾';
-        }
-        
-        // Guarda el estado en el almacenamiento local
-        const modoActual = navbar.classList.contains('navbar-light') ? 'Modo Día' : 'Modo Noche';
-        localStorage.setItem('modo', modoActual);
-    }
+  if (navbar.classList.contains('navbar-dark')) {
+    // Cambia a modo claro
+    bodyElements.style.background = 'white';
+    bodyElements.style.color = 'black';
+    bodyElements.style.transition = 'background 0.8s ease, color 0.8s ease';
+    navbar.classList.remove('navbar-dark', 'bg-dark');
+    navbar.classList.add('navbar-light', 'bg-light');
+    botonModo.innerText = '☼';
+  } else {
+    // Cambia a modo oscuro
+    bodyElements.style.background = 'hsl(210, 20%, 20%)';
+    bodyElements.style.color = 'white';
+    bodyElements.style.transition = 'background 0.8s ease, color 0.8s ease';
+    navbar.classList.remove('navbar-light', 'bg-light');
+    navbar.classList.add('navbar-dark', 'bg-dark');
+    botonModo.textContent = '☾';
+  }
 
-    // Verifica si hay un modo guardado en el almacenamiento local y aplica el modo correspondiente
-    const modoGuardado = localStorage.getItem('modo');
-    if (modoGuardado === 'Modo Noche') {
-        cambiarModo(); // Aplica el modo claro si está guardado
-    }
+  // Guarda el estado en el almacenamiento local
+  const modoActual = navbar.classList.contains('navbar-light') ? 'Modo Día' : 'Modo Noche';
+  localStorage.setItem('modo', modoActual);
+}
 
-    // Agrega un evento clic al botón para cambiar el modo
-    const botonModo = document.getElementById('modoBoton');
-    botonModo.addEventListener('click', cambiarModo);
-    
+// Verifica si hay un modo guardado en el almacenamiento local y aplica el modo correspondiente
+const modoGuardado = localStorage.getItem('modo');
+if (modoGuardado === 'Modo Noche') {
+  cambiarModo(); // Aplica el modo claro si está guardado
+}
+
+// Agrega un evento clic al botón para cambiar el modo
+const botonModo = document.getElementById('modoBoton');
+botonModo.addEventListener('click', cambiarModo);
