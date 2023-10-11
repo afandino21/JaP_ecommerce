@@ -54,9 +54,9 @@ function renderCart() {
 
         html += `
                     <tr>
-                        <td class="d-none d-md-block"><img src="${item.images[0]}" style="width: 100px;"></td>
+                        <td class="d-none d-md-table-cell"><img src="${item.images[0]}" style="width: 100px;"></td>
                         <td><span class="nombre">${item.name}</span></td>
-                        <td><span class="subtotal">${costo} ${item.currency}</span></td>
+                        <td class="d-none d-md-table-cell"><span class="subtotal">${costo} ${item.currency}</span></td>
                         <td><input type="number" class="cantidad-input" data-index="${index}" style="width: 70px;" value="${cantidad}" min="1" max="10"></td>
                         <td><span class="subtotal-td" data-subtotal="${subtotal} ${item.currency}">${subtotal} ${item.currency}</span></td>
                         <td><button class="btn btn-danger eliminar-btn" data-index="${index}">╳</button></td>

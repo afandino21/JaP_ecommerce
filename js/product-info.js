@@ -23,11 +23,11 @@ function loadInfo() {
                     <li class="list-group-item">Cantidad de vendidos: ${productInfo.soldCount}</li>
                 </ul>
             
-                <div id="carouselExample" class="carousel slide" data-ride="carousel">
+                <div id="carouselExample" class="carousel slide w-100" data-ride="carousel">
                     <div class="carousel-inner">
                         ${productInfo.images.map((image, index) => `
                             <div class="carousel-item ${index === 0 ? 'active' : ''}">
-                                <img src="${image}" alt="Imagen ${index + 1}" class="d-block w-100">
+                                <img src="${image}" alt="Imagen ${index + 1}" class="d-block mt-5 w-100" style="margin:0 auto;">
                             </div>
                         `).join('')}
                     </div>

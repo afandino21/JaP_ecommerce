@@ -382,7 +382,8 @@ a.custom-card:hover {
 
 #imageThumbnails {
   margin-top: 40px;
-  margin-bottom: 40px;
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
 }
 
 .abajo-carrusel {
@@ -559,8 +560,8 @@ a.custom-card:hover {
 }
 
 .navbar-dark~main .list-group-item-action:hover {
-  background-color: rgb(255, 255, 255);
-  color: black;
+  background-color: rgba(27, 27, 59, 0.945);
+  color: white;
   transition: background-color 0.6s ease, color 0.6s ease;
 }
 
@@ -570,8 +571,8 @@ a.custom-card:hover {
 }
 
 .navbar-light~main .list-group-item-action:hover {
-  background-color: rgb(36, 36, 36);
-  color: rgb(255, 255, 255);
+  background-color: rgb(230, 167, 50);
+  color: black;
   transition: background-color 0.6s ease, color 0.6s ease;
 }
 
@@ -582,8 +583,8 @@ a.custom-card:hover {
 }
 
 .navbar-dark~main .btn-light:hover {
-  background-color: rgb(255, 255, 255);
-  color: black;
+  background-color: rgba(27, 27, 59, 0.945);
+  color: white;
   border: none;
   transition: background-color 0.6s ease, color 0.6s ease;
 }
@@ -595,8 +596,8 @@ a.custom-card:hover {
 }
 
 .navbar-light~main .btn-light:hover {
-  background-color: rgb(36, 36, 36);
-  color: rgb(255, 255, 255);
+  background-color: rgb(230, 167, 50);
+  color: black;
   border: none;
   transition: background-color 0.6s ease, color 0.6s ease;
 }
@@ -631,4 +632,19 @@ a.custom-card:hover {
 
 th {
   margin: 10px 10px;
+}
+.carousel{
+  margin: 0 auto;
+}
+
+
+.list-group-item {
+  margin: 0 10px; /* Agrega un margen entre las imágenes si es necesario */
+}
+
+@media screen and (min-width: 1024px) {
+  /* Estilos para pantallas de laptop */
+  .carousel{
+    width: 50% !important;
+  }
 }
