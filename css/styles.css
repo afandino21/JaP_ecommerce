@@ -311,39 +311,28 @@ a.custom-card:hover {
   /* Texto en color blanco */
 }
 
-#inputBusqueda{
-margin-bottom: 20px;
+#inputBusqueda {
+  margin-bottom: 20px;
 }
 
 .product-image {
-  width: 142px; /*Milimetricamente alineado NO TOCAR ⚠️⚠️⚠️*/
+  width: 142px;
+  /*Milimetricamente alineado NO TOCAR ⚠️⚠️⚠️*/
   height: auto;
 }
 
-#textarea {
-  width: 800px;
-}
-
-#puntuacion{
+#puntuacion {
   margin-top: 20px;
   text-align: center;
 }
 
-form #submitCommit{
-  margin: 30px 410px 0 360px;
-}
-
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-    background-color: black;
+  background-color: black;
 }
 
-#info-container{
-  margin: 0 auto; 
-  width: 700px;
 
-}
-#info-container h1{
+#info-container h1 {
   text-align: center;
   margin-top: 30px;
   margin-bottom: 30px;
@@ -364,49 +353,46 @@ form #submitCommit{
   transform: translateY(-10px)
 }
 
-#cardRelacionados{
+#cardRelacionados {
   width: 200px;
   text-align: center;
   margin: 0 10px;
-  }
-
-#comment-section{
-  margin: 0 auto; 
-  width: 800px;
 }
 
-#comment-section h3{
-  text-align: center; 
+#comment-section h3 {
+  text-align: center;
   margin-top: 40px;
   margin-bottom: 40px;
 }
 
-.hrRelacionados{
-  margin: 0 auto; 
-  align-items: center;
-  width: 700px;
-  padding: 2.5px;
-  border-radius: 5px;
-}
-
-.hrInfo{
+.hrRelacionados {
   margin: 0 auto;
-  width: 700px;
+  align-items: center;
+  width: 100%;
   padding: 2.5px;
   border-radius: 5px;
 }
 
-#imageThumbnails{
-margin-top: 40px;
-margin-bottom: 40px;
+.hrInfo {
+  margin: 0 auto;
+  width: 100%;
+  padding: 2.5px;
+  border-radius: 5px;
 }
 
-.abajo-carrusel{
-  transition: transform 0.3s ease; /* Agrega una transición suave en la propiedad transform */
+#imageThumbnails {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.abajo-carrusel {
+  transition: transform 0.3s ease;
+  /* Agrega una transición suave en la propiedad transform */
 }
 
 .abajo-carrusel:hover {
-  transform: translateY(-10px); /* Mueve la imagen hacia arriba en el hover */
+  transform: translateY(-10px);
+  /* Mueve la imagen hacia arriba en el hover */
 }
 
 .fa-star.unchecked {
@@ -417,7 +403,8 @@ margin-bottom: 40px;
 /* Estilos para el campo de entrada de estrellas */
 .star-rating {
   display: inline-block;
-  direction: rtl; /* Invertir la dirección de lectura (derecha a izquierda) */
+  direction: rtl;
+  /* Invertir la dirección de lectura (derecha a izquierda) */
 }
 
 .star-rating input[type="radio"] {
@@ -431,19 +418,23 @@ margin-bottom: 40px;
 }
 
 .star-rating label:before {
-  content: "\2605"; /* Carácter Unicode para la estrella (★) */
-  color: #ccc; /* Color de estrella no seleccionada */
+  content: "\2605";
+  /* Carácter Unicode para la estrella (★) */
+  color: #ccc;
+  /* Color de estrella no seleccionada */
 }
 
-.star-rating input[type="radio"]:checked ~ label:before {
-  color: #FFD700; /* Color de estrella seleccionada (amarillo) */
+.star-rating input[type="radio"]:checked~label:before {
+  color: #FFD700;
+  /* Color de estrella seleccionada (amarillo) */
 }
 
-.star-rating input[type="radio"]:hover ~ label:before {
-  color: #FFD700; /* Color de estrella seleccionada (amarillo) */
+.star-rating input[type="radio"]:hover~label:before {
+  color: #FFD700;
+  /* Color de estrella seleccionada (amarillo) */
 }
 
-.list-group-item-action{
+.list-group-item-action {
   margin: 0 auto;
   width: 100%;
 }
@@ -452,36 +443,36 @@ margin-bottom: 40px;
 
 
 
-#related-products-container{
+#related-products-container {
   margin-top: 20px;
   text-align: center;
 }
 
-.navbar-dark #related-products-container h3{
+.navbar-dark #related-products-container h3 {
   color: rgb(255, 255, 255);
 }
 
-.navbar-light #related-products-container h3{
+.navbar-light #related-products-container h3 {
   margin-top: 20px;
   text-align: center;
   color: rgb(0, 0, 0);
 }
 
-#related-products-container p{
+#related-products-container p {
   margin: auto;
   color: black;
 }
 
-.custom-link{
+.custom-link {
   background-color: #00000000;
   color: white;
 }
 
-.navbar-light .custom-link{
+.navbar-light .custom-link {
   color: rgb(0, 0, 0);
 }
 
-.navbar-dark #modoBoton{
+.navbar-dark #modoBoton {
   background-color: rgba(0, 0, 0, 0.738);
   color: white;
   border-color: white;
@@ -489,7 +480,7 @@ margin-bottom: 40px;
   padding: 5px 20px;
 }
 
-.navbar-light #modoBoton{
+.navbar-light #modoBoton {
   background-color: rgba(255, 255, 255, 0.989);
   color: black;
   border-color: #000000;
@@ -511,14 +502,14 @@ margin-bottom: 40px;
   z-index: 1;
 }
 
-.navbar-dark .dropdown-content a{
-color: black;
+.navbar-dark .dropdown-content a {
+  color: black;
 }
 
-.navbar-dark .dropdown-content a:hover{
+.navbar-dark .dropdown-content a:hover {
   color: rgba(137, 137, 137, 0.986);
-  }
-  
+}
+
 
 .navbar-light .dropdown-content {
   width: 100%;
@@ -545,81 +536,99 @@ color: black;
   color: #fdfdfd84;
 }
 
-.btn-group-vertical>.btn-check:checked+.btn, .btn-group-vertical>.btn-check:focus+.btn, .btn-group-vertical>.btn.active, .btn-group-vertical>.btn:active, .btn-group-vertical>.btn:focus, .btn-group-vertical>.btn:hover, .btn-group>.btn-check:checked+.btn, .btn-group>.btn-check:focus+.btn, .btn-group>.btn.active, .btn-group>.btn:active, .btn-group>.btn:focus, .btn-group>.btn:hover {
+.btn-group-vertical>.btn-check:checked+.btn,
+.btn-group-vertical>.btn-check:focus+.btn,
+.btn-group-vertical>.btn.active,
+.btn-group-vertical>.btn:active,
+.btn-group-vertical>.btn:focus,
+.btn-group-vertical>.btn:hover,
+.btn-group>.btn-check:checked+.btn,
+.btn-group>.btn-check:focus+.btn,
+.btn-group>.btn.active,
+.btn-group>.btn:active,
+.btn-group>.btn:focus,
+.btn-group>.btn:hover {
   z-index: 0;
 }
 
 /* CLASES PARA EL MODO OSCURO - CLARO */
 
-.navbar-dark ~ main .list-group-item-action { 
-  background-color: rgb(36, 36, 36);           
+.navbar-dark~main .list-group-item-action {
+  background-color: rgb(36, 36, 36);
   color: white;
 }
 
-.navbar-dark ~ main .list-group-item-action:hover {
+.navbar-dark~main .list-group-item-action:hover {
   background-color: rgb(255, 255, 255);
   color: black;
   transition: background-color 0.6s ease, color 0.6s ease;
 }
 
-.navbar-light ~ main .list-group-item-action {
+.navbar-light~main .list-group-item-action {
   background-color: rgb(255, 255, 255);
   color: rgb(0, 0, 0);
 }
 
-.navbar-light ~ main .list-group-item-action:hover {
+.navbar-light~main .list-group-item-action:hover {
   background-color: rgb(36, 36, 36);
   color: rgb(255, 255, 255);
   transition: background-color 0.6s ease, color 0.6s ease;
 }
 
-.navbar-dark ~ main .btn-light {
+.navbar-dark~main .btn-light {
   background-color: rgb(36, 36, 36);
   color: rgb(255, 255, 255);
   border: none;
 }
 
-.navbar-dark ~ main .btn-light:hover {
+.navbar-dark~main .btn-light:hover {
   background-color: rgb(255, 255, 255);
   color: black;
   border: none;
   transition: background-color 0.6s ease, color 0.6s ease;
 }
 
-.navbar-light ~ main .btn-light {
+.navbar-light~main .btn-light {
   background-color: rgb(250, 250, 250);
   color: rgb(0, 0, 0);
   border: none;
 }
 
-.navbar-light ~ main .btn-light:hover {
+.navbar-light~main .btn-light:hover {
   background-color: rgb(36, 36, 36);
   color: rgb(255, 255, 255);
   border: none;
   transition: background-color 0.6s ease, color 0.6s ease;
 }
 
-.navbar-dark ~ main th {
+.navbar-dark~main th {
   color: white
 }
 
-.navbar-dark ~ main td {
+.navbar-dark~main td {
   color: white;
 }
 
 /* CLASES PARA EL MODO OSCURO - CLARO */
 
-#imagen{
-  width: 150px;
+#imagen {
+  width: 100px;
 }
 
-.input-cart{
+.input-cart {
   width: 70px !important;
 }
 
-.formaEnvio{
-  margin-left: 110px;
+.formaEnvio {
+  margin: auto auto;
+  font-family: Arial, Helvetica, sans-serif;
 }
-.container{
-  width: 100% !important;
+
+.row {
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+}
+
+th {
+  margin: 10px 10px;
 }

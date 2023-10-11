@@ -106,7 +106,7 @@ function applyFiltersAndSort(products) {
 
     productCard.innerHTML = `
                 <div id="tarjetasProducts" class="row cursor-active">
-                    <div class="col-3">
+                    <div class="col-12 col-sm-12 col-md-8 col-lg-3">
                         <img src="${product.image}" alt="${product.name}" class="img-thumbnail">
                     </div>
                     <div class="col">

@@ -42,9 +42,9 @@ function loadInfo() {
                 </div>
             
                 <div>
-                    <ul class="list-group list-group-horizontal" id="imageThumbnails">
+                    <ul class="list-group d-none d-md-flex flex-row" id="imageThumbnails">
                         ${productInfo.images.map((image, index) => `
-                            <li class="list-group-item abajo-carrusel">
+                            <li class="list-group-item list-group-horizontal abajo-carrusel">
                                 <img src="${image}" alt="Imagen ${index + 1}" class="product-image cursor-active" data-target="#carouselExample" data-slide-to="${index}">
                             </li>
                         `).join('')}
@@ -135,7 +135,7 @@ function loadComments() {
 
                 commentItem.innerHTML = `
                     <p><strong>${formattedUser}</strong> - ${comment.dateTime} - ${starHTML}</p>
-                    <p>${comment.description}</p>
+                    <div><p>${comment.description}</p></div>
                 `;
 
                 commentList.appendChild(commentItem);
@@ -195,7 +195,7 @@ function displayComment(comment) {
 
     commentItem.innerHTML = `
         <p><strong>${storedValue}</strong> - ${comment.dateTime} - ${starHTML}</p>
-        <p>${comment.description}</p>
+        <div><p>${comment.description}</p>
     `;
 
     commentList.appendChild(commentItem);
