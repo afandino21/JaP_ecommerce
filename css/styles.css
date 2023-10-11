@@ -620,3 +620,6 @@ color: black;
 .formaEnvio{
   margin-left: 110px;
 }
+.container{
+  width: 100% !important;
+}

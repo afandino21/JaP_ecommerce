@@ -209,3 +209,38 @@ document.addEventListener('DOMContentLoaded', () => {
     const commentForm = document.getElementById('new-comment-form');
     commentForm.addEventListener('submit', addComment);
 });
+
+
+document.getElementById('saveButton').addEventListener('click', () => {
+    // Obtén la información del producto desde localStorage
+    const productID = localStorage.getItem('productID');
+    const storedInfo = localStorage.getItem('productInfo');
+    
+    // Si no hay información almacenada previamente, crea un nuevo array vacío
+    const savedInfoArray = storedInfo ? JSON.parse(storedInfo) : [];
+
+    // Obtén la información actual del producto
+    fetch(`https://japceibal.github.io/emercado-api/products/${productID}.json`)
+        .then(response => response.json())
+        .then(productInfo => {
+            // Comprueba si el producto ya existe en el array
+            const isProductInArray = savedInfoArray.some(item => item.id === productInfo.id);
+
+            if (!isProductInArray) {
+                // Si el producto no existe, agrégalo al array
+                savedInfoArray.push(productInfo);
+
+                // Guarda el array actualizado en localStorage
+                localStorage.setItem('productInfo', JSON.stringify(savedInfoArray));
+
+                // Puedes mostrar un mensaje de confirmación
+                alert('Información guardada correctamente.');
+            } else {
+                // Muestra un mensaje de error si el producto ya está en el array
+                alert('Este producto ya ha sido agregado anteriormente.');
+            }
+        })
+        .catch(error => {
+            console.error('Error al cargar la información del producto:', error);
+        });
+});
