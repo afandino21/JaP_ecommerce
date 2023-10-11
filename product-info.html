@@ -56,15 +56,14 @@
         <h3>Productos relacionados</h3>
       </div>
       <hr class="hrInfo">
-      <div id="comment-section">
+      <div id="comment-section" class="w-100" style="margin: 0 auto;">
         <h3>Comentarios sobre el producto</h3>
         <div id="comment-list" class="row"></div>
         <div id="comment-form">
           <form id="new-comment-form" class="mt-4">
             <div id="textarea" class="form-group">
-              <label for="comment-text">Comentario:</label>
-              <textarea id="comment-text" class="form-control resize-horizontal" rows="4" required
-                maxlength="75"></textarea>
+              <center><label for="comment-text" class="mb-2">Comentario:</label></center>
+              <textarea id="comment-text" class="form-control resize-horizontal w-50" rows="4" required maxlength="75" style="margin: 0 auto;"></textarea>
             </div>
             <div id="puntuacion" class="form-group">
               <div class="star-rating">
@@ -79,7 +78,7 @@
               Por favor, selecciona una puntuación válida.
               (!-- ver de agregarle mejor funcionalidad a esto--)
             </div>
-            <button id="submitCommit" type="submit" class="btn btn-light">Enviar</button>
+            <center><button id="submitCommit" type="submit" class="btn btn-light">Enviar</button></center>
           </form>
         </div>
       </div>

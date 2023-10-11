@@ -638,9 +638,6 @@ th {
 }
 
 
-.list-group-item {
-  margin: 0 10px; /* Agrega un margen entre las imágenes si es necesario */
-}
 
 @media screen and (min-width: 1024px) {
   /* Estilos para pantallas de laptop */

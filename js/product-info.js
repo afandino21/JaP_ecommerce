@@ -16,7 +16,7 @@ function loadInfo() {
                     <h1>${productInfo.name}</h1>
                 </div>
             
-                <ul class="list-group">
+                <ul class="list-group w-75" style="margin: 0 auto;">
                     <li class="list-group-item">Precio: ${productInfo.cost} ${productInfo.currency}</li>
                     <li class="list-group-item">Descripción: ${productInfo.description}</li>
                     <li class="list-group-item">Categoría: ${productInfo.category}</li>
@@ -134,7 +134,9 @@ function loadComments() {
                 commentItem.classList.add("commits");
 
                 commentItem.innerHTML = `
-                    <p><strong>${formattedUser}</strong> - ${comment.dateTime} - ${starHTML}</p>
+                    <p style="float: right;"> ${starHTML}</p>
+                    <p><strong>${formattedUser}</strong></p>
+                    <div><small style="float: right; margin: 0 auto;">${comment.dateTime}</small></div><br>
                     <div><p>${comment.description}</p></div>
                 `;
 
@@ -182,9 +184,13 @@ function addComment(event) {
 }
 
 function displayComment(comment) {
-    const commentList = document.getElementById('comment-list');
+    const commentContainer = document.getElementById('comment-list');
+    const commentList = document.createElement('div');
+    commentList.classList.add("list-group");
+    commentContainer.appendChild(commentList);
     const commentItem = document.createElement('div');
     const storedValue = localStorage.getItem("username");
+
 
     commentItem.classList.add("list-group-item");
     commentItem.classList.add("commits");
@@ -194,8 +200,10 @@ function displayComment(comment) {
     `).join('');
 
     commentItem.innerHTML = `
-        <p><strong>${storedValue}</strong> - ${comment.dateTime} - ${starHTML}</p>
-        <div><p>${comment.description}</p>
+        <p style="float: right;"> ${starHTML}</p>
+        <p><strong>${storedValue}</strong></p>
+        <div><small style="float: right; margin: 0 auto;">${comment.dateTime}</small></div><br>
+        <div><p>${comment.description}</p></div>
     `;
 
     commentList.appendChild(commentItem);
