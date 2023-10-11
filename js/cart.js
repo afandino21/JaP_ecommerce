@@ -38,14 +38,15 @@
       function renderCart() {
         // Obtén el array almacenado en el localStorage
         const storedInfo = localStorage.getItem('productInfo');
+        const containerCart = document.getElementById("containerCart");
+        const sinProductosCart = document.getElementById("sinProductosCart");
         if (!storedInfo || !storedInfo.length) { // Verifica si no hay información o si la cadena está vacía
             return;
         }
         if (storedInfo == "[]"){
-            console.log('No hay información almacenada en el localStorage.');
-            setTimeout(function() {
-                alert('No hay productos en el carrito.'); // Mostrar un alert después de 2 segundos
-            }, 2000); // 2000 milisegundos (2 segundos) de retraso
+            console.log('No hay información almacenada en el localStorage del carrito.');
+            containerCart.style.display = "none";
+            sinProductosCart.style.display = "block";
         }
           
           // Si hay información, convierte la cadena JSON en un array de JavaScript
@@ -57,6 +58,9 @@
           savedInfoArray.forEach((item, index) => {
               const cantidad = 1; // Valor inicial para la cantidad
               const subtotal = item.cost * cantidad; // Calcula el subtotal
+              const containerCart = document.getElementById("containerCart");
+              containerCart.style.display = "block";
+              sinProductosCart.style.display = "none";
       
               html += `
               <tr>
