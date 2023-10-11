@@ -45,33 +45,32 @@
     </div>
 </nav>
   <main>
-  <div class="container"><h2 id="sinProductosCart" class="text-center mt-5" style="display: block;">Actualmente no se encuentran productos en el carrito</h2></div>
-  <div class="container" id="containerCart" style="display: none;">
+  <div class="container">
     <table class="table mt-5">
         <thead>
             <tr>
                 <th></th>
                 <th>Nombre</th>
-                <th>Cantidad</th>
                 <th>Costo</th>
+                <th>Cantidad</th>
+                <th>Subtotal</th>
                 <th></th>
 
             </tr>
         </thead>
-       <!-- <tbody>
+        <tbody>
             <tr>
                 <td><img src="" alt="Imagen del producto" id="imagen"></td>
-                <td><br><p><span id="nombre"></span></p></td>
-                <td><br><p><span id="costo"></span> <span id="moneda"></span></p></td>
-                <td><br><p><input type="number" id="cantidad" min="1" value="1" class="input-cart d-inline-block p-1"></p></td>
-                <td><br><p><span id="subtotal"></span> <span id="monedaSubtotal"></span></p></td>
+                <td><br><span id="nombre"></span></td>
+                <td><br><span id="costo"></span> <span id="moneda"></span></td>
+                <td><br><input type="number" id="cantidad" min="1" max="10" value="1" class="input-cart d-inline-block"></td>
+                <td><br><span id="subtotal"></span> <span id="monedaSubtotal"></span></td>
+                <td></td>
             </tr>
-        </tbody> -->
+        </tbody> 
         <tfoot id="productosCart"></tfoot>
     </table>
-    <p id="totalCart" class="text-center">Subtotal: $0 USD</p>
 
-    
     <form action="" method="post" class="formaEnvio">
       <br>
       <div> 

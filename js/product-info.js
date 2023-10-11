@@ -215,7 +215,7 @@ document.getElementById('saveButton').addEventListener('click', () => {
     // Obtén la información del producto desde localStorage
     const productID = localStorage.getItem('productID');
     const storedInfo = localStorage.getItem('productInfo');
-    
+
     // Si no hay información almacenada previamente, crea un nuevo array vacío
     const savedInfoArray = storedInfo ? JSON.parse(storedInfo) : [];
 
@@ -227,17 +227,22 @@ document.getElementById('saveButton').addEventListener('click', () => {
             const isProductInArray = savedInfoArray.some(item => item.id === productInfo.id);
 
             if (!isProductInArray) {
-                // Si el producto no existe, agrégalo al array
-                savedInfoArray.push(productInfo);
+                // Verifica si el nombre del producto es "Peugeot 208"
+                if (productInfo.name === "Peugeot 208") {
+                    alert('El producto se encuentra agregado al carrito por defecto en modo demostrativo.');
+                } else {
+                    // Si el producto no es "Peugeot 208", agrégalo al array
+                    savedInfoArray.push(productInfo);
 
-                // Guarda el array actualizado en localStorage
-                localStorage.setItem('productInfo', JSON.stringify(savedInfoArray));
+                    // Guarda el array actualizado en localStorage
+                    localStorage.setItem('productInfo', JSON.stringify(savedInfoArray));
 
-                // Puedes mostrar un mensaje de confirmación
-                alert('Información guardada correctamente.');
+                    // Puedes mostrar un mensaje de confirmación
+                    alert('producto agregado correctamente.');
+                }
             } else {
                 // Muestra un mensaje de error si el producto ya está en el array
-                alert('Este producto ya ha sido agregado anteriormente.');
+                alert('Este producto ya ha sido agregado al carrito.');
             }
         })
         .catch(error => {
