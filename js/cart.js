@@ -32,26 +32,30 @@ fetch("https://japceibal.github.io/emercado-api/user_cart/25801.json")
     });
 
 
+// Obtén una referencia al elemento HTML con el ID "productosCart"
 const productosCart = document.getElementById("productosCart");
 
+// Función para renderizar la lista del carrito
 function renderCart() {
-    // Obtén el array almacenado en el localStorage
+    // Obtén el array almacenado en el localStorage con la clave "productInfo"
     const storedInfo = localStorage.getItem('productInfo');
 
-    // Si hay información, convierte la cadena JSON en un array de JavaScript
+    // Si hay información en el localStorage, convierte la cadena JSON en un array de JavaScript
     const savedInfoArray = JSON.parse(storedInfo);
-    let html = ''; // Variable para acumular el HTML
+    let html = ''; // Variable para acumular el HTML que se generará
 
-    let total = 0; // Inicializa la variable total
+    let total = 0; // Inicializa la variable total para el costo total del carrito
 
+    // Recorre cada elemento en el array savedInfoArray
     savedInfoArray.forEach((item, index) => {
-        // Obtén la cantidad inicial y el costo del producto
+        // Obtén la cantidad inicial (en este caso, 1) y el costo del producto
         const cantidad = 1; // Puedes obtener la cantidad deseada del elemento HTML correspondiente
         const costo = item.cost;
 
         // Calcula el subtotal (cantidad multiplicada por el costo del producto)
         const subtotal = cantidad * costo;
 
+        // Genera una fila HTML para el producto actual y agrega la información al HTML acumulado
         html += `
                     <tr>
                         <td class="d-none d-md-table-cell"><img src="${item.images[0]}" style="width: 100px;"></td>
@@ -63,13 +67,12 @@ function renderCart() {
                     </tr>
                     `;
 
-        total += subtotal; // Agrega el subtotal al total
     });
 
-    // Establece el contenido de productosCart una vez que hayas terminado el bucle
+    // Establece el contenido del elemento "productosCart" con el HTML generado
     productosCart.innerHTML = html;
 
-    // Agrega un evento de escucha a los inputs
+    // Agrega un evento de escucha a los inputs para que se actualice el subtotal cuando cambia la cantidad
     const cantidadInputs = document.querySelectorAll('.cantidad-input');
     cantidadInputs.forEach(input => {
         input.addEventListener('input', () => {
@@ -77,11 +80,12 @@ function renderCart() {
         });
     });
 
-    // Agrega un evento de escucha a los botones de eliminar
+    // Agrega un evento de escucha a los botones de eliminar para eliminar productos del carrito
     const eliminarButtons = document.querySelectorAll('.eliminar-btn');
     eliminarButtons.forEach(button => {
         button.addEventListener('click', (event) => {
             const index = event.target.getAttribute('data-index');
+            // Elimina el producto del array y actualiza el localStorage y la vista del carrito
             savedInfoArray.splice(index, 1);
             actualizarLocalStorage(savedInfoArray);
             renderCart(); // Vuelve a renderizar la lista después de eliminar el objeto
@@ -89,6 +93,7 @@ function renderCart() {
     });
 }
 
+// Función para actualizar el subtotal cuando cambia la cantidad de un producto
 function actualizarSubtotal(input, savedInfoArray) {
     const index = input.getAttribute('data-index');
     const cantidad = parseInt(input.value);
@@ -97,21 +102,13 @@ function actualizarSubtotal(input, savedInfoArray) {
     const subtotalElement = input.parentElement.nextElementSibling.querySelector('.subtotal-td');
     const subtotal = cantidad * costo;
     subtotalElement.textContent = `${subtotal} ${item.currency}`;
-    recalcularTotal(savedInfoArray);
 }
 
-function recalcularTotal(savedInfoArray) {
-    let total = 0;
-    savedInfoArray.forEach((item, index) => {
-        const cantidadInput = document.querySelector(`.cantidad-input[data-index="${index}"]`);
-        const cantidad = parseInt(cantidadInput.value);
-        total += cantidad * item.cost;
-    });
-}
-
+// Función para actualizar la información del carrito en el localStorage
 function actualizarLocalStorage(array) {
     localStorage.setItem('productInfo', JSON.stringify(array));
 }
 
-// Llama a la función para inicializar la lista del carrito
+// Llama a la función para inicializar la lista del carrito cuando se carga la página
 renderCart();
+
