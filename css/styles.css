@@ -650,3 +650,25 @@ table{
     width: 50% !important;
   }
 }
+
+.hide-arrows::-webkit-inner-spin-button,
+.hide-arrows::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.hide-arrows::-webkit-input-placeholder {
+  color: transparent;
+}
+
+.hide-arrows::-moz-placeholder {
+  color: transparent;
+}
+
+.hide-arrows:-ms-input-placeholder {
+  color: transparent;
+}
+
+.hide-arrows::-ms-input-placeholder {
+  color: transparent;
+}
