@@ -265,7 +265,3 @@ function costos() {
 renderCart();
 costos();
 
-
-// Llama a la función para inicializar la lista del carrito cuando se carga la página
-renderCart();
-
