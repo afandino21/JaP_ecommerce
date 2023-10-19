@@ -109,12 +109,11 @@ function actualizarLocalStorage(array) {
     localStorage.setItem('productInfo', JSON.stringify(array));
 }
 
-function costos() {
-    let productos = JSON.parse(localStorage.getItem('productInfo'));
-    let container = document.getElementById('containerCostos');
-    let subtotal = 0;
-    let costoEnvio = 0;
+let productos = JSON.parse(localStorage.getItem('productInfo'));
+let subtotal = 15200;
+let costoEnvio = 0;
 
+function costos() {
     productos.forEach(producto => {
         if (producto.currency == 'USD') {
         subtotal += producto.cost;
@@ -122,144 +121,35 @@ function costos() {
             subtotal += Math.round(producto.cost / 40);
           }
     }); 
+  }
 
-    let opcionPremium = document.getElementById('opcionPremium');
-    let opcionExpress = document.getElementById('opcionExpress');
-    let opcionStandard = document.getElementById('opcionStandard');
+let opcionPremium = document.getElementById('opcionPremium');
+let opcionExpress = document.getElementById('opcionExpress');
+let opcionStandard = document.getElementById('opcionStandard');
+let containerSubtotal = document.getElementById('containerSubtotal')
+let containerEnvio = document.getElementById('containerEnvio')
+let containerTotal = document.getElementById('containerTotal')
 
-    opcionPremium.addEventListener('click', function() {
-        costoEnvio = Math.round(subtotal * 0.15);
-        container.innerHTML = `
-        <div class="container">
-  <h2>Costos</h2>         
-  <table class="table">
-    <thead>
-      <tr>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Subtotal</td>
-        <td> </td>
-        <td>USD ${subtotal}</td>
-      </tr>
-      <tr>
-        <td>Envio</td>
-        <td> </td>
-        <td>USD ${costoEnvio}</td>
-      </tr>
-      <tr>
-        <td>Total($)</td>
-        <td> </td>
-        <td>USD ${costoEnvio + subtotal}</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-`;
-    } )
-
-    opcionExpress.addEventListener('click', function() {
-        costoEnvio = Math.round(subtotal * 0.07);
-        container.innerHTML =`
-        <div class="container">
-  <h2>Costos</h2>         
-  <table class="table">
-    <thead>
-      <tr>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Subtotal</td>
-        <td> </td>
-        <td>USD ${subtotal}</td>
-      </tr>
-      <tr>
-        <td>Envio</td>
-        <td> </td>
-        <td>USD ${costoEnvio}</td>
-      </tr>
-      <tr>
-        <td>Total($)</td>
-        <td> </td>
-        <td>USD ${costoEnvio + subtotal}</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-`;
-    } )
-
-    opcionStandard.addEventListener('click', function() {
-        costoEnvio = Math.round(subtotal * 0.05);
-        container.innerHTML = `
-        <div class="container">
-  <h2>Costos</h2>         
-  <table class="table">
-    <thead>
-      <tr>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Subtotal</td>
-        <td> </td>
-        <td>USD ${subtotal}</td>
-      </tr>
-      <tr>
-        <td>Envio</td>
-        <td> </td>
-        <td>USD ${costoEnvio}</td>
-      </tr>
-      <tr>
-        <td>Total($)</td>
-        <td> </td>
-        <td>USD ${costoEnvio + subtotal}</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-`;
-    } )
-
-
-    container.innerHTML += `
-    <div class="container">
-<h2>Costos</h2>         
-<table class="table">
-<thead>
-  <tr>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td>Subtotal</td>
-    <td> </td>
-    <td>USD ${subtotal}</td>
-  </tr>
-  <tr>
-    <td>Envio</td>
-    <td> </td>
-    <td>USD ${costoEnvio}</td>
-  </tr>
-  <tr>
-    <td>Total($)</td>
-    <td> </td>
-    <td>USD ${costoEnvio + subtotal}</td>
-  </tr>
-</tbody>
-</table>
-</div>
-
-`;
-
-
-
+function containerCostos() {
+  containerSubtotal.innerHTML = `USD ${subtotal}`
+  containerEnvio.innerHTML = `USD ${costoEnvio}`
+  containerTotal.innerHTML = `USD ${subtotal + costoEnvio}`
 }
+
+opcionPremium.addEventListener('click', function() {
+   costoEnvio = Math.round(subtotal * 0.15);
+    containerCostos();
+});
+
+opcionExpress.addEventListener('click', function() {
+    costoEnvio = Math.round(subtotal * 0.07);
+    containerCostos();
+});
+
+opcionStandard.addEventListener('click', function() {
+    costoEnvio = Math.round(subtotal * 0.05);
+    containerCostos();
+});
 
 // Llama a la función para inicializar la lista del carrito cuando se carga la página
 renderCart();
