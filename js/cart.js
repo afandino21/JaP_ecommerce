@@ -127,7 +127,9 @@ tarjetaDeCreditoInput.addEventListener('change', () => {
     const codigoSegInput = document.getElementById('codigoSeg');
     const vencimientoInput = document.getElementById('vencimiento');
     const cuentaInput = document.getElementById('numeroCuenta');
-    
+    const textoMetodoDePago = document.getElementById('metodoDePago');
+
+    textoMetodoDePago.innerHTML = "Tarjeta de Credito";
     tarjetaInput.removeAttribute('disabled');
     codigoSegInput.removeAttribute('disabled');
     vencimientoInput.removeAttribute('disabled');
@@ -141,7 +143,9 @@ transferenciaBancariaInput.addEventListener('change', () => {
     const tarjetaInput = document.getElementById('numeroTarjeta');
     const codigoSegInput = document.getElementById('codigoSeg');
     const vencimientoInput = document.getElementById('vencimiento');
+    const textoMetodoDePago = document.getElementById('metodoDePago');
 
+    textoMetodoDePago.innerHTML = "Transferencia Bancaria";
     cuentaInput.removeAttribute('disabled');
     tarjetaInput.setAttribute('disabled', 'true');
     codigoSegInput.setAttribute('disabled', 'true');
