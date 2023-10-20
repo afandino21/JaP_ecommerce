@@ -112,3 +112,38 @@ function actualizarLocalStorage(array) {
 // Llama a la función para inicializar la lista del carrito cuando se carga la página
 renderCart();
 
+
+
+
+
+  // Obtener referencias a los elementos de entrada
+const tarjetaDeCreditoInput = document.getElementById('tarjetaDeCredito');
+const transferenciaBancariaInput = document.getElementById('transferenciaBancaria');
+
+  // Agregar oyentes de eventos a los elementos de radio
+tarjetaDeCreditoInput.addEventListener('change', () => {
+    // Habilitar o deshabilitar los campos de entrada según la selección
+    const tarjetaInput = document.getElementById('numeroTarjeta');
+    const codigoSegInput = document.getElementById('codigoSeg');
+    const vencimientoInput = document.getElementById('vencimiento');
+    const cuentaInput = document.getElementById('numeroCuenta');
+    
+    tarjetaInput.removeAttribute('disabled');
+    codigoSegInput.removeAttribute('disabled');
+    vencimientoInput.removeAttribute('disabled');
+    cuentaInput.setAttribute('disabled', 'true');
+
+});
+
+transferenciaBancariaInput.addEventListener('change', () => {
+    // Habilitar o deshabilitar los campos de entrada según la selección
+    const cuentaInput = document.getElementById('numeroCuenta');
+    const tarjetaInput = document.getElementById('numeroTarjeta');
+    const codigoSegInput = document.getElementById('codigoSeg');
+    const vencimientoInput = document.getElementById('vencimiento');
+
+    cuentaInput.removeAttribute('disabled');
+    tarjetaInput.setAttribute('disabled', 'true');
+    codigoSegInput.setAttribute('disabled', 'true');
+    vencimientoInput.setAttribute('disabled', 'true');
+});
