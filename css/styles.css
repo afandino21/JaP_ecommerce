@@ -201,6 +201,9 @@ a.custom-card:hover {
   margin-top: 40px;
 }
 
+#containerTotal {
+  font-weight: bold;
+}
 
 
 /* Estilo para el login */
