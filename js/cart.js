@@ -120,6 +120,7 @@ function costos() {
         } else {
             subtotal += Math.round(producto.cost / 40);
           }
+        containerSubtotal.innerHTML = `USD ${subtotal}`
     }); 
   }
 
@@ -131,7 +132,6 @@ let containerEnvio = document.getElementById('containerEnvio')
 let containerTotal = document.getElementById('containerTotal')
 
 function containerCostos() {
-  containerSubtotal.innerHTML = `USD ${subtotal}`
   containerEnvio.innerHTML = `USD ${costoEnvio}`
   containerTotal.innerHTML = `USD ${subtotal + costoEnvio}`
 }
