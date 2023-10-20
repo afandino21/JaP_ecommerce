@@ -109,8 +109,51 @@ function actualizarLocalStorage(array) {
     localStorage.setItem('productInfo', JSON.stringify(array));
 }
 
+let productos = JSON.parse(localStorage.getItem('productInfo'));
+let subtotal = 15200;
+let costoEnvio = 0;
+
+function costos() {
+    productos.forEach(producto => {
+        if (producto.currency == 'USD') {
+        subtotal += producto.cost;
+        } else {
+            subtotal += Math.round(producto.cost / 40);
+          }
+        containerSubtotal.innerHTML = `USD ${subtotal}`
+    }); 
+  }
+
+let opcionPremium = document.getElementById('opcionPremium');
+let opcionExpress = document.getElementById('opcionExpress');
+let opcionStandard = document.getElementById('opcionStandard');
+let containerSubtotal = document.getElementById('containerSubtotal')
+let containerEnvio = document.getElementById('containerEnvio')
+let containerTotal = document.getElementById('containerTotal')
+
+function containerCostos() {
+  containerEnvio.innerHTML = `USD ${costoEnvio}`
+  containerTotal.innerHTML = `USD ${subtotal + costoEnvio}`
+}
+
+opcionPremium.addEventListener('click', function() {
+   costoEnvio = Math.round(subtotal * 0.15);
+    containerCostos();
+});
+
+opcionExpress.addEventListener('click', function() {
+    costoEnvio = Math.round(subtotal * 0.07);
+    containerCostos();
+});
+
+opcionStandard.addEventListener('click', function() {
+    costoEnvio = Math.round(subtotal * 0.05);
+    containerCostos();
+});
+
 // Llama a la función para inicializar la lista del carrito cuando se carga la página
 renderCart();
+costos();
 
 
 

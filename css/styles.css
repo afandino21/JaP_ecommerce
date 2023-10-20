@@ -124,6 +124,12 @@ footer p {
   background-color: rgba(255, 255, 255, 0.5);
 }
 
+.right {
+  float: right;
+  padding: 4px;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
 .lds-ring div {
   box-sizing: border-box;
   display: block;
@@ -195,6 +201,9 @@ a.custom-card:hover {
   margin-top: 40px;
 }
 
+#containerTotal {
+  font-weight: bold;
+}
 
 
 /* Estilo para el login */
