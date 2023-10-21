@@ -159,28 +159,60 @@ finalizarCompraBoton.addEventListener('click', function () {
     const transferenciaBancariaInput = document.getElementById('transferenciaBancaria');
 
     if (calleInput.value.trim() === '' || numeroInput.value.trim() === '' || esquinaInput.value.trim() === '') {
-        alert('Los campos de dirección no pueden estar vacíos.');
+        Swal.fire({
+            title: 'Campos vacíos',
+            text: 'Los campos de dirección no pueden estar vacíos.',
+            icon: 'error',
+        });
     } else if (!formaEnvioSeleccionada) {
-        alert('Debes seleccionar una forma de envío.');
+        Swal.fire({
+            title: 'Forma de envío no seleccionada',
+            text: 'Debes seleccionar una forma de envío.',
+            icon: 'error',
+        });
     } else if (!cantidadValida) {
-        alert('La cantidad de productos en el carrito debe ser mayor a 0.');
+        Swal.fire({
+            title: 'Cantidad inválida',
+            text: 'La cantidad de productos en el carrito debe ser mayor a 0.',
+            icon: 'error',
+        });
     } else if (!(tarjetaDeCreditoInput.checked || transferenciaBancariaInput.checked)) {
-        alert('Debes seleccionar una forma de pago.');
+        Swal.fire({
+            title: 'Forma de pago no seleccionada',
+            text: 'Debes seleccionar una forma de pago.',
+            icon: 'error',
+        });
     } else if (tarjetaDeCreditoInput.checked) {
         const numeroTarjetaInput = document.getElementById('numeroTarjeta');
         const codigoSegInput = document.getElementById('codigoSeg');
         const vencimientoInput = document.getElementById('vencimiento');
         if (numeroTarjetaInput.value.trim() === '' || codigoSegInput.value.trim() === '' || vencimientoInput.value.trim() === '') {
-            alert('Debes completar los campos de tarjeta de crédito.');
+            Swal.fire({
+                title: 'Campos de tarjeta de crédito vacíos',
+                text: 'Debes completar los campos de tarjeta de crédito.',
+                icon: 'error',
+            });
         } else {
-            alert('Compra exitosa. ¡Gracias por tu compra!');
+            Swal.fire({
+                title: 'Compra exitosa',
+                text: '¡Gracias por tu compra!',
+                icon: 'success',
+            });
         }
     } else if (transferenciaBancariaInput.checked) {
         const numeroCuentaInput = document.getElementById('numeroCuenta');
         if (numeroCuentaInput.value.trim() === '') {
-            alert('Debes completar el campo de número de cuenta para transferencia bancaria.');
+            Swal.fire({
+                title: 'Número de cuenta no proporcionado',
+                text: 'Debes completar el campo de número de cuenta para transferencia bancaria.',
+                icon: 'error',
+            });
         } else {
-            alert('Compra exitosa. ¡Gracias por tu compra!');
+            Swal.fire({
+                title: 'Compra exitosa',
+                text: '¡Gracias por tu compra!',
+                icon: 'success',
+            });
         }
     }
 });
