@@ -58,7 +58,7 @@ function actualizarLocalStorage(array) {
 }
 
 let productos = JSON.parse(localStorage.getItem('productInfo'));
-let subtotal = 15200;
+let subtotal = 0;
 let costoEnvio = 0;
 
 function costos() {
@@ -148,10 +148,11 @@ finalizarCompraBoton.addEventListener('click', function () {
     });
 
     const cantidadInputs = document.querySelectorAll('.cantidad-input');
-    let cantidadValida = true;
+
+    let cantidadValida = false;
     cantidadInputs.forEach(input => {
-        if (parseInt(input.value) <= 0) {
-            cantidadValida = false;
+        if (parseInt(input.value) > 0) {
+            cantidadValida = true;
         }
     });
 
@@ -216,3 +217,4 @@ finalizarCompraBoton.addEventListener('click', function () {
         }
     }
 });
+
