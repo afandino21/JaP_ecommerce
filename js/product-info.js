@@ -244,11 +244,17 @@ document.getElementById('saveButton').addEventListener('click', () => {
                     localStorage.setItem('productInfo', JSON.stringify(savedInfoArray));
 
                     // Puedes mostrar un mensaje de confirmación
-                    alert('producto agregado correctamente.');
+                    Swal.fire({
+                        title: '¡Producto agregado al carrito con exito!',
+                        icon: 'success',
+                    });
                 }
             } else {
                 // Muestra un mensaje de error si el producto ya está en el array
-                alert('Este producto ya ha sido agregado al carrito.');
+                Swal.fire({
+                    title: '¡El producto ya se encuentra en el carrito',
+                    icon: 'error',
+                });
             }
         })
         .catch(error => {
