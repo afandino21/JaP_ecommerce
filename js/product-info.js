@@ -252,7 +252,7 @@ document.getElementById('saveButton').addEventListener('click', () => {
             } else {
                 // Muestra un mensaje de error si el producto ya está en el array
                 Swal.fire({
-                    title: '¡El producto ya se encuentra en el carrito',
+                    title: '¡El producto ya se encuentra en el carrito!',
                     icon: 'error',
                 });
             }
