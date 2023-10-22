@@ -12,6 +12,9 @@
 </head>
 
 <body>
+  <div id="alertaCarritoVacio" class="alert alert-danger text-center" role="alert">
+    Su carrito se encuentra vacio, debe agregar productos al carrito para realizar una compra.
+  </div>
   <nav class="navbar navbar-expand-lg navbar-light bg-light p-1">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -44,9 +47,9 @@
       </div>
     </div>
   </nav>
-  <main>
+  <main id="contenidoCart">
     <div class="container" style="font-family: none !important;">
-      <table id="tablaProductos" class="table mt-5" style="margin: 0 auto;">
+      <table class="table mt-5" style="margin: 0 auto;">
         <thead>
           <tr>
             <br>
@@ -198,17 +201,14 @@
               </div>
             </div>
           </div>
-
-  </main>
-  <footer class="text-muted">
-    <div class="container">
+    <div class="container mt-5 text-muted">
       <p class="float-end">
         <a href="index.html">Volver al Inicio</a>
       </p>
       <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>
       </p>
     </div>
-  </footer>
+  </main>
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>
@@ -216,7 +216,7 @@
       <div></div>
       <div></div>
     </div>
-  </div>
+  </div> 
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="js/init.js"></script>

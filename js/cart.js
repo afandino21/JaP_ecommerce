@@ -3,8 +3,21 @@ const productosCart = document.getElementById("productosCart");
 function renderCart() {
     const storedInfo = localStorage.getItem('productInfo');
     const savedInfoArray = JSON.parse(storedInfo);
+    const longitud = savedInfoArray.length
+    const contenidoCart = document.getElementById("contenidoCart");
+    const alertaCarritoVacio = document.getElementById("alertaCarritoVacio");
+    
+    if (longitud === 0){
+        contenidoCart.style.display = "none";
+        alertaCarritoVacio.style.display = "block";
+    } else {
+        contenidoCart.style.display = "block";
+        alertaCarritoVacio.style.display = "none";
+    };
+
     let html = '';
-    let total = 0;
+    
+
 
     savedInfoArray.forEach((item, index) => {
         const cantidad = 1;
@@ -148,6 +161,7 @@ finalizarCompraBoton.addEventListener('click', function () {
     });
 
     const cantidadInputs = document.querySelectorAll('.cantidad-input');
+    
 
     let cantidadValida = false;
     cantidadInputs.forEach(input => {
@@ -159,22 +173,22 @@ finalizarCompraBoton.addEventListener('click', function () {
     const tarjetaDeCreditoInput = document.getElementById('tarjetaDeCredito');
     const transferenciaBancariaInput = document.getElementById('transferenciaBancaria');
 
-    if (calleInput.value.trim() === '' || numeroInput.value.trim() === '' || esquinaInput.value.trim() === '') {
-        Swal.fire({
-            title: 'Campos vacíos',
-            text: 'Los campos de dirección no pueden estar vacíos.',
-            icon: 'error',
-        });
+    if  (!cantidadValida) {
+            Swal.fire({
+                title: 'Carrito vacío',
+                text: 'La cantidad de productos en el carrito debe ser mayor a 0.',
+                icon: 'error',
+            });
     } else if (!formaEnvioSeleccionada) {
         Swal.fire({
             title: 'Forma de envío no seleccionada',
             text: 'Debes seleccionar una forma de envío.',
             icon: 'error',
         });
-    } else if (!cantidadValida) {
+    } else if (calleInput.value.trim() === '' || numeroInput.value.trim() === '' || esquinaInput.value.trim() === '') {
         Swal.fire({
-            title: 'Cantidad inválida',
-            text: 'La cantidad de productos en el carrito debe ser mayor a 0.',
+            title: 'Campos vacíos',
+            text: 'Los campos de dirección no pueden estar vacíos.',
             icon: 'error',
         });
     } else if (!(tarjetaDeCreditoInput.checked || transferenciaBancariaInput.checked)) {

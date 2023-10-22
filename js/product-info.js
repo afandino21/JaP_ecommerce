@@ -236,10 +236,8 @@ document.getElementById('saveButton').addEventListener('click', () => {
 
             if (!isProductInArray) {
                 // Verifica si el nombre del producto es "Peugeot 208"
-                if (productInfo.name === "Peugeot 208") {
-                    alert('El producto se encuentra agregado al carrito por defecto en modo demostrativo.');
-                } else {
-                    // Si el producto no es "Peugeot 208", agrégalo al array
+                if (productInfo){
+
                     savedInfoArray.push(productInfo);
 
                     // Guarda el array actualizado en localStorage
