@@ -240,6 +240,7 @@ finalizarCompraBoton.addEventListener('click', function () {
                 text: '¡Gracias por tu compra!',
                 icon: 'success',
             });
+            cargarPDF()
         }
     } else if (transferenciaBancariaInput.checked) {
         const numeroCuentaInput = document.getElementById('numeroCuenta');
@@ -255,35 +256,70 @@ finalizarCompraBoton.addEventListener('click', function () {
                 text: '¡Gracias por tu compra!',
                 icon: 'success',
             });
+            cargarPDF()
         }
     }
 });
 
 
 // Función para generar el PDF
-document.getElementById("finalizarCompraBoton").addEventListener("click", function () {
-
+function cargarPDF() {
     const storedInfo = localStorage.getItem('productInfo');
     const savedInfoArray = JSON.parse(storedInfo);
-    console.log(savedInfoArray)
+    const calleInput = document.getElementById('calle');
+    const numeroInput = document.getElementById('numero');
+    const esquinaInput = document.getElementById('esquina');
+    const metodoDePago = document.getElementById("metodoDePago").textContent;
 
-    // Definir el contenido del documento en JavaScript
+    // Calcular el subtotal y otros valores
+    let subtotal = 0;
+    savedInfoArray.forEach(item => {
+        subtotal += item.cost * item.cartCount;
+    });
+    const costoEnvio = Math.round(subtotal * descuento);
+    const totalCompra = subtotal + costoEnvio;
+
     var docDefinition = {
         content: [
-            { text: 'Mi Documento PDF', style: 'header' },
-            'Este es un ejemplo de cómo generar un PDF con PDFMake.',
+            { text: 'Factura', style: 'subheader', alignment: 'center'},
+            { text: ' ', margin: [0, 10] },
+            { text: 'Productos:', style: 'subheader'},
         ],
         styles: {
-            header: {
-                fontSize: 18,
+            subheader: {
+                fontSize: 16,
                 bold: true
             }
         }
     };
-    // Generar el PDF y descargarlo
-    pdfMake.createPdf(docDefinition).open();//.download("mi_archivo.pdf");
 
-});
+    // Agregar los productos
+    savedInfoArray.forEach(function (item) {
+        if (item.name) {
+            docDefinition.content.push(
+                `${item.name}     ${item.cost}   X   ${item.cartCount}  =  ${item.currency} ${item.cartCount * item.cost}`
+            );
+        };
+    });
+
+    docDefinition.content.push(
+        { text: ' ', margin: [0, 10] }, // Espacio entre los productos y otros datos
+        `Subtotal de la compra: USD ${subtotal}`,
+        `Costo de envío: USD ${costoEnvio}`,
+        `Valor total: USD ${totalCompra}`
+    );
+
+
+    docDefinition.content.push(
+        { text: ' ', margin: [0, 10] }, // Espacio entre los productos y otros datos
+        `Método de pago seleccionado: ${metodoDePago}`,
+        `Dirección de Envío: Calle: ${calleInput.value}, Esq: ${esquinaInput.value}, Num: ${numeroInput.value}.`
+    );
+
+    // Generar el PDF y mostrarlo en una nueva pestaña
+    var pdfDoc = pdfMake.createPdf(docDefinition);
+    pdfDoc.open(); //.download(Factura.pdf)
+};
 
 
 
