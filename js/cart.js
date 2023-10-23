@@ -1,5 +1,29 @@
 const productosCart = document.getElementById("productosCart");
 
+const metodoPagoSelect = document.getElementById('metodoPago');
+const metodoPagoTarjeta = document.getElementById('metodoPagoTarjeta');
+const metodoPagoTransferencia = document.getElementById('metodoPagoTransferencia');
+const textoMetodo = document.getElementById('metodoDePago')
+
+metodoPagoSelect.addEventListener('change', function () {
+    const selectedOption = metodoPagoSelect.value;
+
+    // Oculta todos los divs
+    metodoPagoTarjeta.style.display = 'none';
+    metodoPagoTransferencia.style.display = 'none';
+
+    // Muestra el div correspondiente al método de pago seleccionado
+    if (selectedOption === '1') {
+        metodoPagoTarjeta.style.display = 'block';
+        textoMetodo.innerText = 'Tarjeta de crédito';
+    } else if (selectedOption === '2') {
+        metodoPagoTransferencia.style.display = 'block';
+        textoMetodo.innerText = 'Transferencia bancaria';
+    } else if (selectedOption === '0') {
+        textoMetodo.innerText = 'Metodo de pago'
+    }
+});
+
 
 // Funcion que genera el carrito en base al array del carrito en localStorage
 
@@ -139,40 +163,9 @@ renderCart();
 costos();
 
 
-// Funcionalidad del modal
-const tarjetaDeCreditoInput = document.getElementById('tarjetaDeCredito');
-const transferenciaBancariaInput = document.getElementById('transferenciaBancaria');
-
-tarjetaDeCreditoInput.addEventListener('change', () => {
-    const tarjetaInput = document.getElementById('numeroTarjeta');
-    const codigoSegInput = document.getElementById('codigoSeg');
-    const vencimientoInput = document.getElementById('vencimiento');
-    const cuentaInput = document.getElementById('numeroCuenta');
-    const textoMetodoDePago = document.getElementById('metodoDePago');
-
-    textoMetodoDePago.innerHTML = "Tarjeta de Credito";
-    tarjetaInput.removeAttribute('disabled');
-    codigoSegInput.removeAttribute('disabled');
-    vencimientoInput.removeAttribute('disabled');
-    cuentaInput.setAttribute('disabled', 'true');
-});
-
-transferenciaBancariaInput.addEventListener('change', () => {
-    const cuentaInput = document.getElementById('numeroCuenta');
-    const tarjetaInput = document.getElementById('numeroTarjeta');
-    const codigoSegInput = document.getElementById('codigoSeg');
-    const vencimientoInput = document.getElementById('vencimiento');
-    const textoMetodoDePago = document.getElementById('metodoDePago');
-
-    textoMetodoDePago.innerHTML = "Transferencia Bancaria";
-    cuentaInput.removeAttribute('disabled');
-    tarjetaInput.setAttribute('disabled', 'true');
-    codigoSegInput.setAttribute('disabled', 'true');
-    vencimientoInput.setAttribute('disabled', 'true');
-});
-
-
 // Finalizar Compra - funcionalidad de boton y validacion de formulario
+
+
 const finalizarCompraBoton = document.getElementById('finalizarCompraBoton');
 
 finalizarCompraBoton.addEventListener('click', function () {
@@ -180,6 +173,7 @@ finalizarCompraBoton.addEventListener('click', function () {
     const numeroInput = document.getElementById('numero');
     const esquinaInput = document.getElementById('esquina');
     const formaEnvioInputs = document.querySelectorAll('input[name="opcion"]');
+    const FormaPago = document.getElementById('metodoPago');
     let formaEnvioSeleccionada = false;
     formaEnvioInputs.forEach(input => {
         if (input.checked) {
@@ -196,9 +190,6 @@ finalizarCompraBoton.addEventListener('click', function () {
             cantidadValida = true;
         }
     });
-
-    const tarjetaDeCreditoInput = document.getElementById('tarjetaDeCredito');
-    const transferenciaBancariaInput = document.getElementById('transferenciaBancaria');
 
     if (!cantidadValida) {
         Swal.fire({
@@ -218,13 +209,13 @@ finalizarCompraBoton.addEventListener('click', function () {
             text: 'Los campos de dirección no pueden estar vacíos.',
             icon: 'error',
         });
-    } else if (!(tarjetaDeCreditoInput.checked || transferenciaBancariaInput.checked)) {
+    } else if ((FormaPago.value == 0 || FormaPago.value == "")) {
         Swal.fire({
             title: 'Forma de pago no seleccionada',
             text: 'Debes seleccionar una forma de pago.',
             icon: 'error',
         });
-    } else if (tarjetaDeCreditoInput.checked) {
+    } else if (FormaPago.value == 1) {
         const numeroTarjetaInput = document.getElementById('numeroTarjeta');
         const codigoSegInput = document.getElementById('codigoSeg');
         const vencimientoInput = document.getElementById('vencimiento');
@@ -242,7 +233,7 @@ finalizarCompraBoton.addEventListener('click', function () {
             });
             cargarPDF()
         }
-    } else if (transferenciaBancariaInput.checked) {
+    } else if (FormaPago.value == 2) {
         const numeroCuentaInput = document.getElementById('numeroCuenta');
         if (numeroCuentaInput.value.trim() === '') {
             Swal.fire({
@@ -281,9 +272,9 @@ function cargarPDF() {
 
     var docDefinition = {
         content: [
-            { text: 'Factura', style: 'subheader', alignment: 'center'},
+            { text: 'Factura', style: 'subheader', alignment: 'center' },
             { text: ' ', margin: [0, 10] },
-            { text: 'Productos:', style: 'subheader'},
+            { text: 'Productos:', style: 'subheader' },
         ],
         styles: {
             subheader: {
