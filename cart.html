@@ -9,10 +9,12 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+
+
 </head>
 
 <body>
-  <div id="alertaCarritoVacio" class="alert alert-danger text-center" role="alert">
+  <div id="alertaCarritoVacio" style="display: none;" class="alert alert-danger text-center" role="alert">
     Su carrito se encuentra vacio, debe agregar productos al carrito para <a href="categories.html">realizar una
       compra</a>.
   </div>
@@ -207,6 +209,10 @@
       <div></div>
     </div>
   </div>
+  <!-- generar PDF con pdfmake -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/pdfmake.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/vfs_fonts.js"></script>
+
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="js/init.js"></script>

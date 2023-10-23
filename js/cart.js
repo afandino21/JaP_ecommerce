@@ -259,3 +259,31 @@ finalizarCompraBoton.addEventListener('click', function () {
     }
 });
 
+
+// Función para generar el PDF
+document.getElementById("finalizarCompraBoton").addEventListener("click", function () {
+
+    const storedInfo = localStorage.getItem('productInfo');
+    const savedInfoArray = JSON.parse(storedInfo);
+    console.log(savedInfoArray)
+
+    // Definir el contenido del documento en JavaScript
+    var docDefinition = {
+        content: [
+            { text: 'Mi Documento PDF', style: 'header' },
+            'Este es un ejemplo de cómo generar un PDF con PDFMake.',
+        ],
+        styles: {
+            header: {
+                fontSize: 18,
+                bold: true
+            }
+        }
+    };
+    // Generar el PDF y descargarlo
+    pdfMake.createPdf(docDefinition).open();//.download("mi_archivo.pdf");
+
+});
+
+
+
