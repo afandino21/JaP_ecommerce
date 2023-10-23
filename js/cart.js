@@ -1,13 +1,16 @@
 const productosCart = document.getElementById("productosCart");
 
+
+// Funcion que genera el carrito en base al array del carrito en localStorage
+
 function renderCart() {
     const storedInfo = localStorage.getItem('productInfo');
     const savedInfoArray = JSON.parse(storedInfo);
     const longitud = savedInfoArray.length
     const contenidoCart = document.getElementById("contenidoCart");
     const alertaCarritoVacio = document.getElementById("alertaCarritoVacio");
-    
-    if (longitud === 0){
+
+    if (longitud === 0) {
         contenidoCart.style.display = "none";
         alertaCarritoVacio.style.display = "block";
     } else {
@@ -16,11 +19,11 @@ function renderCart() {
     };
 
     let html = '';
-    
+
 
 
     savedInfoArray.forEach((item, index) => {
-        const cantidad = 1;
+        const cantidad = item.cartCount;
         const costo = item.cost;
         const subtotal = cantidad * costo;
 
@@ -41,7 +44,7 @@ function renderCart() {
     const cantidadInputs = document.querySelectorAll('.cantidad-input');
     cantidadInputs.forEach(input => {
         input.addEventListener('input', () => {
-            actualizarSubtotal(input, savedInfoArray);
+            actualizarCantProducto(input, savedInfoArray);
         });
     });
 
@@ -56,7 +59,10 @@ function renderCart() {
     });
 }
 
-function actualizarSubtotal(input, savedInfoArray) {
+// Actualizar cantidad de un producto en el carrito y el subtotal en la linea del carrito
+
+function actualizarCantProducto(input, savedInfoArray) {
+
     const index = input.getAttribute('data-index');
     const cantidad = parseInt(input.value);
     const item = savedInfoArray[index];
@@ -64,26 +70,23 @@ function actualizarSubtotal(input, savedInfoArray) {
     const subtotalElement = input.parentElement.nextElementSibling.querySelector('.subtotal-td');
     const subtotal = cantidad * costo;
     subtotalElement.textContent = `${subtotal} ${item.currency}`;
+
+    item.cartCount = cantidad;
+    actualizarLocalStorage(savedInfoArray);
+    costos();
+    containerCostos()
 }
 
 function actualizarLocalStorage(array) {
     localStorage.setItem('productInfo', JSON.stringify(array));
 }
 
+
+// Calculo de subtotal / costo de envio / total de la compra
 let productos = JSON.parse(localStorage.getItem('productInfo'));
 let subtotal = 0;
 let costoEnvio = 0;
-
-function costos() {
-    productos.forEach(producto => {
-        if (producto.currency == 'USD') {
-            subtotal += producto.cost;
-        } else {
-            subtotal += Math.round(producto.cost / 40);
-        }
-        containerSubtotal.innerHTML = `USD ${subtotal}`;
-    });
-}
+let descuento = 0;
 
 let opcionPremium = document.getElementById('opcionPremium');
 let opcionExpress = document.getElementById('opcionExpress');
@@ -92,29 +95,51 @@ let containerSubtotal = document.getElementById('containerSubtotal');
 let containerEnvio = document.getElementById('containerEnvio');
 let containerTotal = document.getElementById('containerTotal');
 
-function containerCostos() {
-    containerEnvio.innerHTML = `USD ${costoEnvio}`;
-    containerTotal.innerHTML = `USD ${subtotal + costoEnvio}`;
-}
 
 opcionPremium.addEventListener('click', function () {
-    costoEnvio = Math.round(subtotal * 0.15);
+    descuento = 0.15;
     containerCostos();
 });
 
 opcionExpress.addEventListener('click', function () {
-    costoEnvio = Math.round(subtotal * 0.07);
+    descuento = 0.07;
     containerCostos();
 });
 
 opcionStandard.addEventListener('click', function () {
-    costoEnvio = Math.round(subtotal * 0.05);
+    descuento = 0.05;
     containerCostos();
 });
 
+
+// funcion costos calcula el subtotal de la compra
+function costos() {
+    productos = JSON.parse(localStorage.getItem('productInfo'));
+    subtotal = 0;
+    productos.forEach(producto => {
+        if (producto.currency == 'USD') {
+            subtotal += producto.cost * producto.cartCount;
+        } else {
+            subtotal += Math.round(producto.cost / 40) * producto.cartCount;
+        }
+        containerSubtotal.innerHTML = `USD ${subtotal}`;
+    });
+}
+
+// Funcion que actualiza el valor del costo de envio y el total de compra
+function containerCostos() {
+
+    costoEnvio = Math.round(subtotal * descuento);
+    containerEnvio.innerHTML = `USD ${costoEnvio}`;
+    containerTotal.innerHTML = `USD ${subtotal + costoEnvio}`;
+}
+
+// Se genera el carrito y se calcula el subtotal
 renderCart();
 costos();
 
+
+// Funcionalidad del modal
 const tarjetaDeCreditoInput = document.getElementById('tarjetaDeCredito');
 const transferenciaBancariaInput = document.getElementById('transferenciaBancaria');
 
@@ -146,6 +171,8 @@ transferenciaBancariaInput.addEventListener('change', () => {
     vencimientoInput.setAttribute('disabled', 'true');
 });
 
+
+// Finalizar Compra - funcionalidad de boton y validacion de formulario
 const finalizarCompraBoton = document.getElementById('finalizarCompraBoton');
 
 finalizarCompraBoton.addEventListener('click', function () {
@@ -161,7 +188,7 @@ finalizarCompraBoton.addEventListener('click', function () {
     });
 
     const cantidadInputs = document.querySelectorAll('.cantidad-input');
-    
+
 
     let cantidadValida = false;
     cantidadInputs.forEach(input => {
@@ -173,12 +200,12 @@ finalizarCompraBoton.addEventListener('click', function () {
     const tarjetaDeCreditoInput = document.getElementById('tarjetaDeCredito');
     const transferenciaBancariaInput = document.getElementById('transferenciaBancaria');
 
-    if  (!cantidadValida) {
-            Swal.fire({
-                title: 'Carrito vacío',
-                text: 'La cantidad de productos en el carrito debe ser mayor a 0.',
-                icon: 'error',
-            });
+    if (!cantidadValida) {
+        Swal.fire({
+            title: 'Carrito vacío',
+            text: 'La cantidad de productos en el carrito debe ser mayor a 0.',
+            icon: 'error',
+        });
     } else if (!formaEnvioSeleccionada) {
         Swal.fire({
             title: 'Forma de envío no seleccionada',

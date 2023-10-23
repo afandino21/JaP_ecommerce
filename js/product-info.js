@@ -236,8 +236,8 @@ document.getElementById('saveButton').addEventListener('click', () => {
 
             if (!isProductInArray) {
                 // Verifica si el nombre del producto es "Peugeot 208"
-                if (productInfo){
-
+                if (productInfo) {
+                    productInfo.cartCount = 1;
                     savedInfoArray.push(productInfo);
 
                     // Guarda el array actualizado en localStorage
