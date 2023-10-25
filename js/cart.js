@@ -110,7 +110,7 @@ function actualizarLocalStorage(array) {
 let productos = JSON.parse(localStorage.getItem('productInfo'));
 let subtotal = 0;
 let costoEnvio = 0;
-let descuento = 0;
+let porcentajeCostoEnvio = 0;
 
 let opcionPremium = document.getElementById('opcionPremium');
 let opcionExpress = document.getElementById('opcionExpress');
@@ -121,17 +121,17 @@ let containerTotal = document.getElementById('containerTotal');
 
 
 opcionPremium.addEventListener('click', function () {
-    descuento = 0.15;
+    porcentajeCostoEnvio = 0.15;
     containerCostos();
 });
 
 opcionExpress.addEventListener('click', function () {
-    descuento = 0.07;
+    porcentajeCostoEnvio = 0.07;
     containerCostos();
 });
 
 opcionStandard.addEventListener('click', function () {
-    descuento = 0.05;
+    porcentajeCostoEnvio = 0.05;
     containerCostos();
 });
 
@@ -153,7 +153,7 @@ function costos() {
 // Funcion que actualiza el valor del costo de envio y el total de compra
 function containerCostos() {
 
-    costoEnvio = Math.round(subtotal * descuento);
+    costoEnvio = Math.round(subtotal * porcentajeCostoEnvio);
     containerEnvio.innerHTML = `USD ${costoEnvio}`;
     containerTotal.innerHTML = `USD ${subtotal + costoEnvio}`;
 }
@@ -163,8 +163,18 @@ renderCart();
 costos();
 
 
-// Finalizar Compra - funcionalidad de boton y validacion de formulario
+// Funcion para reescribir input de MM/AA de la fecha de vencimiento
+const input = document.getElementById('vencimiento');
 
+input.addEventListener("input", () => {
+    let value = input.value.replace(/\D/g, ""); // Elimina todos los caracteres que no sean dígitos
+    if (value.length > 2) {
+        value = value.substring(0, 2) + "/" + value.substring(2); // Agrega una barra después de los primeros dos dígitos
+    }
+    input.value = value;
+});
+
+// Finalizar Compra - funcionalidad de boton y validacion de formulario
 
 const finalizarCompraBoton = document.getElementById('finalizarCompraBoton');
 
@@ -247,6 +257,8 @@ finalizarCompraBoton.addEventListener('click', function () {
                 text: '¡Gracias por tu compra!',
                 icon: 'success',
             });
+
+
             cargarPDF()
         }
     }
@@ -267,7 +279,7 @@ function cargarPDF() {
     savedInfoArray.forEach(item => {
         subtotal += item.cost * item.cartCount;
     });
-    const costoEnvio = Math.round(subtotal * descuento);
+    const costoEnvio = Math.round(subtotal * porcentajeCostoEnvio);
     const totalCompra = subtotal + costoEnvio;
 
     var docDefinition = {
@@ -309,8 +321,11 @@ function cargarPDF() {
 
     // Generar el PDF y mostrarlo en una nueva pestaña
     var pdfDoc = pdfMake.createPdf(docDefinition);
-    pdfDoc.open(); //.download(Factura.pdf)
+
+
+
+    setTimeout(() => {
+
+        pdfDoc.open(); //.download(Factura.pdf)
+    }, 2000);
 };
-
-
-
