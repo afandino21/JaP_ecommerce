@@ -182,7 +182,7 @@ const finalizarCompraBoton = document.getElementById('finalizarCompraBoton');
 
 finalizarCompraBoton.addEventListener('click', function () {
     const calleInput = document.getElementById('calle');
-    const numeroInput = document.getElementById('numero');
+    const numeroInput = document.getElementById('número');
     const esquinaInput = document.getElementById('esquina');
     const formaEnvioInputs = document.querySelectorAll('input[name="opcion"]');
     const FormaPago = document.getElementById('metodoPago');
