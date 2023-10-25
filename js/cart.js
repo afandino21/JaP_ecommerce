@@ -5,6 +5,8 @@ const metodoPagoTarjeta = document.getElementById('metodoPagoTarjeta');
 const metodoPagoTransferencia = document.getElementById('metodoPagoTransferencia');
 const textoMetodo = document.getElementById('metodoDePago')
 
+
+// Funcionalidad del select para Metodo de Pago
 metodoPagoSelect.addEventListener('change', function () {
     const selectedOption = metodoPagoSelect.value;
 
