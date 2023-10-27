@@ -6,26 +6,6 @@ const metodoPagoTransferencia = document.getElementById('metodoPagoTransferencia
 const textoMetodo = document.getElementById('metodoDePago')
 
 
-// Funcionalidad del select para Metodo de Pago
-metodoPagoSelect.addEventListener('change', function () {
-    const selectedOption = metodoPagoSelect.value;
-
-    // Oculta todos los divs
-    metodoPagoTarjeta.style.display = 'none';
-    metodoPagoTransferencia.style.display = 'none';
-
-    // Muestra el div correspondiente al método de pago seleccionado
-    if (selectedOption === '1') {
-        metodoPagoTarjeta.style.display = 'block';
-        textoMetodo.innerText = 'Tarjeta de crédito';
-    } else if (selectedOption === '2') {
-        metodoPagoTransferencia.style.display = 'block';
-        textoMetodo.innerText = 'Transferencia bancaria';
-    } else if (selectedOption === '0') {
-        textoMetodo.innerText = 'Metodo de pago'
-    }
-});
-
 
 // Funcion que genera el carrito en base al array del carrito en localStorage
 
@@ -165,6 +145,27 @@ renderCart();
 costos();
 
 
+// Funcionalidad del select para Metodo de Pago
+metodoPagoSelect.addEventListener('change', function () {
+    const selectedOption = metodoPagoSelect.value;
+
+    // Oculta todos los divs
+    metodoPagoTarjeta.style.display = 'none';
+    metodoPagoTransferencia.style.display = 'none';
+
+    // Muestra el div correspondiente al método de pago seleccionado
+    if (selectedOption === '1') {
+        metodoPagoTarjeta.style.display = 'block';
+        textoMetodo.innerText = 'Tarjeta de crédito';
+    } else if (selectedOption === '2') {
+        metodoPagoTransferencia.style.display = 'block';
+        textoMetodo.innerText = 'Transferencia bancaria';
+    } else if (selectedOption === '0') {
+        textoMetodo.innerText = 'Metodo de pago'
+    }
+});
+
+
 // Funcion para reescribir input de MM/AA de la fecha de vencimiento
 const input = document.getElementById('vencimiento');
 
@@ -175,6 +176,7 @@ input.addEventListener("input", () => {
     }
     input.value = value;
 });
+
 
 // Finalizar Compra - funcionalidad de boton y validacion de formulario
 
