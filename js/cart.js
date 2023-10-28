@@ -165,6 +165,19 @@ metodoPagoSelect.addEventListener('change', function () {
     }
 });
 
+//Se agrega funcionalidad para codigo de tarjeta menor a 3 caracteres y número de tarjeta igula a 16 números.
+
+document.getElementById("codigoSeg").addEventListener("input", function () {
+    if (this.value.length > 3) {
+        this.value = this.value.slice(0, 3); // Limitar a 16 caracteres
+    }
+})
+
+document.getElementById("numeroTarjeta").addEventListener("input", function () {
+    if (this.value.length > 16) {
+        this.value = this.value.slice(0, 16); // Limitar a 16 caracteres
+    }
+});
 
 // Funcion para reescribir input de MM/AA de la fecha de vencimiento
 const input = document.getElementById('vencimiento');
