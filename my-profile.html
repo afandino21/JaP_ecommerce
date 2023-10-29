@@ -51,7 +51,7 @@
                             <a href="cart.html">Mi Carrito</a>
                             <a href="my-profile.html">Mi Perfil</a>
                             <a onclick="cerrarSesion()" href="login.html">Cerrar Sesión</a>
-                           <center><button id="modoBoton">☼</button></center>
+                            <center><button id="modoBoton">☼</button></center>
                         </div>
                     </div>
                 </li>
@@ -61,9 +61,32 @@
 </nav>
   <main>
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-      </div>
+      <h2 id="userTitle">Perfil del usuario.</h2>
+        <div class="row g-3">
+          <div class="col col-md-6">
+            <label for="Primer nombre">Primer nombre</label>
+            <input type="text" class="form-control" aria-label="Primer nombre">
+            <br>
+            <label for="Segundo nombre">Segundo nombre</label>
+            <input type="text" class="form-control" aria-label="Segundo nombre">
+            <br>
+            <label for="Primer apellido">Primer apellido</label>
+            <input type="text" class="form-control" aria-label="Primer apellido">
+            <br>
+            <label for="Segundo apellido">Segundo apellido</label>
+            <input type="text" class="form-control" aria-label="Segundo apellido">
+            <br>
+            <label for="Email">Email</label>
+            <input type="text" class="form-control" aria-label="e-mail">
+            <br>
+            <label for="Telefono">Telefono de contacto</label>
+            <input type="tel" class="form-control" aria-label="Telefono">
+          </div>
+          <div class="col col-md-6">
+            <p>Estaba pensando en usar esta segunda columna solo para la foto de perfil, en lugar de que sea pequeña. Pero como quieran ustedes, esto es solo para gilear un poco y desestresarme. Buenas noches</p>
+            </div>
+          </div>
+        </div>
     </div>
   </main>
   <footer class="text-muted">
