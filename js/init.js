@@ -54,7 +54,7 @@ function verificarAutenticacion() {
 
     console.log("El usuario no está autenticado.");
 
-    setTimeout(irAlLogin, 2500);
+    setTimeout(irAlLogin, 500);
 
   }
 }
@@ -89,6 +89,7 @@ function cambiarInPorOut() {
 function cerrarSesion() {
   localStorage.setItem("logueado", "false");
 }
+
 
 
 // Función para cambiar el modo (claro u oscuro)

@@ -8,86 +8,73 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
-  <style>
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
-
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-      }
-    }
-  </style>
 </head>
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light p-1">
     <div class="container">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav w-100 justify-content-between">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html">Inicio</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="categories.html">Categorías</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="sell.html">Vender</a>
-                </li>
-                <li class="nav-item">
-                    <div id="menu" class="dropdown">
-                        <button class="custom-link"></button>
-                        <div class="dropdown-content">
-                            <a href="cart.html">Mi Carrito</a>
-                            <a href="my-profile.html">Mi Perfil</a>
-                            <a onclick="cerrarSesion()" href="login.html">Cerrar Sesión</a>
-                            <center><button id="modoBoton">☼</button></center>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-  <main>
-    <div class="container">
-      <h2 id="userTitle">Perfil del usuario.</h2>
-        <div class="row g-3">
-          <div class="col col-md-6">
-            <label for="Primer nombre">Primer nombre</label>
-            <input type="text" class="form-control" aria-label="Primer nombre">
-            <br>
-            <label for="Segundo nombre">Segundo nombre</label>
-            <input type="text" class="form-control" aria-label="Segundo nombre">
-            <br>
-            <label for="Primer apellido">Primer apellido</label>
-            <input type="text" class="form-control" aria-label="Primer apellido">
-            <br>
-            <label for="Segundo apellido">Segundo apellido</label>
-            <input type="text" class="form-control" aria-label="Segundo apellido">
-            <br>
-            <label for="Email">Email</label>
-            <input type="text" class="form-control" aria-label="e-mail">
-            <br>
-            <label for="Telefono">Telefono de contacto</label>
-            <input type="tel" class="form-control" aria-label="Telefono">
-          </div>
-          <div class="col col-md-6">
-            <p>Estaba pensando en usar esta segunda columna solo para la foto de perfil, en lugar de que sea pequeña. Pero como quieran ustedes, esto es solo para gilear un poco y desestresarme. Buenas noches</p>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav w-100 justify-content-between">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="categories.html">Categorías</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="sell.html">Vender</a>
+          </li>
+          <li class="nav-item">
+            <div id="menu" class="dropdown">
+              <button class="custom-link"></button>
+              <div class="dropdown-content">
+                <a href="cart.html">Mi Carrito</a>
+                <a href="my-profile.html">Mi Perfil</a>
+                <a onclick="cerrarSesion()" href="login.html">Cerrar Sesión</a>
+                <center><button id="modoBoton">☼</button></center>
+              </div>
             </div>
-          </div>
-        </div>
+          </li>
+        </ul>
+      </div>
     </div>
+  </nav>
+  <main>
+    <div id="profileInput" class="container">
+      <h2 id="userTitle">Perfil del usuario.</h2>
+      <div class="row g-3">
+        <div class="col col-md-6">
+          <label for="Primer nombre">Primer nombre</label>
+          <input id="inputNombre" type="text" class="form-control" aria-label="Primer nombre" required>
+          <br>
+          <label for="Segundo nombre">Segundo nombre</label>
+          <input id="inputSegundoNombre" type="text" class="form-control" aria-label="Segundo nombre" required>
+          <br>
+          <label for="Primer apellido">Primer apellido</label>
+          <input id="inputApellido" type="text" class="form-control" aria-label="Primer apellido" required>
+          <br>
+          <label for="Segundo apellido">Segundo apellido</label>
+          <input id="inputSegundoApellido" type="text" class="form-control" aria-label="Segundo apellido" required>
+          <br>
+          <label for="Email">Email</label>
+          <input id="inputEmail" type="text" class="form-control" aria-label="e-mail" required>
+          <br>
+          <label for="Telefono">Telefono de contacto</label>
+          <input id="inputNumCelular" type="tel" class="form-control" aria-label="Telefono" required>
+          <button id="guardarPerfil" class="btn btn-success m-5">Guardar Perfil</button>
+        </div>
+        <div class="col col-md-6">
+          <div id="profilePicture" class="col-12 col-sm-6 col-md-4 col-lg-6 mt-5" style="margin: 0 auto;"></div>
+        </div>
+      </div>
+
+      <div id="profile">
+
+      </div>
   </main>
   <footer class="text-muted">
     <div class="container">
@@ -99,6 +86,7 @@
     </div>
   </footer>
   <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="js/init.js"></script>
   <script src="js/my-profile.js"></script>
 </body>
