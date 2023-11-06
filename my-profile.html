@@ -45,32 +45,45 @@
   </nav>
   <main>
     <div id="profileInput" class="container">
-      <h2 id="userTitle">Perfil del usuario.</h2>
-      <div class="row g-3">
-        <div class="col col-md-6">
-          <label for="Primer nombre">Primer nombre</label>
-          <input id="inputNombre" type="text" class="form-control" aria-label="Primer nombre" required>
-          <br>
-          <label for="Segundo nombre">Segundo nombre</label>
-          <input id="inputSegundoNombre" type="text" class="form-control" aria-label="Segundo nombre" required>
-          <br>
-          <label for="Primer apellido">Primer apellido</label>
-          <input id="inputApellido" type="text" class="form-control" aria-label="Primer apellido" required>
-          <br>
-          <label for="Segundo apellido">Segundo apellido</label>
-          <input id="inputSegundoApellido" type="text" class="form-control" aria-label="Segundo apellido" required>
-          <br>
-          <label for="Email">Email</label>
-          <input id="inputEmail" type="text" class="form-control" aria-label="e-mail" required>
-          <br>
-          <label for="Telefono">Telefono de contacto</label>
-          <input id="inputNumCelular" type="tel" class="form-control" aria-label="Telefono" required>
-          <button id="guardarPerfil" class="btn btn-success m-5">Guardar Perfil</button>
-        </div>
+      <h2 id="userTitle" class="text-center mt-5">Perfil del usuario.</h2>
+
+
+          <div class="row">
+            <div class="col-md-6 my-2">
+              <input id="inputNombre" type="text" class="form-control" aria-label="Primer nombre" placeholder="nombre" required>
+            </div>
+          
+            <div class="col-md-6 my-2">
+              <input id="inputSegundoNombre" type="text" class="form-control" aria-label="Segundo nombre" placeholder="segundo nombre" required>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-md-6 my-2">
+              <input id="inputApellido" type="text" class="form-control" aria-label="Primer apellido" placeholder="apellido" required>
+            </div>
+          
+            <div class="col-md-6 my-2">
+              <input id="inputSegundoApellido" type="text" class="form-control" aria-label="Segundo apellido" placeholder="segundo apellido" required>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-md-6 my-2">
+              <input id="inputEmail" type="text" class="form-control" aria-label="e-mail" placeholder="email" required>
+            </div>
+          
+            <div class="col-md-6 my-2">
+              <input id="inputNumCelular" type="tel" class="form-control" aria-label="Telefono" placeholder="numero de telefono" required>
+            </div>
+          <center><button id="guardarPerfil" class="btn btn-success w-25 mt-3">Guardar Perfil</button></center>
+
+
         <div class="col col-md-6">
           <div id="profilePicture" class="col-12 col-sm-6 col-md-4 col-lg-6 mt-5" style="margin: 0 auto;"></div>
         </div>
       </div>
+
 
       <div id="profile">
 
