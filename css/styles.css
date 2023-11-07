@@ -688,4 +688,9 @@ table{
 
 /* PERFIL */
 
-
+#profileImage {
+  width: 200px; /* Ancho deseado */
+  height: 200px; /* Altura deseada */
+  border-radius: 100px;
+  overflow: hidden;
+}
