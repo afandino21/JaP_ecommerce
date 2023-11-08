@@ -43,9 +43,9 @@ function mostrarValoresDesdeLocalStorage(event) {
             title: 'Su email debe contener @',
             icon: 'error',
         });
-    } else if (inputNumCelular.value.trim() === '') {
+    } else if (inputNumCelular.value.trim() === '' || isNaN(inputNumCelular.value)) {
         Swal.fire({
-            title: 'Debe ingresar un numero de celular',
+            title: 'Debe ingresar un número de telefono valido',
             icon: 'error',
         });
     } else {
@@ -100,17 +100,17 @@ function cargarDatos() {
             segundoApellido: '',
             email: '',
             numCelular: '',
-            imagenURL: '',
+            imagenURL: 'https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG-Free-Download.png',
         }
     }
 
-    inputNombre.value = datosToString.nombre
-    inputSegundoNombre.value = datosToString.segundoNombre
-    inputApellido.value = datosToString.apellido
-    inputSegundoApellido.value = datosToString.segundoApellido
+    inputNombre.value = datosToString.nombre;
+    inputSegundoNombre.value = datosToString.segundoNombre;
+    inputApellido.value = datosToString.apellido;
+    inputSegundoApellido.value = datosToString.segundoApellido;
     inputEmail.value = email;
-    inputNumCelular.value = datosToString.numCelular
-    profileImage.src = datosToString.imagenURL
+    inputNumCelular.value = datosToString.numCelular;
+    profileImage.src = datosToString.imagenURL;
 }
 
 // funcionalidad para la imagen de perfil
