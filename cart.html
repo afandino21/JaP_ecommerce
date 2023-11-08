@@ -9,8 +9,6 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
-
-
 </head>
 
 <body>
@@ -62,13 +60,10 @@
             <th>Cantidad</th>
             <th>Subtotal</th>
             <th></th>
-
           </tr>
         </thead>
         <tfoot id="productosCart"></tfoot>
-
       </table>
-
       <form action="" method="post" class="formaEnvio">
         <br>
         <div>
@@ -92,7 +87,6 @@
             </label>
           </div>
         </div>
-
         <div class="row g-3">
           <br>
           <h3>Dirección de envío:</h3>
@@ -110,12 +104,10 @@
           </div>
         </div>
       </form>
-
       <hr>
       <div class="row g-3">
         <h3 style="font-family: var(--bs-font-sans-serif);">Costos</h3>
         <div class="container">
-
           <div class="row border border-secondary py-3">
             <div class="col-sm">
               <p>Subtotal <span id="containerSubtotal" class="right"></span></p>
@@ -123,14 +115,12 @@
               <span id="containerSubtotal"></span>
             </div>
           </div>
-
           <div class="row border border-secondary py-3">
             <div class="col-sm">
               <p>Costo de envío <span id="containerEnvio" class="right">USD ---</span></p>
               <p class="text-muted">Según el tipo de envío</p>
             </div>
           </div>
-
           <div class="row border border-secondary py-3">
             <div class="col-sm">
               <p>Total($) <span id="containerTotal" class="right">USD ---</span></p>
@@ -149,7 +139,6 @@
               <button type="button" id="finalizarCompraBoton" class="btn btn-lg btn-light">Finalizar compra</button>
             </div>
           </div>
-
           <div class="modal fade" id="modalTerminos" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
@@ -179,7 +168,6 @@
                       <label for="numeroTarjeta">Vencimiento (MM/AA)</label><br>
                       <input type="text" class="form-control hide-arrows" id="vencimiento">
                     </div>
-
                   </div>
                   <div id="metodoPagoTransferencia" style="display: none;">
                     <!-- Campos para transferencia bancaria: número de cuenta -->
@@ -212,10 +200,10 @@
       <div></div>
     </div>
   </div>
+  <!-- -------SCRIPTS------- -->
   <!-- generar PDF con pdfmake -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/pdfmake.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/vfs_fonts.js"></script>
-
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="js/init.js"></script>

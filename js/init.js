@@ -90,8 +90,6 @@ function cerrarSesion() {
   localStorage.setItem("logueado", "false");
 }
 
-
-
 // Función para cambiar el modo (claro u oscuro)
 function cambiarModo() {
   const navbar = document.querySelector('.navbar');
@@ -102,7 +100,6 @@ function cambiarModo() {
     // Cambia a modo claro
     bodyElements.style.background = 'white';
     bodyElements.style.color = 'black';
-    bodyElements.style.transition = 'background 0.8s ease, color 0.8s ease';
     navbar.classList.remove('navbar-dark', 'bg-dark');
     navbar.classList.add('navbar-light', 'bg-light');
     botonModo.innerText = '☼';
@@ -110,7 +107,6 @@ function cambiarModo() {
     // Cambia a modo oscuro
     bodyElements.style.background = 'hsl(210, 20%, 20%)';
     bodyElements.style.color = 'white';
-    bodyElements.style.transition = 'background 0.8s ease, color 0.8s ease';
     navbar.classList.remove('navbar-light', 'bg-light');
     navbar.classList.add('navbar-dark', 'bg-dark');
     botonModo.textContent = '☾';

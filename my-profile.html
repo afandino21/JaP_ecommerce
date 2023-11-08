@@ -49,20 +49,22 @@
 
       <center>
         <div class="custom-file">
-          <img src="https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG-Free-Download.png" alt="Profile Photo"
-            class="img-rounded mt-3" id="profileImage">
+          <img src="" alt="Profile Photo" class="img-rounded mt-3" id="profileImage">
           <input type="file" id="imageInput" accept="image/*" style="display: none;"><br>
-          <button id="changeImageBtn" class="btn btn-secondary mt-2">Cambiar Imagen</button>
+          <button id="changeImageBtn" class="btn btn-light mt-2">Cambiar Imagen</button>
+          <button id="deletImageBtn" class="btn btn-light mt-2">X</button>
         </div>
       </center>
 
       <div class="row">
         <div class="col-md-6 my-2">
+          <label for="inputNombre" class="">Nombre:</label>
           <input id="inputNombre" type="text" class="form-control" aria-label="Primer nombre" placeholder="nombre"
             required>
         </div>
 
         <div class="col-md-6 my-2">
+          <label for="inputSegundoNombre" class="">Segundo nombre:</label>
           <input id="inputSegundoNombre" type="text" class="form-control" aria-label="Segundo nombre"
             placeholder="segundo nombre" required>
         </div>
@@ -70,11 +72,13 @@
 
       <div class="row">
         <div class="col-md-6 my-2">
+          <label for="inputApellido" class="">Apellido:</label>
           <input id="inputApellido" type="text" class="form-control" aria-label="Primer apellido" placeholder="apellido"
             required>
         </div>
 
         <div class="col-md-6 my-2">
+          <label for="inputSegundoApellido" class="">Segundo apellido:</label>
           <input id="inputSegundoApellido" type="text" class="form-control" aria-label="Segundo apellido"
             placeholder="segundo apellido" required>
         </div>
@@ -82,16 +86,19 @@
 
       <div class="row">
         <div class="col-md-6 my-2">
+          <label for="inputEmail" class="">Correo:</label>
           <input id="inputEmail" type="text" class="form-control" aria-label="e-mail" placeholder="email" required>
         </div>
 
         <div class="col-md-6 my-2">
+          <label for="inputNumCelular" class="">Teléfono:</label>
           <input id="inputNumCelular" type="tel" class="form-control" aria-label="Telefono"
             placeholder="numero de telefono" required>
         </div>
-
-        <center><button id="guardarPerfil" class="btn btn-success mt-3">Guardar Perfil</button></center>
       </div>
+      <center><button id="guardarPerfil" class="btn btn-success mt-3">Guardar Perfil</button></center>
+
+    </div>
   </main>
   <footer class="text-muted">
     <div class="container">
@@ -102,6 +109,7 @@
       </p>
     </div>
   </footer>
+  <!-- -------SCRIPTS------- -->
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="js/init.js"></script>

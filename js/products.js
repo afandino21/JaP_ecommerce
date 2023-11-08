@@ -26,33 +26,27 @@ function loadProducts() {
         currentSort = 'asc';
         applyFiltersAndSort(products);
       });
-
       sortDescButton.addEventListener('click', () => {
         currentSort = 'desc';
         applyFiltersAndSort(products);
       });
-
       sortByCountButton.addEventListener('click', () => {
         currentSort = 'count';
         applyFiltersAndSort(products);
       });
-
       rangeFilterCountButton.addEventListener('click', () => {
         priceRangeMin = parseFloat(document.getElementById('rangeFilterCountMin').value) || 0;
         priceRangeMax = parseFloat(document.getElementById('rangeFilterCountMax').value) || Infinity;
         applyFiltersAndSort(products);
       });
-
       clearRangeFilterButton.addEventListener('click', () => {
         priceRangeMin = null;
         priceRangeMax = null;
         applyFiltersAndSort(products);
       });
-
       productNameInput.addEventListener('input', () => {
         applyFiltersAndSort(products);
       });
-
       applyFiltersAndSort(products);
     })
     .catch(error => {

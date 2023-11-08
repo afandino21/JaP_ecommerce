@@ -1,3 +1,7 @@
+cargarDatos()
+document.getElementById("guardarPerfil").addEventListener("click", mostrarValoresDesdeLocalStorage)
+document.getElementById("deletImageBtn").addEventListener("click", borrarImagen)
+
 // Función para mostrar los valores almacenados en el localStorage en la consola
 function mostrarValoresDesdeLocalStorage(event) {
     event.preventDefault();
@@ -77,6 +81,7 @@ function mostrarValoresDesdeLocalStorage(event) {
             title: 'Datos guardados correctamente',
             icon: 'success',
         });
+
     }
 
 }
@@ -145,9 +150,24 @@ imageInput.addEventListener("change", () => {
     }
 });
 
-cargarDatos()
-document.getElementById("guardarPerfil").addEventListener("click", mostrarValoresDesdeLocalStorage)
+function borrarImagen() {
+    // Crear un objeto con los valores
+    const datosGuardados = localStorage.getItem("datosGuardados");
+    let datosToString = JSON.parse(datosGuardados)
+    if (datosToString.imageURL !== "https://cdn.drawception.com/images/panels/2017/12-27/sKB3FyFYpX-2.png") {
+        const email = localStorage.getItem("username");
+        const datos = {
+            nombre: datosToString.nombre,
+            segundoNombre: datosToString.segundoNombre,
+            apellido: datosToString.apellido,
+            segundoApellido: datosToString.segundoApellido,
+            email: email,
+            numCelular: datosToString.numCelular,
+            imagenURL: "https://cdn.drawception.com/images/panels/2017/12-27/sKB3FyFYpX-2.png",
 
-
-
-
+        };
+        location.reload()
+        // Guardar el objeto en el localStorage
+        localStorage.setItem("datosGuardados", JSON.stringify(datos));
+    }
+}
