@@ -1,6 +1,4 @@
 function borrarDatosPerfil() {
-    // Crear un objeto con los valores
-
     const email = localStorage.getItem("username");
     const datos = {
         nombre: "",
@@ -10,12 +8,11 @@ function borrarDatosPerfil() {
         email: email,
         numCelular: "",
         imagenURL: "https://cdn.drawception.com/images/panels/2017/12-27/sKB3FyFYpX-2.png",
-
     };
-    // Guardar el objeto en el localStorage
     localStorage.setItem("datosGuardados", JSON.stringify(datos));
 }
-borrarDatosPerfil()
+
+borrarDatosPerfil();
 
 function verificarAutenticacion() {
     var logueado = localStorage.getItem("logueado");
@@ -25,51 +22,43 @@ function verificarAutenticacion() {
     var eliminar = document.getElementById("eliminar");
 
     if (logueado === "true") {
-
         console.log("El usuario está autenticado.");
         aviso.textContent = "Te encuentras logueado actualmente.";
-        botonIn.parentNode.removeChild(botonIn);
-        eliminar.textContent = ""
-
+        botonIn?.parentNode?.removeChild(botonIn);
+        eliminar.textContent = "";
     } else {
-
         console.log("El usuario no está autenticado.");
-        aviso.textContent = "Debes loguearte para acceder a la pagina."
-        botonOut.parentNode.removeChild(botonOut);
-
+        aviso.textContent = "Debes loguearte para acceder a la pagina.";
+        botonOut?.parentNode?.removeChild(botonOut);
     }
 }
+
 document.addEventListener('DOMContentLoaded', function () {
-
     verificarAutenticacion();
-
 });
 
 function mostrarMensaje(mensaje, exito) {
-
     var cartelPasa = document.getElementById('cartelYes');
     var cartelNoPasa = document.getElementById('cartelNo');
-    var isCartelPasaVisible = true;
     var cartel = exito ? cartelPasa : cartelNoPasa;
     var otroCartel = exito ? cartelNoPasa : cartelPasa;
 
     cartel.textContent = mensaje;
     cartel.style.display = 'block';
     otroCartel.style.display = 'none';
-
-    isCartelPasaVisible = exito;
-};
+}
 
 function exito() {
-    mostrarMensaje('Inicio de sesión realizado correctamente', false)
-};
+    mostrarMensaje('Inicio de sesión realizado correctamente', false);
+}
 
 function noExito() {
-    mostrarMensaje('Debe rellenar todos los campos', true)
-};
+    mostrarMensaje('Debe rellenar todos los campos', true);
+}
+
 function noExito2() {
-    mostrarMensaje('El correo debe inculir @', true)
-};
+    mostrarMensaje('El correo debe incluir @', true);
+}
 
 function registrarUsuario() {
     var username = document.getElementById("username").value;
@@ -80,7 +69,6 @@ function registrarUsuario() {
         case username === "" && password === "":
             noExito();
             break;
-
         case username.includes("@"):
             if (username !== "" && password !== "") {
                 localStorage.setItem("username", username);
@@ -92,7 +80,6 @@ function registrarUsuario() {
                 noExito();
             }
             break;
-
         case username !== "" && !username.includes("@"):
             noExito2();
             break;
@@ -101,18 +88,26 @@ function registrarUsuario() {
 
 function irAlIndex() {
     window.location.href = "index.html";
-};
+}
 
 function logout() {
     localStorage.setItem("logueado", "false");
     window.location.href = "login.html";
 }
 
+document.addEventListener("DOMContentLoaded", function () {
+    var regBtn = document.getElementById("regBtn");
+    if (regBtn) {
+        regBtn.addEventListener("click", registrarUsuario);
+    }
+    var outBtn = document.getElementById("outBtn");
+    if (outBtn) {
+        outBtn.addEventListener("click", logout);
+    }
+});
+
 document.addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
         registrarUsuario();
     }
 });
-
-
-

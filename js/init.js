@@ -90,6 +90,17 @@ function cerrarSesion() {
   localStorage.setItem("logueado", "false");
 }
 
+document.addEventListener("DOMContentLoaded", function () {
+  var cerrarSesionLink = document.getElementById("cerrarSesionLink");
+  if (cerrarSesionLink) {
+    cerrarSesionLink.addEventListener("click", function (event) {
+      event.preventDefault();
+      cerrarSesion();
+      window.location.href = "login.html";
+    });
+  }
+});
+
 // Función para cambiar el modo (claro u oscuro)
 function cambiarModo() {
   const navbar = document.querySelector('.navbar');
