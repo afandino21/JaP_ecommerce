@@ -96,6 +96,7 @@ function cargarDatos() {
     const profileImage = document.getElementById("profileImage");
     const datos = localStorage.getItem("datosGuardados");
     const email = localStorage.getItem("username");
+
     let datosToString = JSON.parse(datos)
     if (datosToString === null) {
         datosToString = {
@@ -105,7 +106,7 @@ function cargarDatos() {
             segundoApellido: '',
             email: '',
             numCelular: '',
-            imagenURL: 'https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG-Free-Download.png',
+            imagenURL: '',
         }
     }
 
