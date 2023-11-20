@@ -3,7 +3,7 @@ import fs from 'fs/promises'; // Nota: fs/promises es la versión basada en prom
 const routesBack = express.Router();
 
 //Obtiene las categorias 
-routesBack.get('/cats', async (req, res) => {
+routesBack.get('/cats/cat', async (req, res) => {
     const filePath = 'data/cats/cat.json'; // Asegúrate de que la ruta sea correcta
 
     try {

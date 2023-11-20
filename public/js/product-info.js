@@ -1,6 +1,6 @@
 function loadInfo() {
     const productID = localStorage.getItem('productID');
-    const url = `https://japceibal.github.io/emercado-api/products/${productID}.json`;
+    const url = `http://localhost:3000/products/${productID}`;
 
     fetch(url)
         .then(response => response.json())
