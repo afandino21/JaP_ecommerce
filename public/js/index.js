@@ -13,3 +13,5 @@ document.addEventListener("DOMContentLoaded", function () {
         window.location = "products.html"
     });
 });
+
+console.log(CATEGORIES_URL)
