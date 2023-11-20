@@ -60,31 +60,6 @@ function noExito2() {
     mostrarMensaje('El correo debe incluir @', true);
 }
 
-function registrarUsuario() {
-    var username = document.getElementById("username").value;
-    var password = document.getElementById("password").value;
-    var aviso = document.getElementById("p");
-
-    switch (true) {
-        case username === "" && password === "":
-            noExito();
-            break;
-        case username.includes("@"):
-            if (username !== "" && password !== "") {
-                localStorage.setItem("username", username);
-                localStorage.setItem("logueado", "true");
-                aviso.textContent = "Aguarde un momento...";
-                exito();
-                setTimeout(irAlIndex, 3000);
-            } else {
-                noExito();
-            }
-            break;
-        case username !== "" && !username.includes("@"):
-            noExito2();
-            break;
-    }
-}
 
 function irAlIndex() {
     window.location.href = "index.html";
