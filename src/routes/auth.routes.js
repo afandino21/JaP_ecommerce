@@ -36,14 +36,14 @@ routesAuth.post('/register', async (req, res) => {
 });
 
 routesAuth.get('/login', (req, res) => {
-    const loginPath = path.join(__dirname, '../', 'public', 'index.html');
+    const loginPath = path.join(__dirname, '../', 'public', 'login.html');
     res.sendFile(loginPath);
 });
 
 routesAuth.post('/login', async (req, res) => {
     try {
-        const { username, password } = req.body;
-        const user = await User.findOne({ username, password });
+        const { email, password } = req.body;
+        const user = await User.findOne({ email, password });
         if (user) {
             req.session.userId = user._id;
             res.redirect('/');
@@ -55,11 +55,12 @@ routesAuth.post('/login', async (req, res) => {
     }
 });
 
-
 routesAuth.post('/logout', (req, res) => {
     req.session.destroy();
-    res.redirect('/auth/login');
+    res.redirect('/login');
 });
 
+
+/*PARA MARQUITOS PARA NO LO HICE TODAVIA*/
 
 export default routesAuth;

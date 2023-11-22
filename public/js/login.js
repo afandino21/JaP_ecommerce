@@ -1,5 +1,5 @@
-function borrarDatosPerfil() {
-    const email = localStorage.getItem("username");
+function localSessionData() {
+    const email = document.getElementById("username").value;
     const datos = {
         nombre: "",
         segundoNombre: "",
@@ -12,7 +12,7 @@ function borrarDatosPerfil() {
     localStorage.setItem("datosGuardados", JSON.stringify(datos));
 }
 
-borrarDatosPerfil();
+document.addEventListener('submit', localSessionData);
 
 function verificarAutenticacion() {
     var logueado = localStorage.getItem("logueado");
@@ -59,30 +59,3 @@ function noExito() {
 function noExito2() {
     mostrarMensaje('El correo debe incluir @', true);
 }
-
-
-function irAlIndex() {
-    window.location.href = "index.html";
-}
-
-function logout() {
-    localStorage.setItem("logueado", "false");
-    window.location.href = "login.html";
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-    var regBtn = document.getElementById("regBtn");
-    if (regBtn) {
-        regBtn.addEventListener("click", registrarUsuario);
-    }
-    var outBtn = document.getElementById("outBtn");
-    if (outBtn) {
-        outBtn.addEventListener("click", logout);
-    }
-});
-
-document.addEventListener("keydown", function (event) {
-    if (event.key === "Enter") {
-        registrarUsuario();
-    }
-});

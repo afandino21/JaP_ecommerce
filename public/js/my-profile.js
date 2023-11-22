@@ -53,10 +53,10 @@ function mostrarValoresDesdeLocalStorage(event) {
             icon: 'error',
         });
     } else {
-
-        localStorage.setItem("username", inputEmail.value)
         var claseLogin = document.querySelectorAll(".custom-link");
-        var storedValue = localStorage.getItem("username");
+        var storedValue = localStorage.getItem("datosGuardados");
+        storedValue = JSON.parse(storedValue)
+        storedValue = storedValue.email
         for (var i = 0; i < claseLogin.length; i++) {
             claseLogin[i].textContent = storedValue;
         }
@@ -95,9 +95,8 @@ function cargarDatos() {
     const inputNumCelular = document.getElementById("inputNumCelular");
     const profileImage = document.getElementById("profileImage");
     const datos = localStorage.getItem("datosGuardados");
-    const email = localStorage.getItem("username");
-
     let datosToString = JSON.parse(datos)
+    
     if (datosToString === null) {
         datosToString = {
             nombre: '',
@@ -114,7 +113,7 @@ function cargarDatos() {
     inputSegundoNombre.value = datosToString.segundoNombre;
     inputApellido.value = datosToString.apellido;
     inputSegundoApellido.value = datosToString.segundoApellido;
-    inputEmail.value = email;
+    inputEmail.value = datosToString.email;
     inputNumCelular.value = datosToString.numCelular;
     profileImage.src = datosToString.imagenURL;
 }
@@ -156,13 +155,12 @@ function borrarImagen() {
     const datosGuardados = localStorage.getItem("datosGuardados");
     let datosToString = JSON.parse(datosGuardados)
     if (datosToString.imageURL !== "https://cdn.drawception.com/images/panels/2017/12-27/sKB3FyFYpX-2.png") {
-        const email = localStorage.getItem("username");
         const datos = {
             nombre: datosToString.nombre,
             segundoNombre: datosToString.segundoNombre,
             apellido: datosToString.apellido,
             segundoApellido: datosToString.segundoApellido,
-            email: email,
+            email: datosToString.email,
             numCelular: datosToString.numCelular,
             imagenURL: "https://cdn.drawception.com/images/panels/2017/12-27/sKB3FyFYpX-2.png",
 

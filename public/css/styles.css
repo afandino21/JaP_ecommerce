@@ -295,7 +295,7 @@ a.custom-card:hover {
   border: 2px solid #ffffff;
 }
 
-#botones {
+.botones {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -543,9 +543,21 @@ a.custom-card:hover {
   display: block;
 }
 
+.dropdown-content button {
+  padding: 10px;
+  text-decoration: none;
+  display: block;
+  border: none;
+}
+
 .dropdown-content a:hover {
   color: #fdfdfd84;
 }
+
+.dropdown-content button:hover {
+  color: red;
+}
+
 
 .btn-group-vertical>.btn-check:checked+.btn,
 .btn-group-vertical>.btn-check:focus+.btn,

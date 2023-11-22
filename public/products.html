@@ -35,7 +35,9 @@
               <div class="dropdown-content">
                 <a href="cart.html">Mi Carrito</a>
                 <a href="my-profile.html">Mi Perfil</a>
-                <a id="cerrarSesionLink" href="login.html">Cerrar Sesión</a>
+                <form method="post" action="/auth/logout">
+                  <button type="submit" id="cerrarSesionLink">Cerrar Sesión</button>
+                </form>
                 <center><button id="modoBoton">☼</button></center>
               </div>
             </div>

@@ -16,7 +16,7 @@
       <center>
         <div class="imagen"></div>
       </center>
-      <form action="/register" method="post">
+      <form action="/register" method="post" id="registerForm"> 
         <div class="registro">
           <div id="eliminar">
             <h2 id="rh2">Registro</h2>
@@ -33,11 +33,12 @@
             <div class="cartelYes" id="cartelYesRegistro"></div>
             <div class="cartelNo" id="cartelNoRegistro"></div>
           </div>
-          <div id="botonesRegistro">
+          <div class="botones">
             <button type="submit" id="registrarBtn">Registrarse</button>
           </div>
         </div>
       </form>
+      <center><p>¿Ya tienes una cuenta? <a href="login.html">Inicia sesión</a></p></center>
       
       </div>
       <div class="parrafo">
@@ -54,6 +55,7 @@
       </p>
     </div>
   </footer>
+  <script src="js/sweetalert.js"></script>
 </body>
 
 </html>

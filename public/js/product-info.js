@@ -161,7 +161,9 @@ function displayComment(comment) {
     commentList.classList.add("list-group");
     commentContainer.appendChild(commentList);
     const commentItem = document.createElement('div');
-    const storedValue = localStorage.getItem("username");
+    var storedValue = localStorage.getItem("datosGuardados");
+    storedValue = JSON.parse(storedValue)
+    storedValue = storedValue.email
     commentItem.classList.add("list-group-item");
     commentItem.classList.add("commits");
     const starHTML = Array(5).fill('').map((_, index) => `
