@@ -1,7 +1,6 @@
 import express from 'express';
 import User from '../models/userModel.js'
 import jwt from 'jsonwebtoken';
-
 import { __dirname, __filename, isValidPassword, createHash } from '../utils.js';
 
 const routesAuth = express.Router();
@@ -13,9 +12,6 @@ routesAuth.post('/register', async (req, res) => {
         const { nombre, segundoNombre, apellido, segundoApellido, edad, email, telefono, password } = req.body;
         console.log(req.body);
         const hashedPassword = await createHash(password);
-
-        const tokenjwt = jwt.sign({ nombre }, 'secreto-seguro');
-
         const user = new User({
             nombre,
             segundoNombre,
@@ -24,10 +20,8 @@ routesAuth.post('/register', async (req, res) => {
             edad,
             email,
             telefono,
-            password: hashedPassword,
-            token: tokenjwt,
+            password: hashedPassword
         });
-
         await user.save();
         res.redirect('/login');
     } catch (error) {
@@ -35,7 +29,6 @@ routesAuth.post('/register', async (req, res) => {
         res.status(500).send('Error al registrar: ' + error.message);
     }
 });
-
 
 // PUT Perfil
 
@@ -66,8 +59,8 @@ routesAuth.put('/details', async (req, res) => {
     }
 });
 
-
 // GET Detalles del Perfil por Email
+
 routesAuth.get('/details/:email', async (req, res) => {
     try {
         const userEmail = req.params.email;
@@ -82,7 +75,6 @@ routesAuth.get('/details/:email', async (req, res) => {
             return res.status(404).send('Usuario no encontrado');
         }
 
-        // Puedes ajustar los campos que deseas devolver en la respuesta
         const userInformation = {
             nombre: existingUser.nombre,
             segundoNombre: existingUser.segundoNombre,
@@ -90,7 +82,6 @@ routesAuth.get('/details/:email', async (req, res) => {
             segundoApellido: existingUser.segundoApellido,
             email: existingUser.email,
             telefono: existingUser.telefono
-            // Agrega más campos según sea necesario
         };
 
         res.status(200).json(userInformation);
@@ -100,8 +91,6 @@ routesAuth.get('/details/:email', async (req, res) => {
     }
 });
 
-
-
 // POST Login
 
 routesAuth.post('/login', async (req, res) => {
@@ -110,7 +99,8 @@ routesAuth.post('/login', async (req, res) => {
         const user = await User.findOne({ email: username });
 
         if (user && (await isValidPassword(user, password))) {
-            res.redirect('/');
+            const token = jwt.sign({ username: user.email, userId: user._id }, 'secreto-seguro', { expiresIn: '1h' });
+            res.redirect(`/?token=${token}`);
         } else {
             res.status(401).send('Correo o contraseña incorrectos');
         }

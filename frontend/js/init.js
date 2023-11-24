@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function irAlLogin() {
-  window.location.href = "login.html";
+  window.location.href = "login";
 }
 
 // Cambia 
@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
     cerrarSesionLink.addEventListener("click", function (event) {
       event.preventDefault();
       cerrarSesion();
-      window.location.href = "login.html";
+      window.location.href = "login";
     });
   }
 });

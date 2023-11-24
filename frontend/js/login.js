@@ -104,12 +104,12 @@ function registrarUsuario() {
 }
 
 function irAlIndex() {
-    window.location.href = "index.html";
+    window.location.href = "index";
 }
 
 function logout() {
     localStorage.setItem("logueado", "false");
-    window.location.href = "login.html";
+    window.location.href = "login";
 }
 
 document.addEventListener("DOMContentLoaded", function () {

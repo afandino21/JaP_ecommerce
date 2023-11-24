@@ -1,7 +1,9 @@
 import express from 'express';
 import path from 'path';
-import { __dirname, __filename } from '../utils.js';
 import fs from 'fs/promises';
+import { authenticateToken } from '../middlewares/validToken.js';
+import { __dirname, __filename } from '../utils.js';
+
 const dataRoutes = express.Router();
 
 dataRoutes.get('/cats/cat', async (req, res) => {
@@ -74,12 +76,13 @@ dataRoutes.get('/user_cart/:id', async (req, res) => {
     }
 });
 
+// WORK IN PROGRESS RUTA CART CON EL TOKEN
 
-dataRoutes.get('/cart', async (req, res) => {
+dataRoutes.get('/cart', authenticateToken, async (req, res) => {
     const filePath = path.join(__dirname, 'data/cart/buy.json');
 
     try {
-        const data = await fs.readFile(filePath, 'utf8');
+        const data = await readFile(filePath, 'utf8');
         res.json(JSON.parse(data));
     } catch (error) {
         res.status(500).json({ message: 'Error al leer el archivo JSON de productos' });
