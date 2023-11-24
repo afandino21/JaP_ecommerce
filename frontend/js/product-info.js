@@ -1,6 +1,6 @@
 function loadInfo() {
     const productID = localStorage.getItem('productID');
-    const url = `https://japceibal.github.io/emercado-api/products/${productID}.json`;
+    const url = `http://localhost:3000/products/${productID}`;
 
     fetch(url)
         .then(response => response.json())
@@ -59,7 +59,7 @@ function loadInfo() {
 
 function loadRelatedProducts() {
     const productID = localStorage.getItem('productID');
-    const url = `https://japceibal.github.io/emercado-api/products/${productID}.json`;
+    const url = `http://localhost:3000/products/${productID}`;
     fetch(url)
         .then(response => response.json())
         .then(data => {
@@ -94,7 +94,7 @@ function loadRelatedProducts() {
 
 function loadComments() {
     const productID = localStorage.getItem('productID');
-    const url = `https://japceibal.github.io/emercado-api/products_comments/${productID}.json`;
+    const url = `http://localhost:3000/products_comments/${productID}`;
 
     fetch(url)
         .then(response => response.json())
@@ -161,7 +161,7 @@ function displayComment(comment) {
     commentList.classList.add("list-group");
     commentContainer.appendChild(commentList);
     const commentItem = document.createElement('div');
-    const storedValue = localStorage.getItem("username");
+    const storedValue = localStorage.getItem("email");
     commentItem.classList.add("list-group-item");
     commentItem.classList.add("commits");
     const starHTML = Array(5).fill('').map((_, index) => `
@@ -193,7 +193,7 @@ document.getElementById('saveButton').addEventListener('click', () => {
     // Si no hay información almacenada previamente, crea un nuevo array vacío
     const savedInfoArray = storedInfo ? JSON.parse(storedInfo) : [];
     // Obtén la información actual del producto
-    fetch(`https://japceibal.github.io/emercado-api/products/${productID}.json`)
+    fetch(`http://localhost:3000/products/${productID}`)
         .then(response => response.json())
         .then(productInfo => {
             // Comprueba si el producto ya existe en el array

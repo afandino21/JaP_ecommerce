@@ -85,11 +85,12 @@ const authController = {
 
     login: async (req, res) => {
         try {
-            const { username, password } = req.body;
-            const user = await User.findOne({ email: username });
+            const { email, password } = req.body;
+            const user = await User.findOne({ email});
 
             if (user && (await isValidPassword(user, password))) {
                 const token = jwt.sign({ username: user.email, userId: user._id }, 'secreto-seguro', { expiresIn: '1h' });
+                res.cookie('token', token, { httpOnly: false });
                 res.redirect(`/?token=${token}`);
             } else {
                 res.status(401).send('Correo o contraseña incorrectos');
@@ -102,6 +103,7 @@ const authController = {
 
     logout: (req, res) => {
         req.session.destroy();
+        res.cookie('token', '', { expires: new Date(0), httpOnly: true });
         res.redirect('/login');
     },
 };

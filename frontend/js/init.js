@@ -39,66 +39,17 @@ let getJSONData = function (url) {
       return result;
     });
 }
-
-// Verificar si el usuario está autentificado
-function verificarAutenticacion() {
-  var logueado = localStorage.getItem("logueado");
-  if (logueado === "true") {
-
-    console.log("El usuario está autenticado y su nombre es : " + localStorage.getItem("username"));
-    cambiarInPorOut()
-
-  } else {
-
-    console.log("El usuario no está autenticado.");
-
-    setTimeout(irAlLogin, 500);
-
-  }
-}
-
-document.addEventListener('DOMContentLoaded', function () {
-  verificarAutenticacion();
-
-  var menu = document.getElementById('menu');
-  var localLog = localStorage.getItem('logueado');
-
-  if (localLog === "false") {
-    menu.style.display = "none"
-  };
-
-});
-
-function irAlLogin() {
-  window.location.href = "login";
-}
-
 // Cambia 
 function cambiarInPorOut() {
 
   var claseLogin = document.querySelectorAll(".custom-link");
-  var storedValue = localStorage.getItem("username");
+  var storedValue = localStorage.getItem("email");
 
   for (var i = 0; i < claseLogin.length; i++) {
     claseLogin[i].textContent = storedValue;
   }
 }
-
-function cerrarSesion() {
-  localStorage.setItem("logueado", "false");
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-  var cerrarSesionLink = document.getElementById("cerrarSesionLink");
-  if (cerrarSesionLink) {
-    cerrarSesionLink.addEventListener("click", function (event) {
-      event.preventDefault();
-      cerrarSesion();
-      window.location.href = "login";
-    });
-  }
-});
-
+cambiarInPorOut()
 // Función para cambiar el modo (claro u oscuro)
 function cambiarModo() {
   const navbar = document.querySelector('.navbar');
@@ -135,3 +86,5 @@ if (modoGuardado === 'Modo Noche') {
 // Agrega un evento clic al botón para cambiar el modo
 const botonModo = document.getElementById('modoBoton');
 botonModo.addEventListener('click', cambiarModo);
+
+

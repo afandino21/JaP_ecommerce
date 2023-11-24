@@ -1,5 +1,5 @@
 function borrarDatosPerfil() {
-    const email = localStorage.getItem("username");
+    const email = localStorage.getItem("email");
 
     // Hacer una solicitud al servidor para obtener los datos del perfil
     fetch(`http://localhost:3000/details/${email}`)
@@ -31,39 +31,6 @@ function borrarDatosPerfil() {
 // Cambia el evento a 'submit' y pasa una referencia a la función en lugar de llamarla directamente
 document.addEventListener('submit', borrarDatosPerfil);
 
-function verificarAutenticacion() {
-    var logueado = localStorage.getItem("logueado");
-    var aviso = document.getElementById("p");
-    var botonIn = document.getElementById("regBtn");
-    var botonOut = document.getElementById("outBtn");
-    var eliminar = document.getElementById("eliminar");
-
-    if (logueado === "true") {
-        console.log("El usuario está autenticado.");
-        aviso.textContent = "Te encuentras logueado actualmente.";
-        botonIn?.parentNode?.removeChild(botonIn);
-        eliminar.textContent = "";
-    } else {
-        console.log("El usuario no está autenticado.");
-        aviso.textContent = "Debes loguearte para acceder a la pagina.";
-        botonOut?.parentNode?.removeChild(botonOut);
-    }
-}
-
-document.addEventListener('DOMContentLoaded', function () {
-    verificarAutenticacion();
-});
-
-function mostrarMensaje(mensaje, exito) {
-    var cartelPasa = document.getElementById('cartelYes');
-    var cartelNoPasa = document.getElementById('cartelNo');
-    var cartel = exito ? cartelPasa : cartelNoPasa;
-    var otroCartel = exito ? cartelNoPasa : cartelPasa;
-
-    cartel.textContent = mensaje;
-    cartel.style.display = 'block';
-    otroCartel.style.display = 'none';
-}
 
 function exito() {
     mostrarMensaje('Inicio de sesión realizado correctamente', false);
@@ -78,38 +45,26 @@ function noExito2() {
 }
 
 function registrarUsuario() {
-    var username = document.getElementById("username").value;
+    var email = document.getElementById("email").value;
     var password = document.getElementById("password").value;
     var aviso = document.getElementById("p");
 
     switch (true) {
-        case username === "" && password === "":
+        case email === "" && password === "":
             noExito();
             break;
-        case username.includes("@"):
-            if (username !== "" && password !== "") {
-                localStorage.setItem("username", username);
-                localStorage.setItem("logueado", "true");
-                aviso.textContent = "Aguarde un momento...";
+        case email.includes("@"):
+            if (email !== "" && password !== "") {
+                localStorage.setItem("email", email);
                 exito();
-                setTimeout(irAlIndex, 3000);
             } else {
                 noExito();
             }
             break;
-        case username !== "" && !username.includes("@"):
+        case email !== "" && !email.includes("@"):
             noExito2();
             break;
     }
-}
-
-function irAlIndex() {
-    window.location.href = "index";
-}
-
-function logout() {
-    localStorage.setItem("logueado", "false");
-    window.location.href = "login";
 }
 
 document.addEventListener("DOMContentLoaded", function () {

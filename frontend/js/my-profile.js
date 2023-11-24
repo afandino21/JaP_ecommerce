@@ -54,9 +54,9 @@ function mostrarValoresDesdeLocalStorage(event) {
         });
     } else {
 
-        localStorage.setItem("username", inputEmail.value)
+        localStorage.setItem("email", inputEmail.value)
         var claseLogin = document.querySelectorAll(".custom-link");
-        var storedValue = localStorage.getItem("username");
+        var storedValue = localStorage.getItem("email");
         for (var i = 0; i < claseLogin.length; i++) {
             claseLogin[i].textContent = storedValue;
         }
@@ -115,7 +115,7 @@ function cargarDatos() {
     const inputNumCelular = document.getElementById("inputNumCelular");
     const profileImage = document.getElementById("profileImage");
     const datos = localStorage.getItem("datosGuardados");
-    const email = localStorage.getItem("username");
+    const email = localStorage.getItem("email");
 
     let datosToString = JSON.parse(datos)
     if (datosToString === null) {
@@ -176,7 +176,7 @@ function borrarImagen() {
     const datosGuardados = localStorage.getItem("datosGuardados");
     let datosToString = JSON.parse(datosGuardados)
     if (datosToString.imageURL !== "https://cdn.drawception.com/images/panels/2017/12-27/sKB3FyFYpX-2.png") {
-        const email = localStorage.getItem("username");
+        const email = localStorage.getItem("email");
         const datos = {
             nombre: datosToString.nombre,
             segundoNombre: datosToString.segundoNombre,
