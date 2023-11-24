@@ -76,7 +76,7 @@ dataRoutes.get('/user_cart/:id', async (req, res) => {
     }
 });
 
-// WORK IN PROGRESS RUTA CART CON EL TOKEN
+// WORK IN PROGRESS RUTA CART CON EL TOKEN (NO LO LOGRE HACER FUNCIONAR)
 
 dataRoutes.get('/cart', authenticateToken, async (req, res) => {
     const filePath = path.join(__dirname, 'data/cart/buy.json');
