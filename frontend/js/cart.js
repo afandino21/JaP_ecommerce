@@ -300,3 +300,83 @@ function cargarPDF() {
         pdfDoc.open(); //.download(Factura.pdf)
     }, 2000);
 };
+
+// Funcionalidad nueva , guardar y cargar carritos para despues.
+
+document.getElementById('guardarCarritoParaDespues').addEventListener('click', function () {
+    // Obtener datos del localStorage
+    const productInfo = localStorage.getItem('productInfo');
+    const datosGuardados = localStorage.getItem('datosGuardados');
+
+    // Verificar que los datos existan
+    if (productInfo && datosGuardados) {
+        // Convertir datosGuardados de cadena JSON a objeto
+        const datosGuardadosObj = JSON.parse(datosGuardados);
+
+        // Realizar el fetch POST a la ruta /cart
+        fetch('/cart', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email: datosGuardadosObj.email,
+                productInfo: JSON.parse(productInfo) // Convertir productInfo de cadena JSON a objeto
+            })
+        })
+
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error al guardar el carrito para después');
+                }
+                return response.json();
+
+            })
+            .then(data => {
+                // Manejar la respuesta si es necesario
+                console.log('Carrito guardado con éxito:', data);
+            })
+            .catch(error => {
+                // Manejar errores
+                console.error('Error:', error.message);
+            });
+    } else {
+        console.error('No se encontraron datos en el localStorage');
+    }
+});
+
+
+// Nueva funcion , cargar carrito guardado previamente
+
+document.getElementById('cargarCarritoGuardado').addEventListener('click', function () {
+    // Obtener datos del localStorage
+    const datosGuardados = localStorage.getItem('datosGuardados');
+
+    // Verificar que los datos existan
+    if (datosGuardados) {
+        // Convertir datosGuardados de cadena JSON a objeto
+        const datosGuardadosObj = JSON.parse(datosGuardados);
+
+        // Realizar el fetch GET a la ruta /cart/{email}
+        fetch(`/cart/${datosGuardadosObj.email}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error al cargar el carrito guardado');
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Actualizar el localStorage con el nuevo carrito
+                localStorage.setItem('productInfo', JSON.stringify(data.productInfo));
+                renderCart();
+                // Manejar la respuesta si es necesario
+                console.log('Carrito cargado con éxito:', data);
+            })
+            .catch(error => {
+                // Manejar errores
+                console.error('Error:', error.message);
+            });
+    } else {
+        console.error('No se encontraron datos en el localStorage');
+    }
+});
