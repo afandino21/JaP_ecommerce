@@ -10,16 +10,22 @@ export const authenticateToken = (req, res, next) => {
     if (!token) {
         return res.redirect('/login');
     }
-    jwt.verify(token, 'secreto-seguro', (err, user) => {
+    
+    // Verificar si el token está vencido
+    jwt.verify(token, 'secreto-seguro', { ignoreExpiration: false }, (err, user) => {
         if (err) {
-            return res.status(403).send('Acceso no autorizado. Token inválido.');
+            if (err.name === 'TokenExpiredError') {
+                // Redirigir al usuario a la página de inicio de sesión si el token ha expirado
+                return res.redirect('/login');
+            } else {
+                return res.status(403).send('Acceso no autorizado. Token inválido.');
+            }
         }
         req.user = user;
         next();
     });
 };
 
-// Middleware to check if the user is already authenticated
 export const checkAuthenticated = (req, res, next) => {
     // Check if the user is already authenticated (i.e., has a valid token)
     const cookies = req.headers.cookie;
@@ -27,11 +33,23 @@ export const checkAuthenticated = (req, res, next) => {
     const token = tokenCookie && tokenCookie.split('=')[1];
 
     if (token) {
-        // If the user is already authenticated, redirect to a different route or handle as needed
-        return res.redirect('/');
+        // Verificar si el token está vencido
+        jwt.verify(token, 'secreto-seguro', { ignoreExpiration: false }, (err) => {
+            if (err) {
+                if (err.name === 'TokenExpiredError') {
+                    // Permitir que la solicitud continúe al siguiente middleware o ruta
+                    next();
+                } else {
+                    // Otro error al verificar el token, manejar según sea necesario
+                    return res.status(403).send('Acceso no autorizado. Token inválido.');
+                }
+            } else {
+                // Si el token no ha expirado, redirigir a la ruta deseada
+                return res.redirect('/');
+            }
+        });
+    } else {
+        // Si no hay token, permitir que la solicitud continúe al siguiente middleware o ruta
+        next();
     }
-
-    // If not authenticated, proceed to the next middleware or route handler
-    next();
 };
-// WORK IN PROGRESS RUTA CART CON EL TOKEN
