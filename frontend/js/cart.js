@@ -10,13 +10,10 @@ function renderCart() {
     const storedInfo = localStorage.getItem('productInfo');
     const savedInfoArray = JSON.parse(storedInfo);
     const longitud = savedInfoArray.length
-    const contenidoCart = document.getElementById("contenidoCart");
     const alertaCarritoVacio = document.getElementById("alertaCarritoVacio");
     if (longitud === 0) {
-        contenidoCart.style.display = "none";
         alertaCarritoVacio.style.display = "block";
     } else {
-        contenidoCart.style.display = "block";
         alertaCarritoVacio.style.display = "none";
     };
     let html = '';
@@ -119,17 +116,14 @@ function containerCostos() {
     containerEnvio.innerHTML = `USD ${costoEnvio}`;
     containerTotal.innerHTML = `USD ${subtotal + costoEnvio}`;
 }
-// Se genera el carrito y se calcula el subtotal
 renderCart();
 costos();
 
 // Funcionalidad del select para Metodo de Pago
 metodoPagoSelect.addEventListener('change', function () {
     const selectedOption = metodoPagoSelect.value;
-    // Oculta todos los divs
     metodoPagoTarjeta.style.display = 'none';
     metodoPagoTransferencia.style.display = 'none';
-    // Muestra el div correspondiente al método de pago seleccionado
     if (selectedOption === '1') {
         metodoPagoTarjeta.style.display = 'block';
         textoMetodo.innerText = 'Tarjeta de crédito';
@@ -141,24 +135,24 @@ metodoPagoSelect.addEventListener('change', function () {
     }
 });
 
-//Se agrega funcionalidad para codigo de tarjeta menor a 3 caracteres y número de tarjeta igula a 16 números.
+//funcionalidad para codigo de tarjeta menor a 3 núemros y número de tarjeta igula a 16 números.
 
 document.getElementById("codigoSeg").addEventListener("input", function () {
     if (this.value.length > 3) {
-        this.value = this.value.slice(0, 3); // Limitar a 16 caracteres
+        this.value = this.value.slice(0, 3);
     }
 })
 document.getElementById("numeroTarjeta").addEventListener("input", function () {
     if (this.value.length > 16) {
-        this.value = this.value.slice(0, 16); // Limitar a 16 caracteres
+        this.value = this.value.slice(0, 16);
     }
 });
 // Funcion para reescribir input de MM/AA de la fecha de vencimiento
 const input = document.getElementById('vencimiento');
 input.addEventListener("input", () => {
-    let value = input.value.replace(/\D/g, ""); // Elimina todos los caracteres que no sean dígitos
+    let value = input.value.replace(/\D/g, "");
     if (value.length > 2) {
-        value = value.substring(0, 2) + "/" + value.substring(2); // Agrega una barra después de los primeros dos dígitos
+        value = value.substring(0, 2) + "/" + value.substring(2);
     }
     input.value = value;
 });
@@ -255,7 +249,7 @@ function cargarPDF() {
     const numeroInput = document.getElementById('numero');
     const esquinaInput = document.getElementById('esquina');
     const metodoDePago = document.getElementById("metodoDePago").textContent;
-    // Calcular el subtotal y otros valores
+    
     let subtotal = 0;
     savedInfoArray.forEach(item => {
         subtotal += item.cost * item.cartCount;
@@ -275,7 +269,6 @@ function cargarPDF() {
             }
         }
     };
-    // Agregar los productos
     savedInfoArray.forEach(function (item) {
         if (item.name) {
             docDefinition.content.push(
@@ -284,36 +277,33 @@ function cargarPDF() {
         };
     });
     docDefinition.content.push(
-        { text: ' ', margin: [0, 10] }, // Espacio entre los productos y otros datos
+        { text: ' ', margin: [0, 10] },
         `Subtotal de la compra: USD ${subtotal}`,
         `Costo de envío: USD ${costoEnvio}`,
         `Valor total: USD ${totalCompra}`
     );
     docDefinition.content.push(
-        { text: ' ', margin: [0, 10] }, // Espacio entre los productos y otros datos
+        { text: ' ', margin: [0, 10] },
         `Método de pago seleccionado: ${metodoDePago}`,
         `Dirección de Envío: Calle: ${calleInput.value}, Esq: ${esquinaInput.value}, Num: ${numeroInput.value}.`
     );
-    // Generar el PDF y mostrarlo en una nueva pestaña
+    
     var pdfDoc = pdfMake.createPdf(docDefinition);
     setTimeout(() => {
-        pdfDoc.open(); //.download(Factura.pdf)
+        pdfDoc.open(); 
     }, 2000);
 };
 
 // Funcionalidad nueva , guardar y cargar carritos para despues.
 
 document.getElementById('guardarCarritoParaDespues').addEventListener('click', function () {
-    // Obtener datos del localStorage
+   
     const productInfo = localStorage.getItem('productInfo');
     const datosGuardados = localStorage.getItem('datosGuardados');
 
-    // Verificar que los datos existan
     if (productInfo && datosGuardados) {
-        // Convertir datosGuardados de cadena JSON a objeto
         const datosGuardadosObj = JSON.parse(datosGuardados);
 
-        // Realizar el fetch POST a la ruta /cart
         fetch('/cart', {
             method: 'POST',
             headers: {
@@ -321,7 +311,7 @@ document.getElementById('guardarCarritoParaDespues').addEventListener('click', f
             },
             body: JSON.stringify({
                 email: datosGuardadosObj.email,
-                productInfo: JSON.parse(productInfo) // Convertir productInfo de cadena JSON a objeto
+                productInfo: JSON.parse(productInfo) 
             })
         })
 
@@ -333,11 +323,9 @@ document.getElementById('guardarCarritoParaDespues').addEventListener('click', f
 
             })
             .then(data => {
-                // Manejar la respuesta si es necesario
                 console.log('Carrito guardado con éxito:', data);
             })
             .catch(error => {
-                // Manejar errores
                 console.error('Error:', error.message);
             });
     } else {
@@ -349,15 +337,12 @@ document.getElementById('guardarCarritoParaDespues').addEventListener('click', f
 // Nueva funcion , cargar carrito guardado previamente
 
 document.getElementById('cargarCarritoGuardado').addEventListener('click', function () {
-    // Obtener datos del localStorage
+    
     const datosGuardados = localStorage.getItem('datosGuardados');
 
-    // Verificar que los datos existan
     if (datosGuardados) {
-        // Convertir datosGuardados de cadena JSON a objeto
         const datosGuardadosObj = JSON.parse(datosGuardados);
 
-        // Realizar el fetch GET a la ruta /cart/{email}
         fetch(`/cart/${datosGuardadosObj.email}`)
             .then(response => {
                 if (!response.ok) {
@@ -366,14 +351,11 @@ document.getElementById('cargarCarritoGuardado').addEventListener('click', funct
                 return response.json();
             })
             .then(data => {
-                // Actualizar el localStorage con el nuevo carrito
                 localStorage.setItem('productInfo', JSON.stringify(data.productInfo));
                 renderCart();
-                // Manejar la respuesta si es necesario
                 console.log('Carrito cargado con éxito:', data);
             })
             .catch(error => {
-                // Manejar errores
                 console.error('Error:', error.message);
             });
     } else {

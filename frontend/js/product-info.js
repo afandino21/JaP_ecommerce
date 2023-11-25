@@ -47,7 +47,6 @@ function loadInfo() {
                 </div>
             `;
             infoContainer.appendChild(infoList);
-            // Inicializa el carrusel de Bootstrap después de cargar el contenido
             $('#carouselExample').carousel();
         })
         .catch(error => {
@@ -67,15 +66,12 @@ function loadRelatedProducts() {
             const relatedContainer = document.getElementById('related-products-container');
             const relatedProductsList = document.createElement('div');
             relatedProductsList.classList.add("d-flex")
-            // relatedProductsList.classList.add("related-products-cards")
             relatedProducts.forEach(relatedProduct => {
                 const card = document.createElement('div');
                 card.classList.add("card");
                 card.id = "cardRelacionados";
                 card.addEventListener('click', () => {
-                    // Al hacer clic, almacena el ID del producto relacionado en localStorage
                     localStorage.setItem('productID', relatedProduct.id);
-                    // Recarga la página para mostrar la información del producto relacionado
                     location.reload();
                 });
                 card.innerHTML = `
@@ -132,7 +128,7 @@ function addComment(event) {
     event.preventDefault();
 
     const selectedStar = document.querySelector('.star-rating input[name="rating"]:checked');
-    const score = 6 - parseInt(selectedStar.value); // Cambio aquí para invertir la puntuación
+    const score = 6 - parseInt(selectedStar.value);
     const description = document.getElementById('comment-text').value;
 
     const now = new Date();
@@ -144,7 +140,7 @@ function addComment(event) {
     const seconds = String(now.getSeconds()).padStart(2, '0');
     const dateTime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
     const newComment = {
-        score: score, // Utiliza la puntuación invertida
+        score: score, 
         description: description,
         dateTime: dateTime
     };
@@ -187,32 +183,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 document.getElementById('saveButton').addEventListener('click', () => {
-    // Obtén la información del producto desde localStorage
     const productID = localStorage.getItem('productID');
     const storedInfo = localStorage.getItem('productInfo');
-    // Si no hay información almacenada previamente, crea un nuevo array vacío
     const savedInfoArray = storedInfo ? JSON.parse(storedInfo) : [];
-    // Obtén la información actual del producto
+
     fetch(`http://localhost:3000/products/${productID}`)
         .then(response => response.json())
         .then(productInfo => {
-            // Comprueba si el producto ya existe en el array
             const isProductInArray = savedInfoArray.some(item => item.id === productInfo.id);
             if (!isProductInArray) {
-                // Verifica si el nombre del producto es "Peugeot 208"
                 if (productInfo) {
                     productInfo.cartCount = 1;
                     savedInfoArray.push(productInfo);
-                    // Guarda el array actualizado en localStorage
                     localStorage.setItem('productInfo', JSON.stringify(savedInfoArray));
-                    // Puedes mostrar un mensaje de confirmación
                     Swal.fire({
                         title: '¡Producto agregado al carrito con exito!',
                         icon: 'success',
                     });
                 }
             } else {
-                // Muestra un mensaje de error si el producto ya está en el array
                 Swal.fire({
                     title: '¡El producto ya se encuentra en el carrito!',
                     icon: 'error',

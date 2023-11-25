@@ -60,7 +60,6 @@ function mostrarValoresDesdeLocalStorage(event) {
         for (var i = 0; i < claseLogin.length; i++) {
             claseLogin[i].textContent = storedValue;
         }
-        // Crear un objeto con los valores
         const datos = {
             nombre: inputNombre.value,
             segundoNombre: inputSegundoNombre.value,
@@ -85,16 +84,14 @@ function mostrarValoresDesdeLocalStorage(event) {
                 return response.json();
             })
             .then(data => {
-                console.log(data); // Aquí puedes manejar la respuesta del servidor
+                console.log(data);
             })
             .catch(error => {
                 console.error('Error en la solicitud:', error);
             });
 
-        // Actualizar solo la propiedad imagenURL
         datos.imagenURL = profileImage.src;
 
-        // Guardar el objeto en el localStorage
         localStorage.setItem("datosGuardados", JSON.stringify(datos));
 
         Swal.fire({
@@ -145,12 +142,10 @@ const profileImage = document.getElementById("profileImage");
 const imageInput = document.getElementById("imageInput");
 const changeImageBtn = document.getElementById("changeImageBtn");
 
-// Agregar un evento click al botón para abrir el cuadro de diálogo de archivo
 changeImageBtn.addEventListener("click", () => {
     imageInput.click();
 });
 
-// Agregar un evento change al input de archivo
 imageInput.addEventListener("change", () => {
     const file = imageInput.files[0];
     if (file) {
@@ -158,7 +153,6 @@ imageInput.addEventListener("change", () => {
         reader.onload = (e) => {
             profileImage.src = e.target.result;
 
-            // Guardar la imagen en el array "datos"
             const datosGuardados = localStorage.getItem("datosGuardados");
             if (datosGuardados) {
                 const datos = JSON.parse(datosGuardados);
@@ -172,7 +166,6 @@ imageInput.addEventListener("change", () => {
 });
 
 function borrarImagen() {
-    // Crear un objeto con los valores
     const datosGuardados = localStorage.getItem("datosGuardados");
     let datosToString = JSON.parse(datosGuardados)
     if (datosToString.imageURL !== "https://cdn.drawception.com/images/panels/2017/12-27/sKB3FyFYpX-2.png") {
@@ -188,7 +181,6 @@ function borrarImagen() {
 
         };
         location.reload()
-        // Guardar el objeto en el localStorage
         localStorage.setItem("datosGuardados", JSON.stringify(datos));
     }
 }

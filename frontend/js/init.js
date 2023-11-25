@@ -39,7 +39,7 @@ let getJSONData = function (url) {
       return result;
     });
 }
-// Cambia 
+
 function cambiarInPorOut() {
 
   var claseLogin = document.querySelectorAll(".custom-link");
@@ -57,14 +57,12 @@ function cambiarModo() {
   const bodyElements = document.body;
 
   if (navbar.classList.contains('navbar-dark')) {
-    // Cambia a modo claro
     bodyElements.style.background = 'white';
     bodyElements.style.color = 'black';
     navbar.classList.remove('navbar-dark', 'bg-dark');
     navbar.classList.add('navbar-light', 'bg-light');
     botonModo.innerText = '☼';
   } else {
-    // Cambia a modo oscuro
     bodyElements.style.background = 'hsl(210, 20%, 20%)';
     bodyElements.style.color = 'white';
     navbar.classList.remove('navbar-light', 'bg-light');
@@ -72,7 +70,6 @@ function cambiarModo() {
     botonModo.textContent = '☾';
   }
 
-  // Guarda el estado en el almacenamiento local
   const modoActual = navbar.classList.contains('navbar-light') ? 'Modo Día' : 'Modo Noche';
   localStorage.setItem('modo', modoActual);
 }
@@ -80,7 +77,7 @@ function cambiarModo() {
 // Verifica si hay un modo guardado en el almacenamiento local y aplica el modo correspondiente
 const modoGuardado = localStorage.getItem('modo');
 if (modoGuardado === 'Modo Noche') {
-  cambiarModo(); // Aplica el modo claro si está guardado
+  cambiarModo();
 }
 
 // Agrega un evento clic al botón para cambiar el modo

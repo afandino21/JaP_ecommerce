@@ -20,8 +20,7 @@ function loadProducts() {
       const sortByCountButton = document.getElementById('sortByCount');
       const rangeFilterCountButton = document.getElementById('rangeFilterCount');
       const clearRangeFilterButton = document.getElementById('clearRangeFilter');
-      const productNameInput = document.getElementById('inputBusqueda'); // Campo de entrada para el nombre del producto
-
+      const productNameInput = document.getElementById('inputBusqueda');
       sortAscButton.addEventListener('click', () => {
         currentSort = 'asc';
         applyFiltersAndSort(products);
@@ -57,7 +56,7 @@ function loadProducts() {
 function applyFiltersAndSort(products) {
   let filteredProducts = products.slice();
   const productNameInput = document.getElementById('inputBusqueda');
-  const productNameSearch = normalizeString(productNameInput.value.trim().toLowerCase()); // Normaliza el término de búsqueda
+  const productNameSearch = normalizeString(productNameInput.value.trim().toLowerCase()); 
 
   if (priceRangeMin !== null && priceRangeMax !== null) {
     filteredProducts = filteredProducts.filter(product => {
@@ -67,8 +66,8 @@ function applyFiltersAndSort(products) {
 
   if (productNameSearch !== '') {
     filteredProducts = filteredProducts.filter(product => {
-      const productName = normalizeString(product.name.toLowerCase()); // Normaliza el nombre del producto
-      const productDescription = normalizeString(product.description.toLowerCase()); // Normaliza la descripción del producto
+      const productName = normalizeString(product.name.toLowerCase()); 
+      const productDescription = normalizeString(product.description.toLowerCase()); 
       return productName.includes(productNameSearch) || productDescription.includes(productNameSearch);
     });
   }
@@ -92,10 +91,8 @@ function applyFiltersAndSort(products) {
     const productCard = document.createElement('div');
     productCard.classList.add('list-group-item', 'list-group-item-action', 'cursor-active');
 
-    // Agrega un atributo personalizado con la ID del producto
     productCard.setAttribute('data-product-id', product.id);
 
-    // Agrega una clase para identificar los elementos de producto
     productCard.classList.add('product-card');
 
     productCard.innerHTML = `
@@ -115,7 +112,6 @@ function applyFiltersAndSort(products) {
             </div>
     `;
 
-    // Agrega un evento de clic para redirigir al usuario y guardar la ID del producto
     productCard.addEventListener('click', () => {
       const productId = productCard.getAttribute('data-product-id');
       setProductID(productId);
@@ -126,7 +122,6 @@ function applyFiltersAndSort(products) {
 }
 
 function normalizeString(input) {
-  // Reemplaza los caracteres con acentos por sus equivalentes sin acentos
   return input.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 }
 

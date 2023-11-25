@@ -9,7 +9,7 @@ let PESO_SYMBOL = "UYU ";
 let PERCENTAGE_SYMBOL = '%';
 let MSG = "FUNCIONALIDAD NO IMPLEMENTADA";
 
-//Función que se utiliza para actualizar los costos de publicación
+//Función para actualizar los costos de publicación
 function updateTotalCosts() {
     let unitProductCostHTML = document.getElementById("productCostText");
     let comissionCostHTML = document.getElementById("comissionText");
@@ -22,9 +22,6 @@ function updateTotalCosts() {
     totalCostHTML.innerHTML = totalCostToShow;
 }
 
-//Función que se ejecuta una vez que se haya lanzado el evento de
-//que el documento se encuentra cargado, es decir, se encuentran todos los
-//elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function (e) {
     document.getElementById("productCountInput").addEventListener("change", function () {
         productCount = this.value;
@@ -56,17 +53,15 @@ document.addEventListener("DOMContentLoaded", function (e) {
         updateTotalCosts();
     });
 
-    //Configuraciones para el elemento que sube archivos
+    //Configuracion para cuando se sube un archivo 
     let dzoptions = {
         url: "/",
         autoQueue: false
     };
     let myDropzone = new Dropzone("div#file-upload", dzoptions);
 
-    //Se obtiene el formulario de publicación de producto
     let sellForm = document.getElementById("sell-info");
-    //Se agrega una escucha en el evento 'submit' que será
-    //lanzado por el formulario cuando se seleccione 'Vender'.
+
     sellForm.addEventListener("submit", function (e) {
         e.preventDefault();
         e.preventDefault();
@@ -74,36 +69,30 @@ document.addEventListener("DOMContentLoaded", function (e) {
         let productCategory = document.getElementById("productCategory");
         let productCost = document.getElementById("productCostInput");
         let infoMissing = false;
-        //Quito las clases que marcan como inválidos
+
         productNameInput.classList.remove('is-invalid');
         productCategory.classList.remove('is-invalid');
         productCost.classList.remove('is-invalid');
-        //Se realizan los controles necesarios,
-        //En este caso se controla que se haya ingresado el nombre y categoría.
-        //Consulto por el nombre del producto
+        
         if (productNameInput.value === "") {
             productNameInput.classList.add('is-invalid');
             infoMissing = true;
         }
-        //Consulto por la categoría del producto
+        
         if (productCategory.value === "") {
             productCategory.classList.add('is-invalid');
             infoMissing = true;
         }
-        //Consulto por el costo
+        
         if (productCost.value <= 0) {
             productCost.classList.add('is-invalid');
             infoMissing = true;
         }
         if (!infoMissing) {
-            //Aquí ingresa si pasó los controles, irá a enviar
-            //la solicitud para crear la publicación.
             getJSONData(PUBLISH_PRODUCT_URL).then(function (resultObj) {
                 let msgToShowHTML = document.getElementById("resultSpan");
                 let msgToShow = "";
-                //Si la publicación fue exitosa, devolverá mensaje de éxito,
-                //de lo contrario, devolverá mensaje de error.
-                //FUNCIONALIDAD NO IMPLEMENTADA
+                
                 if (resultObj.status === 'ok') {
                     msgToShow = MSG;
                     document.getElementById("alertResult").classList.add('alert-primary');

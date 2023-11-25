@@ -10,7 +10,6 @@ function borrarDatosPerfil() {
             return response.json();
         })
         .then(datosDesdeServidor => {
-            // Actualizar los datos locales con los datos del servidor
             const datos = {
                 nombre: datosDesdeServidor.nombre || "",
                 segundoNombre: datosDesdeServidor.segundoNombre || "",
@@ -28,7 +27,6 @@ function borrarDatosPerfil() {
         });
 }
 
-// Cambia el evento a 'submit' y pasa una referencia a la función en lugar de llamarla directamente
 document.addEventListener('submit', borrarDatosPerfil);
 
 

@@ -206,7 +206,6 @@ a.custom-card:hover {
 }
 
 
-/* Estilo para el login */
 .registro {
   width: 300px;
   margin: 20px auto auto auto;
@@ -313,11 +312,8 @@ a.custom-card:hover {
 
 .btn-orange-dark {
   background-color: rgba(0, 0, 0, 0.5);
-  /* Color naranja oscuro personalizado */
   border-color: #ffa600;
-  /* Borde del mismo color */
   color: #ffffff;
-  /* Texto en color blanco */
 }
 
 #inputBusqueda {
@@ -326,7 +322,6 @@ a.custom-card:hover {
 
 .product-image {
   width: 142px;
-  /*Milimetricamente alineado NO TOCAR ⚠️⚠️⚠️*/
   height: auto;
 }
 
@@ -393,17 +388,14 @@ a.custom-card:hover {
   margin-top: 40px;
   display: flex;
   justify-content: center;
-  /* Centra horizontalmente */
 }
 
 .abajo-carrusel {
   transition: transform 0.3s ease;
-  /* Agrega una transición suave en la propiedad transform */
 }
 
 .abajo-carrusel:hover {
   transform: translateY(-10px);
-  /* Mueve la imagen hacia arriba en el hover */
 }
 
 .fa-star.unchecked {
@@ -411,11 +403,9 @@ a.custom-card:hover {
 }
 
 
-/* Estilos para el campo de entrada de estrellas */
 .star-rating {
   display: inline-block;
   direction: rtl;
-  /* Invertir la dirección de lectura (derecha a izquierda) */
 }
 
 .star-rating input[type="radio"] {
@@ -432,26 +422,20 @@ a.custom-card:hover {
   content: "\2605";
   /* Carácter Unicode para la estrella (★) */
   color: #ccc;
-  /* Color de estrella no seleccionada */
 }
 
 .star-rating input[type="radio"]:checked~label:before {
   color: #FFD700;
-  /* Color de estrella seleccionada (amarillo) */
 }
 
 .star-rating input[type="radio"]:hover~label:before {
   color: #FFD700;
-  /* Color de estrella seleccionada (amarillo) */
 }
 
 .list-group-item-action {
   margin: 0 auto;
   width: 100%;
 }
-
-/* Estilos para el Menu y Modos */
-
 
 
 #related-products-container {
@@ -604,7 +588,7 @@ a.custom-card:hover {
   z-index: 0;
 }
 
-/* CLASES PARA EL MODO OSCURO - CLARO */
+/*Estilos para modo oscuro - claro */
 
 .navbar-dark~main .list-group-item-action {
   background-color: rgb(36, 36, 36);
@@ -666,7 +650,6 @@ a.custom-card:hover {
   color: white;
 }
 
-/* CLASES PARA EL MODO OSCURO - CLARO */
 
 #imagen {
   width: 100px;
@@ -732,7 +715,6 @@ table {
   color: transparent;
 }
 
-/* PERFIL */
 
 #profileImage {
   object-fit: cover;
