@@ -77,3 +77,5 @@ document.addEventListener("keydown", function (event) {
         registrarUsuario();
     }
 });
+
+localStorage.setItem("productInfo", "[]");

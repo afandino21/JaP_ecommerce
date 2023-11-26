@@ -296,8 +296,8 @@ function cargarPDF() {
 
 // Funcionalidad nueva , guardar y cargar carritos para despues.
 
-document.getElementById('guardarCarritoParaDespues').addEventListener('click', function () {
-   
+
+function guardarCarrito(){  
     const productInfo = localStorage.getItem('productInfo');
     const datosGuardados = localStorage.getItem('datosGuardados');
 
@@ -331,12 +331,12 @@ document.getElementById('guardarCarritoParaDespues').addEventListener('click', f
     } else {
         console.error('No se encontraron datos en el localStorage');
     }
-});
+}; 
 
 
 // Nueva funcion , cargar carrito guardado previamente
 
-document.getElementById('cargarCarritoGuardado').addEventListener('click', function () {
+function cargarCarrito() {
     
     const datosGuardados = localStorage.getItem('datosGuardados');
 
@@ -361,4 +361,7 @@ document.getElementById('cargarCarritoGuardado').addEventListener('click', funct
     } else {
         console.error('No se encontraron datos en el localStorage');
     }
-});
+};
+
+document.getElementById('guardarCarritoParaDespues').addEventListener('click', guardarCarrito);
+document.getElementById('cargarCarritoGuardado').addEventListener('click', cargarCarrito);
